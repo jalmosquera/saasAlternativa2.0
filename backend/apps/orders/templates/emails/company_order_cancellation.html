@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Cancelado - Equus Pub</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f3f4f6;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f3f4f6;">
+        <tr>
+            <td style="padding: 40px 20px;">
+                <!-- Main Container -->
+                <table role="presentation" style="max-width: 700px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); padding: 30px; text-align: center; border-bottom: 4px solid #b91c1c;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700;">
+                                ❌ PEDIDO CANCELADO
+                            </h1>
+                            <p style="margin: 8px 0 0; color: #fecaca; font-size: 14px;">
+                                Pedido #{{ order_id }}
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Alert Notice -->
+                    <tr>
+                        <td style="padding: 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fee2e2; border-left: 4px solid #dc2626; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px; text-align: center;">
+                                        <p style="margin: 0 0 8px; font-size: 16px; font-weight: 600; color: #991b1b;">
+                                            ⚠️ PEDIDO CANCELADO POR EL CLIENTE
+                                        </p>
+                                        <p style="margin: 0; font-size: 14px; color: #991b1b; line-height: 1.6;">
+                                            El cliente ha cancelado este pedido el {{ created_at|date:"d/m/Y" }} a las {{ created_at|time:"H:i" }}.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Customer Info -->
+                    <tr>
+                        <td style="padding: 0 30px 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f3f4f6; border-left: 4px solid #6b7280; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <h2 style="margin: 0 0 16px; color: #374151; font-size: 18px; font-weight: 600;">
+                                            👤 Información del Cliente
+                                        </h2>
+
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="padding: 6px 0; width: 35%;">
+                                                    <span style="font-weight: 600; color: #1f2937;">Nombre:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="color: #1f2937;">{{ user_name }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="font-weight: 600; color: #1f2937;">Email:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <a href="mailto:{{ user_email }}" style="color: #dc2626; text-decoration: none;">{{ user_email }}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="font-weight: 600; color: #1f2937;">Teléfono:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <a href="tel:{{ phone }}" style="color: #dc2626; text-decoration: none;">{{ phone }}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Delivery Info -->
+                    <tr>
+                        <td style="padding: 0 30px 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f3f4f6; border-left: 4px solid #6b7280; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <h2 style="margin: 0 0 16px; color: #374151; font-size: 18px; font-weight: 600;">
+                                            📍 Información de Entrega (Cancelada)
+                                        </h2>
+
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="padding: 6px 0; width: 35%;">
+                                                    <span style="font-weight: 600; color: #1f2937;">Dirección:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="color: #1f2937; text-decoration: line-through;">
+                                                        {{ delivery_street }}, {{ delivery_house_number }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="font-weight: 600; color: #1f2937;">Localidad:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="color: #1f2937; text-decoration: line-through;">{{ delivery_location|upper }}</span>
+                                                </td>
+                                            </tr>
+                                            {% if notes %}
+                                            <tr>
+                                                <td colspan="2" style="padding: 12px 0 0; border-top: 1px solid #d1d5db; margin-top: 8px;">
+                                                    <span style="font-weight: 600; color: #1f2937;">📝 Notas especiales:</span><br>
+                                                    <span style="color: #6b7280; font-style: italic; background-color: #ffffff; padding: 8px; display: inline-block; margin-top: 4px; border-radius: 4px; text-decoration: line-through;">
+                                                        "{{ notes }}"
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Products Title -->
+                    <tr>
+                        <td style="padding: 0 30px 20px;">
+                            <h2 style="margin: 0; color: #111827; font-size: 20px; font-weight: 600;">
+                                🍽️ Detalle del Pedido (Cancelado)
+                            </h2>
+                        </td>
+                    </tr>
+
+                    <!-- Product Items -->
+                    {% for item in items %}
+                    <tr>
+                        <td style="padding: 0 30px 12px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fef2f2; border: 2px solid #fecaca; border-radius: 8px; opacity: 0.7;">
+                                <tr>
+                                    <td style="padding: 16px;">
+                                        <!-- Product Header -->
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td>
+                                                    <span style="display: inline-block; background-color: #9ca3af; color: #ffffff; font-weight: 700; font-size: 14px; padding: 4px 12px; border-radius: 20px; margin-right: 8px;">
+                                                        {{ item.quantity }}x
+                                                    </span>
+                                                    <span style="font-size: 17px; font-weight: 600; color: #6b7280; text-decoration: line-through;">
+                                                        {{ item.name }}
+                                                    </span>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <span style="font-size: 18px; font-weight: 700; color: #9ca3af; text-decoration: line-through;">
+                                                        €{{ item.subtotal|floatformat:2 }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Price breakdown -->
+                                        <p style="margin: 8px 0 0; font-size: 13px; color: #9ca3af;">
+                                            Precio unitario: €{{ item.unit_price|floatformat:2 }}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- Total Section -->
+                    <tr>
+                        <td style="padding: 20px 30px 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%); border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px; text-align: center;">
+                                        <p style="margin: 0 0 8px; color: #ffffff; font-size: 14px; font-weight: 500; opacity: 0.9; text-transform: uppercase;">
+                                            Total del Pedido Cancelado
+                                        </p>
+                                        <p style="margin: 0; color: #ffffff; font-size: 42px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-decoration: line-through;">
+                                            €{{ total_price|floatformat:2 }}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Action Required -->
+                    <tr>
+                        <td style="padding: 0 30px 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fef3c7; border: 2px dashed #dc2626; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px; text-align: center;">
+                                        <p style="margin: 0 0 8px; font-size: 16px; font-weight: 600; color: #78350f;">
+                                            ℹ️ INFORMACIÓN
+                                        </p>
+                                        <p style="margin: 0; font-size: 14px; color: #78350f; line-height: 1.6;">
+                                            No es necesario realizar ninguna acción adicional.<br>
+                                            Este pedido ha sido cancelado por el cliente y no requiere preparación.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f9fafb; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
+                            <p style="margin: 0; font-size: 12px; color: #6b7280;">
+                                Este email fue generado automáticamente por el sistema de pedidos online.<br>
+                                <strong>Equus Pub</strong> - Sistema de Gestión de Pedidos
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

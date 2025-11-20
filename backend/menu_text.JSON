@@ -1,0 +1,896 @@
+[
+  {
+    "category_es": "Calzone",
+    "category_en": "Calzone",
+    "products": [
+      {
+        "name_es": "Rolling Stone",
+        "name_en": "Rolling Stone",
+        "price": 9.0,
+        "description_es": "Mozzarella, ternera, pollo, bacon y salsa barbacoa.",
+        "description_en": "Mozzarella, beef, chicken, bacon and barbecue sauce.",
+        "ingredients": [
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "ternera", "name_en": "beef", "icon": "🥩" },
+          { "name_es": "pollo", "name_en": "chicken", "icon": "🍗" },
+          { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+          {
+            "name_es": "salsa barbacoa",
+            "name_en": "barbecue sauce",
+            "icon": "🥫"
+          }
+        ]
+      },
+      {
+        "name_es": "The U2",
+        "name_en": "The U2",
+        "price": 9.0,
+        "description_es": "Tomate, mozzarella, champiñones, huevo, jamón york, jamón serrano, parmesano y orégano.",
+        "description_en": "Tomato, mozzarella, mushrooms, egg, York ham, Serrano ham, parmesan, oregano.",
+        "ingredients": [
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "champiñones", "name_en": "mushrooms", "icon": "🍄" },
+          { "name_es": "huevo", "name_en": "egg", "icon": "🥚" },
+          { "name_es": "jamón york", "name_en": "York ham", "icon": "🍖" },
+          {
+            "name_es": "jamón serrano",
+            "name_en": "Serrano ham",
+            "icon": "🍖"
+          },
+          { "name_es": "parmesano", "name_en": "parmesan", "icon": "🧀" },
+          { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" }
+        ]
+      },
+      {
+        "name_es": "David Bowie",
+        "name_en": "David Bowie",
+        "price": 9.0,
+        "description_es": "Carbonara, curry, mozzarella, pollo y salsa yogurt.",
+        "description_en": "Carbonara, curry, mozzarella, chicken and yogurt sauce.",
+        "ingredients": [
+          { "name_es": "carbonara", "name_en": "carbonara", "icon": "🍝" },
+          { "name_es": "curry", "name_en": "curry", "icon": "🍛" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "pollo", "name_en": "chicken", "icon": "🍗" },
+          { "name_es": "salsa yogurt", "name_en": "yogurt sauce", "icon": "🥛" }
+        ]
+      },
+      {
+        "name_es": "The Beatles",
+        "name_en": "The Beatles",
+        "price": 9.0,
+        "description_es": "Carbonara, mozzarella, aguacate, salmón ahumado, parmesano y eneldo.",
+        "description_en": "Carbonara, mozzarella, avocado, smoked salmon, parmesan and dill.",
+        "ingredients": [
+          { "name_es": "carbonara", "name_en": "carbonara", "icon": "🍝" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "aguacate", "name_en": "avocado", "icon": "🥑" },
+          {
+            "name_es": "salmón ahumado",
+            "name_en": "smoked salmon",
+            "icon": "🐟"
+          },
+          { "name_es": "parmesano", "name_en": "parmesan", "icon": "🧀" },
+          { "name_es": "eneldo", "name_en": "dill", "icon": "🌿" }
+        ]
+      },
+      {
+        "name_es": "Jhon Lenon",
+        "name_en": "Jhon Lenon",
+        "price": 9.0,
+        "description_es": "Salsa pesto, mozzarella, tomate natural, atún, cebolla, búfala, parmesano y albahaca.",
+        "description_en": "Pesto sauce, mozzarella, fresh tomato, tuna, onion, buffalo cheese, parmesan and basil.",
+        "ingredients": [
+          { "name_es": "salsa pesto", "name_en": "pesto sauce", "icon": "🌿" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          {
+            "name_es": "tomate natural",
+            "name_en": "fresh tomato",
+            "icon": "🍅"
+          },
+          { "name_es": "atún", "name_en": "tuna", "icon": "🐟" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "búfala", "name_en": "buffalo cheese", "icon": "🧀" },
+          { "name_es": "parmesano", "name_en": "parmesan", "icon": "🧀" },
+          { "name_es": "albahaca", "name_en": "basil", "icon": "🌿" }
+        ]
+      }
+    ]
+  },
+  {
+    "category_es": "Wraps",
+    "category_en": "Wraps",
+    "products": [
+      {
+        "name_es": "Queso y Albahaca",
+        "name_en": "Cheese and Basil",
+        "price": 5.0,
+        "description_es": "York, albahaca, tomate, cebolla, búfala y aceite de oliva.",
+        "description_en": "York ham, basil, tomato, onion, buffalo cheese and olive oil.",
+        "ingredients": [
+          { "name_es": "york", "name_en": "York ham", "icon": "🍖" },
+          { "name_es": "albahaca", "name_en": "basil", "icon": "🌿" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "búfala", "name_en": "buffalo cheese", "icon": "🧀" },
+          { "name_es": "aceite de oliva", "name_en": "olive oil", "icon": "🫒" }
+        ]
+      },
+      {
+        "name_es": "Atún y Aguacate",
+        "name_en": "Tuna and Avocado",
+        "price": 5.0,
+        "description_es": "Atún, guacamole, lechuga y mayonesa.",
+        "description_en": "Tuna, guacamole, lettuce and mayonnaise.",
+        "ingredients": [
+          { "name_es": "atún", "name_en": "tuna", "icon": "🐟" },
+          { "name_es": "guacamole", "name_en": "guacamole", "icon": "🥑" },
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "mayonesa", "name_en": "mayonnaise", "icon": "🥄" }
+        ]
+      },
+      {
+        "name_es": "Salmón y Rúcula",
+        "name_en": "Salmon and Arugula",
+        "price": 5.0,
+        "description_es": "Salmón ahumado, queso, rúcula y queso de cabra.",
+        "description_en": "Smoked salmon, cheese, arugula and goat cheese.",
+        "ingredients": [
+          {
+            "name_es": "salmón ahumado",
+            "name_en": "smoked salmon",
+            "icon": "🐟"
+          },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          { "name_es": "rúcula", "name_en": "arugula", "icon": "🥗" },
+          {
+            "name_es": "queso de cabra",
+            "name_en": "goat cheese",
+            "icon": "🧀"
+          }
+        ]
+      },
+      {
+        "name_es": "Vegetariano",
+        "name_en": "Vegetarian",
+        "price": 5.0,
+        "description_es": "Tomate, mozzarella, orégano, búfala y albahaca.",
+        "description_en": "Tomato, mozzarella, oregano, buffalo cheese and basil.",
+        "ingredients": [
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" },
+          { "name_es": "búfala", "name_en": "buffalo cheese", "icon": "🧀" },
+          { "name_es": "albahaca", "name_en": "basil", "icon": "🌿" }
+        ]
+      },
+      {
+        "name_es": "Vegano",
+        "name_en": "Vegan",
+        "price": 5.0,
+        "description_es": "Tomate, maíz, champiñones, canónigos, zanahoria, remolacha y ensalada.",
+        "description_en": "Tomato, corn, mushrooms, lamb's lettuce, carrot, beetroot and salad.",
+        "ingredients": [
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "maíz", "name_en": "corn", "icon": "🌽" },
+          { "name_es": "champiñones", "name_en": "mushrooms", "icon": "🍄" },
+          { "name_es": "canónigos", "name_en": "lamb's lettuce", "icon": "🥗" },
+          { "name_es": "zanahoria", "name_en": "carrot", "icon": "🥕" },
+          { "name_es": "remolacha", "name_en": "beetroot", "icon": "🫛" },
+          { "name_es": "ensalada", "name_en": "salad", "icon": "🥗" }
+        ]
+      }
+    ]
+  },
+  {
+    "category_es": "Enrollados",
+    "category_en": "Rolls",
+    "products": [
+      {
+        "name_es": "Completo",
+        "name_en": "Complete",
+        "price": 5.0,
+        "description_es": "Lechuga, tomate, cebolla, queso, kebab de pollo, salsa yogurt o brava.",
+        "description_en": "Lettuce, tomato, onion, cheese, chicken kebab, yogurt or spicy sauce.",
+        "ingredients": [
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          {
+            "name_es": "kebab de pollo",
+            "name_en": "chicken kebab",
+            "icon": "🍗"
+          },
+          {
+            "name_es": "salsa yogurt",
+            "name_en": "yogurt sauce",
+            "icon": "🥛"
+          },
+          { "name_es": "salsa brava", "name_en": "spicy sauce", "icon": "🌶️" }
+        ]
+      },
+      {
+        "name_es": "Cuatro Quesos",
+        "name_en": "Four Cheeses",
+        "price": 5.0,
+        "description_es": "Lechuga, tomate, cebolla, 4 tipos de quesos, kebab de pollo, salsa yogurt.",
+        "description_en": "Lettuce, tomato, onion, 4 cheeses, chicken kebab, yogurt sauce.",
+        "ingredients": [
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "quesos", "name_en": "cheeses", "icon": "🧀" },
+          {
+            "name_es": "kebab de pollo",
+            "name_en": "chicken kebab",
+            "icon": "🍗"
+          },
+          { "name_es": "salsa yogurt", "name_en": "yogurt sauce", "icon": "🥛" }
+        ]
+      },
+      {
+        "name_es": "Combinado de Kebab",
+        "name_en": "Kebab Combo",
+        "price": 7.0,
+        "description_es": "Kebab de pollo en ensalada o patatas fritas o en pan, salsa yogurt o brava.",
+        "description_en": "Chicken kebab in salad or with fries or bread, yogurt or spicy sauce.",
+        "ingredients": [
+          {
+            "name_es": "kebab de pollo",
+            "name_en": "chicken kebab",
+            "icon": "🍗"
+          },
+          { "name_es": "ensalada", "name_en": "salad", "icon": "🥗" },
+          { "name_es": "patatas fritas", "name_en": "fries", "icon": "🍟" },
+          { "name_es": "pan", "name_en": "bread", "icon": "🍞" },
+          {
+            "name_es": "salsa yogurt",
+            "name_en": "yogurt sauce",
+            "icon": "🥛"
+          },
+          { "name_es": "salsa brava", "name_en": "spicy sauce", "icon": "🌶️" }
+        ]
+      }
+    ]
+  },
+  {
+    "category_es": "Burger 2.0",
+    "category_en": "Burger 2.0",
+    "products": [
+      {
+        "name_es": "Burger 2.0",
+        "name_en": "Burger 2.0",
+        "price": 10.0,
+        "description_es": "Burger de buey de 200g con bacon, queso, huevo, lechuga, tomate y cebolla.",
+        "description_en": "200g beef burger with bacon, cheese, egg, lettuce, tomato and onion.",
+        "ingredients": [
+          { "name_es": "buey", "name_en": "beef", "icon": "🥩" },
+          { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          { "name_es": "huevo", "name_en": "egg", "icon": "🥚" },
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" }
+        ]
+      }
+    ]
+  },
+  {
+    "category_es": "Camperos",
+    "category_en": "Rustic Sandwiches",
+    "products": [
+      {
+        "name_es": "Clásico",
+        "name_en": "Classic",
+        "price": 3.5,
+        "description_es": "Pollo o lomo, queso, lechuga, tomate, cebolla, alioli o salsa barbacoa.",
+        "description_en": "Chicken or loin, cheese, lettuce, tomato, onion, aioli or barbecue sauce.",
+        "ingredients": [
+          { "name_es": "pollo", "name_en": "chicken", "icon": "🍗" },
+          { "name_es": "lomo", "name_en": "loin", "icon": "🥩" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "alioli", "name_en": "aioli", "icon": "🧄" },
+          {
+            "name_es": "salsa barbacoa",
+            "name_en": "barbecue sauce",
+            "icon": "🥫"
+          }
+        ]
+      },
+      {
+        "name_es": "Vegetariano",
+        "name_en": "Vegetarian",
+        "price": 3.5,
+        "description_es": "Jamón york, queso, lechuga, tomate y alioli o mayonesa.",
+        "description_en": "York ham, cheese, lettuce, tomato and aioli or mayonnaise.",
+        "ingredients": [
+          { "name_es": "jamón york", "name_en": "York ham", "icon": "🍖" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "alioli", "name_en": "aioli", "icon": "🧄" },
+          { "name_es": "mayonesa", "name_en": "mayonnaise", "icon": "🥄" }
+        ]
+      },
+      {
+        "name_es": "Galápagos",
+        "name_en": "Galápagos",
+        "price": 5.0,
+        "description_es": "Atún, aneas, queso, lechuga, tomate y alioli o mayonesa.",
+        "description_en": "Tuna, anchovies, cheese, lettuce, tomato and aioli or mayonnaise.",
+        "ingredients": [
+          { "name_es": "atún", "name_en": "tuna", "icon": "🐟" },
+          { "name_es": "aneas", "name_en": "anchovies", "icon": "🐟" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "alioli", "name_en": "aioli", "icon": "🧄" },
+          { "name_es": "mayonesa", "name_en": "mayonnaise", "icon": "🥄" }
+        ]
+      },
+      {
+        "name_es": "Serranito",
+        "name_en": "Serranito",
+        "price": 5.0,
+        "description_es": "Jamón serrano, lomo, queso, lechuga, tomate, huevo y alioli.",
+        "description_en": "Serrano ham, loin, cheese, lettuce, tomato, egg and aioli.",
+        "ingredients": [
+          {
+            "name_es": "jamón serrano",
+            "name_en": "Serrano ham",
+            "icon": "🍖"
+          },
+          { "name_es": "lomo", "name_en": "loin", "icon": "🥩" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "huevo", "name_en": "egg", "icon": "🥚" },
+          { "name_es": "alioli", "name_en": "aioli", "icon": "🧄" }
+        ]
+      },
+      {
+        "name_es": "Super Mario",
+        "name_en": "Super Mario",
+        "price": 5.0,
+        "description_es": "Jamón york, queso, lechuga, tomate, bacon, huevo, pimiento verde, queso y salsa 2.0.",
+        "description_en": "York ham, cheese, lettuce, tomato, bacon, egg, green pepper, cheese and sauce 2.0.",
+        "ingredients": [
+          { "name_es": "jamón york", "name_en": "York ham", "icon": "🍖" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          { "name_es": "lechuga", "name_en": "lettuce", "icon": "🥬" },
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+          { "name_es": "huevo", "name_en": "egg", "icon": "🥚" },
+          {
+            "name_es": "pimiento verde",
+            "name_en": "green pepper",
+            "icon": "🫑"
+          },
+          { "name_es": "salsa 2.0", "name_en": "sauce 2.0", "icon": "🥫" }
+        ]
+      }
+    ]
+  },
+  {
+    "category_es": "Varios",
+    "category_en": "Others",
+    "products": [
+      {
+        "name_es": "Ración de Patatas",
+        "name_en": "Portion of Fries",
+        "price": 3.0,
+        "description_es": "",
+        "description_en": "",
+        "ingredients": [
+          { "name_es": "patatas fritas", "name_en": "fries", "icon": "🍟" }
+        ]
+      },
+      {
+        "name_es": "Patatas Gratinas",
+        "name_en": "Gratin Fries",
+        "price": 5.0,
+        "description_es": "Bacon, queso, salsa yogurt o picante.",
+        "description_en": "Bacon, cheese, yogurt or spicy sauce.",
+        "ingredients": [
+          { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+          { "name_es": "queso", "name_en": "cheese", "icon": "🧀" },
+          {
+            "name_es": "salsa yogurt",
+            "name_en": "yogurt sauce",
+            "icon": "🥛"
+          },
+          { "name_es": "picante", "name_en": "spicy", "icon": "🌶️" }
+        ]
+      }
+    ]
+  },
+  {
+    "category_es": "Pizzas",
+    "category_en": "Pizzas",
+    "products": [
+      {
+        "name_es": "Mari Lin",
+        "name_en": "Mari Lin",
+        "price": 10.0,
+        "description_es": "Mermelada catalana, gambas, pimiento picante, mozzarella, cebolla, pimiento rojo.",
+        "description_en": "Catalan jam, prawns, spicy pepper, mozzarella, onion, red pepper.",
+        "ingredients": [
+          {
+            "name_es": "mermelada catalana",
+            "name_en": "Catalan jam",
+            "icon": "🍯"
+          },
+          { "name_es": "gambas", "name_en": "prawns", "icon": "🦐" },
+          {
+            "name_es": "pimiento picante",
+            "name_en": "spicy pepper",
+            "icon": "🌶️"
+          },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "pimiento rojo", "name_en": "red pepper", "icon": "🫑" }
+        ]
+      },
+      {
+        "name_es": "Gatitas (Marinera)",
+        "name_en": "Gatitas (Marinera)",
+        "price": 10.0,
+        "description_es": "Tomate, mozzarella, atún, gambas, mejillones, bocas de mar y anchoas.",
+        "description_en": "Tomato, mozzarella, tuna, prawns, mussels, crab sticks and anchovies.",
+        "ingredients": [
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "atún", "name_en": "tuna", "icon": "🐟" },
+          { "name_es": "gambas", "name_en": "prawns", "icon": "🦐" },
+          { "name_es": "mejillones", "name_en": "mussels", "icon": "🦪" },
+          { "name_es": "bocas de mar", "name_en": "crab sticks", "icon": "🦀" },
+          { "name_es": "anchoas", "name_en": "anchovies", "icon": "🐟" }
+        ]
+      },
+      {
+        "name_es": "Serendipia",
+        "name_en": "Serendipia",
+        "price": 10.0,
+        "description_es": "Nata trufada, mozzarella, aguacate, cebolla, salmón y cheddar.",
+        "description_en": "Truffled cream, mozzarella, avocado, onion, salmon and cheddar.",
+        "ingredients": [
+          {
+            "name_es": "nata trufada",
+            "name_en": "truffled cream",
+            "icon": "🍄"
+          },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "aguacate", "name_en": "avocado", "icon": "🥑" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "salmón", "name_en": "salmon", "icon": "🐟" },
+          { "name_es": "cheddar", "name_en": "cheddar", "icon": "🧀" }
+        ]
+      },
+      {
+        "name_es": "Ruminaul",
+        "name_en": "Ruminaul",
+        "price": 9.0,
+        "description_es": "Mozzarella, manzana, secreto, alioli, mojo picón, escamas de sal, rúcula y reducción de Pedro Ximénez.",
+        "description_en": "Mozzarella, apple, pork secreto, aioli, mojo picón, salt flakes, arugula, Pedro Ximénez reduction.",
+        "ingredients": [
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "manzana", "name_en": "apple", "icon": "🍏" },
+          { "name_es": "secreto", "name_en": "pork secreto", "icon": "🥩" },
+          { "name_es": "alioli", "name_en": "aioli", "icon": "🧄" },
+          { "name_es": "mojo picón", "name_en": "mojo picón", "icon": "🌶️" },
+          { "name_es": "escamas de sal", "name_en": "salt flakes", "icon": "🧂" },
+          { "name_es": "rúcula", "name_en": "arugula", "icon": "🥗" },
+          {
+            "name_es": "reducción de Pedro Ximénez",
+            "name_en": "Pedro Ximénez reduction",
+            "icon": "🍷"
+          }
+        ]
+      },
+      {
+        "name_es": "Margarita",
+        "name_en": "Margarita",
+        "price": 5.0,
+        "description_es": "Tomate, mozzarella.",
+        "description_en": "Tomato, mozzarella.",
+        "ingredients": [
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" }
+        ]
+      },
+      {
+        "name_es": "Básica",
+        "name_en": "Basic",
+        "price": 7.0,
+        "description_es": "Tomate, mozzarella, jamón york.",
+        "description_en": "Tomato, mozzarella, York ham.",
+        "ingredients": [
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "jamón york", "name_en": "York ham", "icon": "🍖" }
+        ]
+      },
+      {
+        "name_es": "Duende",
+        "name_en": "Duende",
+        "price": 9.0,
+        "description_es": "Salsa barbacoa, mozzarella, bacon, pollo, ternera.",
+        "description_en": "Barbecue sauce, mozzarella, bacon, chicken, beef.",
+        "ingredients": [
+          {
+            "name_es": "salsa barbacoa",
+            "name_en": "barbecue sauce",
+            "icon": "🥫"
+          },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+          { "name_es": "pollo", "name_en": "chicken", "icon": "🍗" },
+          { "name_es": "ternera", "name_en": "beef", "icon": "🥩" }
+        ]
+      },
+      {
+        "name_es": "Turón",
+        "name_en": "Turón",
+        "price": 9.0,
+        "description_es": "Salsa carbonara, mozzarella, bacon, cebolla, champiñones.",
+        "description_en": "Carbonara sauce, mozzarella, bacon, onion, mushrooms.",
+        "ingredients": [
+          {
+            "name_es": "salsa carbonara",
+            "name_en": "carbonara sauce",
+            "icon": "🍝"
+          },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+          { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+          { "name_es": "champiñones", "name_en": "mushrooms", "icon": "🍄" }
+        ]
+      },
+      {
+        "name_es": "Fuente el Colegial",
+        "name_en": "Fuente el Colegial",
+        "price": 9.0,
+        "description_es": "Tomate, mozzarella, jamón york, piña, cheddar.",
+        "description_en": "Tomato, mozzarella, York ham, pineapple, cheddar.",
+        "ingredients": [
+          { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+          { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+          { "name_es": "jamón york", "name_en": "York ham", "icon": "🍖" },
+          { "name_es": "piña", "name_en": "pineapple", "icon": "🍍" },
+          { "name_es": "cheddar", "name_en": "cheddar", "icon": "🧀" }
+        ]
+      }
+    ]
+  },
+
+  {
+    "name_es": "Bobastro",
+    "name_en": "Bobastro",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, gouda, roquefort, cheddar y orégano.",
+    "description_en": "Tomato, mozzarella, gouda, Roquefort, cheddar and oregano.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "gouda", "name_en": "gouda", "icon": "🧀" },
+      { "name_es": "roquefort", "name_en": "Roquefort", "icon": "🧀" },
+      { "name_es": "cheddar", "name_en": "cheddar", "icon": "🧀" },
+      { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" }
+    ]
+  },
+  {
+    "name_es": "Bombay",
+    "name_en": "Bombay",
+    "price": 9.0,
+    "description_es": "Mozzarella, nata, curry, tacos de pollo, cebolla y salsa de yogurt.",
+    "description_en": "Mozzarella, cream, curry, chicken strips, onion and yogurt sauce.",
+    "ingredients": [
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "nata", "name_en": "cream", "icon": "🥛" },
+      { "name_es": "curry", "name_en": "curry", "icon": "🍛" },
+      { "name_es": "pollo", "name_en": "chicken", "icon": "🍗" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      { "name_es": "salsa yogurt", "name_en": "yogurt sauce", "icon": "🥛" }
+    ]
+  },
+  {
+    "name_es": "Picardia",
+    "name_en": "Picardia",
+    "price": 9.0,
+    "description_es": "Tomate, aguacate, mozzarella, cebolla, pimientos variados.",
+    "description_en": "Tomato, avocado, mozzarella, onion, assorted peppers.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "aguacate", "name_en": "avocado", "icon": "🥑" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      {
+        "name_es": "pimientos variados",
+        "name_en": "assorted peppers",
+        "icon": "🫑"
+      }
+    ]
+  },
+  {
+    "name_es": "Alcaparrina",
+    "name_en": "Alcaparrina",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, búfala, tomate natural, albahaca, orégano.",
+    "description_en": "Tomato, mozzarella, buffalo cheese, fresh tomato, basil, oregano.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "búfala", "name_en": "buffalo cheese", "icon": "🧀" },
+      { "name_es": "tomate natural", "name_en": "fresh tomato", "icon": "🍅" },
+      { "name_es": "albahaca", "name_en": "basil", "icon": "🌿" },
+      { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" }
+    ]
+  },
+  {
+    "name_es": "Sierra de las Nieves",
+    "name_en": "Sierra de las Nieves",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, pimiento frito, kebab de pollo, pimiento morrón.",
+    "description_en": "Tomato, mozzarella, fried pepper, chicken kebab, bell pepper.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "pimiento frito", "name_en": "fried pepper", "icon": "🫑" },
+      { "name_es": "kebab de pollo", "name_en": "chicken kebab", "icon": "🍗" },
+      { "name_es": "pimiento morrón", "name_en": "bell pepper", "icon": "🫑" }
+    ]
+  },
+  {
+    "name_es": "Moronta",
+    "name_en": "Moronta",
+    "price": 9.0,
+    "description_es": "Salsa argentina, mozzarella, cebolla, pimientos fritos, kebab de pollo, salsa yogurt.",
+    "description_en": "Argentinian sauce, mozzarella, onion, fried peppers, chicken kebab, yogurt sauce.",
+    "ingredients": [
+      {
+        "name_es": "salsa argentina",
+        "name_en": "Argentinian sauce",
+        "icon": "🥫"
+      },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      {
+        "name_es": "pimientos fritos",
+        "name_en": "fried peppers",
+        "icon": "🫑"
+      },
+      { "name_es": "kebab de pollo", "name_en": "chicken kebab", "icon": "🍗" },
+      { "name_es": "salsa yogurt", "name_en": "yogurt sauce", "icon": "🥛" }
+    ]
+  },
+  {
+    "name_es": "Capricho de la Tierra",
+    "name_en": "Capricho de la Tierra",
+    "price": 9.0,
+    "description_es": "Carbonara, mozzarella, fruta, parmesano, búfala, cebolla, champiñones y york.",
+    "description_en": "Carbonara, mozzarella, fruit, parmesan, buffalo cheese, onion, mushrooms and York ham.",
+    "ingredients": [
+      { "name_es": "carbonara", "name_en": "carbonara", "icon": "🍝" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "fruta", "name_en": "fruit", "icon": "🍏" },
+      { "name_es": "parmesano", "name_en": "parmesan", "icon": "🧀" },
+      { "name_es": "búfala", "name_en": "buffalo cheese", "icon": "🧀" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      { "name_es": "champiñones", "name_en": "mushrooms", "icon": "🍄" },
+      { "name_es": "york", "name_en": "York ham", "icon": "🍖" }
+    ]
+  },
+  {
+    "name_es": "Avocado",
+    "name_en": "Avocado",
+    "price": 9.0,
+    "description_es": "Salsa mexicana, mozzarella, ternera, pimientos variados, cebolla, aguacate.",
+    "description_en": "Mexican sauce, mozzarella, beef, assorted peppers, onion, avocado.",
+    "ingredients": [
+      { "name_es": "salsa mexicana", "name_en": "Mexican sauce", "icon": "🌶️" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "ternera", "name_en": "beef", "icon": "🥩" },
+      {
+        "name_es": "pimientos variados",
+        "name_en": "assorted peppers",
+        "icon": "🫑"
+      },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      { "name_es": "aguacate", "name_en": "avocado", "icon": "🥑" }
+    ]
+  },
+  {
+    "name_es": "La Alternativa 2.0",
+    "name_en": "La Alternativa 2.0",
+    "price": 10.0,
+    "description_es": "Salsa pesto, mozzarella, tomate natural, albahaca y queso burrata.",
+    "description_en": "Pesto sauce, mozzarella, fresh tomato, basil and burrata cheese.",
+    "ingredients": [
+      { "name_es": "salsa pesto", "name_en": "pesto sauce", "icon": "🌿" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "tomate natural", "name_en": "fresh tomato", "icon": "🍅" },
+      { "name_es": "albahaca", "name_en": "basil", "icon": "🌿" },
+      { "name_es": "queso burrata", "name_en": "burrata cheese", "icon": "🧀" }
+    ]
+  },
+  {
+    "name_es": "Cucarra",
+    "name_en": "Cucarra",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, bacon, pepperoni, cebolla, pollo, orégano.",
+    "description_en": "Tomato, mozzarella, bacon, pepperoni, onion, chicken, oregano.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+      { "name_es": "pepperoni", "name_en": "pepperoni", "icon": "🍕" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      { "name_es": "pollo", "name_en": "chicken", "icon": "🍗" },
+      { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" }
+    ]
+  },
+  {
+    "name_es": "Alamedilla",
+    "name_en": "Alamedilla",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, jamón york, atún, bacon, champiñones, orégano.",
+    "description_en": "Tomato, mozzarella, York ham, tuna, bacon, mushrooms, oregano.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "jamón york", "name_en": "York ham", "icon": "🍖" },
+      { "name_es": "atún", "name_en": "tuna", "icon": "🐟" },
+      { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+      { "name_es": "champiñones", "name_en": "mushrooms", "icon": "🍄" },
+      { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" }
+    ]
+  },
+  {
+    "name_es": "Los Lunes al Sol",
+    "name_en": "Los Lunes al Sol",
+    "price": 9.0,
+    "description_es": "Nata, mozzarella, cebolla caramelizada, búffala, tomillo y reducción de Pedro Ximénez.",
+    "description_en": "Cream, mozzarella, caramelized onion, buffalo cheese, thyme and Pedro Ximénez reduction.",
+    "ingredients": [
+      { "name_es": "nata", "name_en": "cream", "icon": "🥛" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      {
+        "name_es": "cebolla caramelizada",
+        "name_en": "caramelized onion",
+        "icon": "🧅"
+      },
+      { "name_es": "búfala", "name_en": "buffalo cheese", "icon": "🧀" },
+      { "name_es": "tomillo", "name_en": "thyme", "icon": "🌿" },
+      {
+        "name_es": "reducción de Pedro Ximénez",
+        "name_en": "Pedro Ximénez reduction",
+        "icon": ""
+      }
+    ]
+  },
+  {
+    "name_es": "Orteígra (Vegetariana)",
+    "name_en": "Orteígra (Vegetarian)",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, cebolla, pimiento verde, pimiento rojo, champiñones, aceitunas negras.",
+    "description_en": "Tomato, mozzarella, onion, green pepper, red pepper, mushrooms, black olives.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      { "name_es": "pimiento verde", "name_en": "green pepper", "icon": "🫑" },
+      { "name_es": "pimiento rojo", "name_en": "red pepper", "icon": "🫑" },
+      { "name_es": "champiñones", "name_en": "mushrooms", "icon": "🍄" },
+      { "name_es": "aceitunas negras", "name_en": "black olives", "icon": "🫒" }
+    ]
+  },
+  {
+    "name_es": "Charco la Olla",
+    "name_en": "Charco la Olla",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, atún, bocas de mar, cebolla, salsa carbonara y orégano.",
+    "description_en": "Tomato, mozzarella, tuna, crab sticks, onion, carbonara sauce and oregano.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "atún", "name_en": "tuna", "icon": "🐟" },
+      { "name_es": "bocas de mar", "name_en": "crab sticks", "icon": "" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      {
+        "name_es": "salsa carbonara",
+        "name_en": "carbonara sauce",
+        "icon": "🍝"
+      },
+      { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" }
+    ]
+  },
+  {
+    "name_es": "Chano",
+    "name_en": "Chano",
+    "price": 9.0,
+    "description_es": "Mozzarella, cheddar, búfala, ternera y bacon.",
+    "description_en": "Mozzarella, cheddar, buffalo cheese, beef and bacon.",
+    "ingredients": [
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "cheddar", "name_en": "cheddar", "icon": "🧀" },
+      { "name_es": "búfala", "name_en": "buffalo cheese", "icon": "🧀" },
+      { "name_es": "ternera", "name_en": "beef", "icon": "🥩" },
+      { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" }
+    ]
+  },
+  {
+    "name_es": "Catanejó",
+    "name_en": "Catanejó",
+    "price": 9.0,
+    "description_es": "Mermelada de cerveza, mozzarella, queso de cabra, secreto y cebolla caramelizada.",
+    "description_en": "Beer jam, mozzarella, goat cheese, pork secreto and caramelized onion.",
+    "ingredients": [
+      { "name_es": "mermelada de cerveza", "name_en": "beer jam", "icon": "🍺" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "queso de cabra", "name_en": "goat cheese", "icon": "🧀" },
+      { "name_es": "secreto", "name_en": "pork secreto", "icon": "" },
+      {
+        "name_es": "cebolla caramelizada",
+        "name_en": "caramelized onion",
+        "icon": "🧅"
+      }
+    ]
+  },
+  {
+    "name_es": "Gratinada",
+    "name_en": "Gratinada",
+    "price": 9.0,
+    "description_es": "Tomate, mozzarella, patatas fritas, bacon, salsa yogurt o salsa brava.",
+    "description_en": "Tomato, mozzarella, fries, bacon, yogurt or spicy sauce.",
+    "ingredients": [
+      { "name_es": "tomate", "name_en": "tomato", "icon": "🍅" },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "patatas fritas", "name_en": "fries", "icon": "🍟" },
+      { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+      { "name_es": "salsa yogurt", "name_en": "yogurt sauce", "icon": "🥛" },
+      { "name_es": "salsa brava", "name_en": "spicy sauce", "icon": "🌶️" }
+    ]
+  },
+  {
+    "name_es": "Bogotá",
+    "name_en": "Bogotá",
+    "price": 9.0,
+    "description_es": "Salsa arrabiata, mozzarella, secreto, cebolla y orégano.",
+    "description_en": "Arrabiata sauce, mozzarella, pork secreto, onion and oregano.",
+    "ingredients": [
+      {
+        "name_es": "salsa arrabiata",
+        "name_en": "Arrabiata sauce",
+        "icon": "🍅"
+      },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "secreto", "name_en": "pork secreto", "icon": "" },
+      { "name_es": "cebolla", "name_en": "onion", "icon": "🧅" },
+      { "name_es": "orégano", "name_en": "oregano", "icon": "🌿" }
+    ]
+  },
+  {
+    "name_es": "Marsella",
+    "name_en": "Marsella",
+    "price": 9.0,
+    "description_es": "Salsa brava mexicana, mozzarella, bacon, carbonara, patatas fritas, salsa yogurt.",
+    "description_en": "Mexican spicy sauce, mozzarella, bacon, carbonara, fries, yogurt sauce.",
+    "ingredients": [
+      {
+        "name_es": "salsa brava mexicana",
+        "name_en": "Mexican spicy sauce",
+        "icon": "🌶️"
+      },
+      { "name_es": "mozzarella", "name_en": "mozzarella", "icon": "🧀" },
+      { "name_es": "bacon", "name_en": "bacon", "icon": "🥓" },
+      { "name_es": "carbonara", "name_en": "carbonara", "icon": "🍝" },
+      { "name_es": "patatas fritas", "name_en": "fries", "icon": "🍟" },
+      { "name_es": "salsa yogurt", "name_en": "yogurt sauce", "icon": "🥛" }
+    ]
+  }
+]

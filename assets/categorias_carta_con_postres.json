@@ -1,0 +1,146 @@
+[
+  {
+    "translations": {
+      "es": {
+        "name": "Pizzas",
+        "description": "Pizzas artesanales con masas crujientes y combinaciones llenas de sabor."
+      },
+      "en": {
+        "name": "Pizzas",
+        "description": "Handcrafted pizzas with crispy bases and bold flavor combinations."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Camperos",
+        "description": "Camperos tradicionales y gourmet preparados con ingredientes frescos y panes suaves."
+      },
+      "en": {
+        "name": "Camperos",
+        "description": "Traditional and gourmet stuffed rolls made with fresh ingredients and soft bread."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Burgers 2.0",
+        "description": "Hamburguesas jugosas con un toque moderno y combinaciones explosivas."
+      },
+      "en": {
+        "name": "Burgers 2.0",
+        "description": "Juicy burgers with a modern twist and bold, explosive flavors."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Enrollados",
+        "description": "Enrollados sabrosos con carnes, quesos y salsas irresistibles."
+      },
+      "en": {
+        "name": "Wraps",
+        "description": "Tasty wraps packed with meats, cheeses, and irresistible sauces."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Entrantes",
+        "description": "Platos para abrir el apetito, llenos de sabor y tradición."
+      },
+      "en": {
+        "name": "Starters",
+        "description": "Flavorful dishes designed to open your appetite."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ensaladas",
+        "description": "Ensaladas frescas, equilibradas y llenas de color."
+      },
+      "en": {
+        "name": "Salads",
+        "description": "Fresh, balanced, and colorful salads."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Carnes de Ternera",
+        "description": "Cortes seleccionados de ternera preparados al estilo tradicional."
+      },
+      "en": {
+        "name": "Beef Dishes",
+        "description": "Selected beef cuts prepared in a traditional style."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ibéricos",
+        "description": "Los mejores productos ibéricos con sabor auténtico."
+      },
+      "en": {
+        "name": "Iberian Specials",
+        "description": "Premium Iberian products with authentic flavor."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Pollo",
+        "description": "Platos de pollo jugosos y llenos de sabor."
+      },
+      "en": {
+        "name": "Chicken",
+        "description": "Juicy and flavorful chicken dishes."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Pescados",
+        "description": "Pescados frescos preparados con el mejor toque casero."
+      },
+      "en": {
+        "name": "Fish",
+        "description": "Fresh fish prepared with a homemade touch."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Especialidades 2.0",
+        "description": "Platos innovadores con mezclas únicas y sabores intensos."
+      },
+      "en": {
+        "name": "Specialties 2.0",
+        "description": "Innovative dishes with unique combinations and intense flavors."
+      }
+    }
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Postres",
+        "description": "Dulces caseros y tentaciones irresistibles para cerrar la comida."
+      },
+      "en": {
+        "name": "Desserts",
+        "description": "Homemade sweets and irresistible treats to finish your meal."
+      }
+    }
+  }
+]

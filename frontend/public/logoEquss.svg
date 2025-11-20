@@ -1,0 +1,44 @@
+<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definir el color naranja -->
+  <defs>
+    <style>
+      .equus-orange { fill: #F76511; stroke: #F76511; }
+      .equus-white { fill: white; stroke: #F76511; }
+    </style>
+  </defs>
+  
+  <!-- Herradura exterior -->
+  <path class="equus-orange" d="M 60 40 Q 40 60 40 100 Q 40 160 100 180 Q 160 160 160 100 Q 160 60 140 40" fill="none" stroke="#F76511" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Círculo exterior -->
+  <ellipse cx="100" cy="100" rx="85" ry="95" class="equus-white" stroke-width="6"/>
+  
+  <!-- Diamantes en la herradura -->
+  <rect x="95" y="30" width="10" height="10" class="equus-orange" transform="rotate(45 100 35)"/>
+  <rect x="95" y="155" width="10" height="10" class="equus-orange" transform="rotate(45 100 160)"/>
+  <rect x="30" y="85" width="10" height="10" class="equus-orange" transform="rotate(45 35 90)"/>
+  <rect x="160" y="85" width="10" height="10" class="equus-orange" transform="rotate(45 165 90)"/>
+  
+  <!-- Círculo interior para la cabeza de caballo -->
+  <ellipse cx="100" cy="90" rx="55" ry="65" class="equus-white" stroke-width="4"/>
+  
+  <!-- Cabeza de caballo (simplificada) -->
+  <g class="equus-orange">
+    <!-- Perfil del caballo -->
+    <path d="M 85 50 Q 75 45 70 55 Q 68 65 75 75 Q 85 85 95 80 Q 100 78 100 70 Q 100 58 85 50" fill="#F76511"/>
+    <!-- Orejas -->
+    <path d="M 80 45 L 75 30 L 78 42" fill="#F76511"/>
+    <path d="M 92 42 L 100 25 L 95 40" fill="#F76511"/>
+    <!-- Brida -->
+    <path d="M 75 60 L 70 65 M 75 70 L 68 72" stroke="#F76511" stroke-width="1.5" fill="none"/>
+  </g>
+  
+  <!-- Texto "equus" -->
+  <text x="100" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" class="equus-orange">equus</text>
+  
+  <!-- Texto "pub" -->
+  <text x="100" y="140" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" class="equus-orange">pub</text>
+  
+  <!-- Texto "Ardales" -->
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" class="equus-orange">Ardales</text>
+</svg>

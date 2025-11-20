@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Pedido - Equus Pub</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f3f4f6;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f3f4f6;">
+        <tr>
+            <td style="padding: 40px 20px;">
+                <!-- Main Container -->
+                <table role="presentation" style="max-width: 700px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%); padding: 30px; text-align: center; border-bottom: 4px solid #ff6b35;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700;">
+                                🔔 NUEVO PEDIDO RECIBIDO
+                            </h1>
+                            <p style="margin: 8px 0 0; color: #9ca3af; font-size: 14px;">
+                                Pedido #{{ order_id }}
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Customer Info -->
+                    <tr>
+                        <td style="padding: 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fef3c7; border-left: 4px solid #ff6b35; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <h2 style="margin: 0 0 16px; color: #ff6b35; font-size: 18px; font-weight: 600;">
+                                            👤 Información del Cliente
+                                        </h2>
+
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="padding: 6px 0; width: 35%;">
+                                                    <span style="font-weight: 600; color: #78350f;">Nombre:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="color: #78350f;">{{ user_name }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="font-weight: 600; color: #78350f;">Email:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <a href="mailto:{{ user_email }}" style="color: #ff6b35; text-decoration: none;">{{ user_email }}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="font-weight: 600; color: #78350f;">Teléfono:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <a href="tel:{{ phone }}" style="color: #ff6b35; text-decoration: none;">{{ phone }}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Delivery Info -->
+                    <tr>
+                        <td style="padding: 0 30px 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #dbeafe; border-left: 4px solid #3b82f6; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <h2 style="margin: 0 0 16px; color: #1e40af; font-size: 18px; font-weight: 600;">
+                                            📍 Información de Entrega
+                                        </h2>
+
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="padding: 6px 0; width: 35%;">
+                                                    <span style="font-weight: 600; color: #1e3a8a;">Dirección:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="color: #1e3a8a;">
+                                                        {{ delivery_street }}, {{ delivery_house_number }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="font-weight: 600; color: #1e3a8a;">Localidad:</span>
+                                                </td>
+                                                <td style="padding: 6px 0;">
+                                                    <span style="color: #1e3a8a; font-weight: 600;">{{ delivery_location|upper }}</span>
+                                                </td>
+                                            </tr>
+                                            {% if notes %}
+                                            <tr>
+                                                <td colspan="2" style="padding: 12px 0 0; border-top: 1px solid #bfdbfe; margin-top: 8px;">
+                                                    <span style="font-weight: 600; color: #1e3a8a;">📝 Notas especiales:</span><br>
+                                                    <span style="color: #1e3a8a; font-style: italic; background-color: #ffffff; padding: 8px; display: inline-block; margin-top: 4px; border-radius: 4px;">
+                                                        "{{ notes }}"
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Products Title -->
+                    <tr>
+                        <td style="padding: 0 30px 20px;">
+                            <h2 style="margin: 0; color: #111827; font-size: 20px; font-weight: 600;">
+                                🍽️ Detalle del Pedido
+                            </h2>
+                        </td>
+                    </tr>
+
+                    <!-- Product Items -->
+                    {% for item in items %}
+                    <tr>
+                        <td style="padding: 0 30px 12px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f9fafb; border: 2px solid #e5e7eb; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 16px;">
+                                        <!-- Product Header -->
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td>
+                                                    <span style="display: inline-block; background-color: #ff6b35; color: #ffffff; font-weight: 700; font-size: 14px; padding: 4px 12px; border-radius: 20px; margin-right: 8px;">
+                                                        {{ item.quantity }}x
+                                                    </span>
+                                                    <span style="font-size: 17px; font-weight: 600; color: #111827;">
+                                                        {{ item.name }}
+                                                    </span>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <span style="font-size: 18px; font-weight: 700; color: #ff6b35;">
+                                                        €{{ item.subtotal|floatformat:2 }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Price breakdown -->
+                                        <p style="margin: 8px 0 0; font-size: 13px; color: #6b7280;">
+                                            Precio unitario: €{{ item.unit_price|floatformat:2 }}
+                                        </p>
+
+                                        <!-- Customizations -->
+                                        {% if item.customization %}
+                                        <div style="background-color: #ffffff; border-radius: 6px; padding: 12px; margin-top: 12px; border: 1px solid #e5e7eb;">
+                                            <p style="margin: 0 0 8px; font-size: 13px; font-weight: 600; color: #374151; text-transform: uppercase;">
+                                                Personalización:
+                                            </p>
+
+                                            {% if item.customization.deselected_ingredients %}
+                                            <p style="margin: 0 0 6px; font-size: 14px; color: #dc2626;">
+                                                <strong>❌ SIN:</strong> {{ item.customization.deselected_ingredients|join:", " }}
+                                            </p>
+                                            {% endif %}
+
+                                            {% if item.customization.selected_extras %}
+                                            <p style="margin: 0 0 6px; font-size: 14px; color: #16a34a;">
+                                                <strong>➕ EXTRAS:</strong>
+                                                {% for extra in item.customization.selected_extras %}
+                                                    {{ extra.name }} (+€{{ extra.price|floatformat:2 }}){% if not forloop.last %}, {% endif %}
+                                                {% endfor %}
+                                            </p>
+                                            {% endif %}
+
+                                            {% if item.customization.additional_notes %}
+                                            <p style="margin: 0; font-size: 14px; color: #6366f1;">
+                                                <strong>📝 NOTA:</strong> {{ item.customization.additional_notes }}
+                                            </p>
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- Total Section -->
+                    <tr>
+                        <td style="padding: 20px 30px 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px; text-align: center;">
+                                        <p style="margin: 0 0 8px; color: #ffffff; font-size: 14px; font-weight: 500; opacity: 0.9; text-transform: uppercase;">
+                                            Total del Pedido
+                                        </p>
+                                        <p style="margin: 0; color: #ffffff; font-size: 42px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                                            €{{ total_price|floatformat:2 }}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Action Required -->
+                    <tr>
+                        <td style="padding: 0 30px 30px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fef3c7; border: 2px dashed #ff6b35; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 20px; text-align: center;">
+                                        <p style="margin: 0 0 8px; font-size: 16px; font-weight: 600; color: #78350f;">
+                                            ⚠️ ACCIÓN REQUERIDA
+                                        </p>
+                                        <p style="margin: 0; font-size: 14px; color: #78350f; line-height: 1.6;">
+                                            Por favor, confirma la recepción del pedido y procede con su preparación.<br>
+                                            <strong>Tiempo estimado de entrega: 30-45 minutos</strong>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f9fafb; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
+                            <p style="margin: 0; font-size: 12px; color: #6b7280;">
+                                Este email fue generado automáticamente por el sistema de pedidos online.<br>
+                                <strong>Equus Pub</strong> - Sistema de Gestión de Pedidos
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

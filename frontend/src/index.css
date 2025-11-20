@@ -1,0 +1,238 @@
+/* Google Fonts - MUST be first */
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Gabarito:wght@800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-white text-pepper-charcoal font-inter;
+    @apply min-h-screen;
+  }
+
+  /* Dark mode body (for admin panel) */
+  .dark body {
+    @apply bg-dark-bg text-text-primary;
+  }
+}
+
+/* Component utilities */
+@layer components {
+  /* Pepper (Public Menu) Components */
+  .btn-pepper-primary {
+    @apply px-6 py-3 bg-pepper-orange text-white rounded-lg;
+    @apply hover:bg-opacity-90 hover:-translate-y-0.5;
+    @apply transition-all duration-200;
+    @apply shadow-[0_4px_12px_rgba(255,145,0,0.3)];
+  }
+
+  .btn-pepper-secondary {
+    @apply px-6 py-3 border-2 border-pepper-orange text-pepper-orange rounded-lg;
+    @apply hover:bg-pepper-orange hover:text-white;
+    @apply transition-all duration-200;
+  }
+
+  .card-pepper {
+    @apply bg-white rounded-xl shadow-pepper;
+    @apply hover:shadow-pepper-hover hover:scale-[1.02];
+    @apply transition-all duration-300;
+  }
+
+  /* Riday (Admin Panel) Components */
+  .btn-riday-primary {
+    @apply px-5 py-2.5 bg-riday-green text-white rounded-md;
+    @apply hover:bg-opacity-90;
+    @apply transition-colors duration-200;
+  }
+
+  .btn-riday-secondary {
+    @apply px-5 py-2.5 bg-riday-blue text-white rounded-md;
+    @apply hover:bg-opacity-90;
+    @apply transition-colors duration-200;
+  }
+
+  .card-riday {
+    @apply bg-dark-card rounded-lg shadow-riday;
+    @apply border border-dark-border;
+    @apply p-6;
+  }
+
+  .input-pepper {
+    @apply w-full px-4 py-2.5 border-2 border-pepper-gray-light rounded-lg;
+    @apply focus:border-pepper-orange focus:outline-none;
+    @apply transition-colors duration-200;
+  }
+
+  .input-riday {
+    @apply w-full px-4 py-2.5 bg-dark-card border border-dark-border rounded-md;
+    @apply text-text-primary placeholder-text-secondary;
+    @apply focus:border-riday-green focus:outline-none;
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-pepper {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl;
+  }
+
+  .container-riday {
+    @apply container mx-auto px-6;
+    @apply max-w-full;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-dark-bg;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-dark-border rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-text-secondary;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Loading Screen Animations */
+@keyframes panTilt {
+  0% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0) rotate(4deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+}
+
+@keyframes tossA {
+  0% {
+    transform: translate(-16px, 0) rotate(-20deg);
+  }
+  30% {
+    transform: translate(-40px, -80px) rotate(20deg);
+  }
+  65% {
+    transform: translate(-16px, -4px) rotate(60deg);
+  }
+  100% {
+    transform: translate(-16px, 0) rotate(90deg);
+  }
+}
+
+@keyframes tossB {
+  0% {
+    transform: translate(0, 0) rotate(-10deg);
+  }
+  28% {
+    transform: translate(0, -90px) rotate(10deg);
+  }
+  62% {
+    transform: translate(0, -6px) rotate(40deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(80deg);
+  }
+}
+
+@keyframes tossC {
+  0% {
+    transform: translate(16px, 0) rotate(20deg);
+  }
+  30% {
+    transform: translate(40px, -80px) rotate(-20deg);
+  }
+  65% {
+    transform: translate(16px, -4px) rotate(-60deg);
+  }
+  100% {
+    transform: translate(16px, 0) rotate(-90deg);
+  }
+}
+
+.loading-pan-svg {
+  animation: panTilt 1.6s ease-in-out infinite;
+  transform-origin: 50% 85%;
+}
+
+.loading-ingredient {
+  animation-timing-function: cubic-bezier(0.15, 0.85, 0.25, 1);
+  animation-iteration-count: infinite;
+}
+
+.loading-i1 {
+  animation: tossA 1.6s infinite;
+  animation-delay: 0s;
+}
+
+.loading-i2 {
+  animation: tossB 1.8s infinite;
+  animation-delay: 0.25s;
+}
+
+.loading-i3 {
+  animation: tossC 1.5s infinite;
+  animation-delay: 0.45s;
+}
+
+.loading-i4 {
+  animation: tossA 1.7s infinite;
+  animation-delay: 0.6s;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-pepper-orange;
+}
+
+.dark *:focus-visible {
+  @apply outline-riday-green;
+}

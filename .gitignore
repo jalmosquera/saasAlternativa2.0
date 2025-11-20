@@ -1,0 +1,165 @@
+# ==========================================
+# MONOREPO - Alternativa 2.0 (SaaS)
+# ==========================================
+
+# ==========================================
+# CLAUDE CODE
+# ==========================================
+
+# Claude Code directories and files
+.claude/
+.claudesync/
+.mcp/
+
+# ==========================================
+# BACKEND (Django)
+# ==========================================
+
+# Python
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.so
+backend/.Python
+
+# Virtual Environment
+backend/.venv/
+backend/venv/
+backend/ENV/
+backend/env/
+
+# Django
+backend/db.sqlite3
+backend/db.sqlite3-journal
+backend/*.log
+backend/local_settings.py
+
+# Static and Media files
+backend/staticfiles/
+backend/static/
+backend/media/
+
+# Environment variables
+backend/.env
+backend/.env.local
+backend/.env.*.local
+
+# IDE
+backend/.vscode/
+backend/.idea/
+backend/*.swp
+backend/*.swo
+backend/*~
+
+# Testing
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/.tox/
+
+# ==========================================
+# FRONTEND (React + Vite)
+# ==========================================
+
+# Dependencies
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.js
+
+# Testing
+frontend/coverage/
+
+# Production build
+frontend/dist/
+frontend/build/
+
+# Environment variables
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# IDE
+frontend/.vscode/
+frontend/.idea/
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# Editor directories and files
+frontend/.DS_Store
+frontend/*.suo
+frontend/*.ntvs*
+frontend/*.njsproj
+frontend/*.sln
+frontend/*.sw?
+
+# ==========================================
+# ASSETS (Data files)
+# ==========================================
+
+# Archivos de datos temporales
+assets/*.backup
+assets/*.tmp
+
+# ==========================================
+# SYSTEM FILES
+# ==========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ==========================================
+# GENERAL
+# ==========================================
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Compressed files
+*.zip
+*.tar.gz
+*.rar
+
+# Documentation builds
+docs/_build/
+docs/.doctrees/
+
+# Database backups
+*.sql
+*.dump
+
+# Certificates and keys
+*.pem
+*.key
+*.cert
+*.crt
+
+# AI/IDE specific
+.cursor/
+.windsurf/

@@ -1,0 +1,1277 @@
+[
+  {
+    "translations": {
+      "es": {
+        "name": "Completo",
+        "description": "Lechuga, tomate, cebolla, queso, kebab de pollo, salsa yogurt y brava."
+      },
+      "en": {
+        "name": "Completo",
+        "description": "Lettuce, tomato, onion, cheese, chicken kebab, yogurt and brava sauce."
+      }
+    },
+    "price": "6.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Enrollados",
+    "emoji": "🌯"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Cuatro Quesos",
+        "description": "Lechuga, tomate, cebolla, 4 tipos de quesos, kebab de pollo, salsa yogurt."
+      },
+      "en": {
+        "name": "Four Cheeses",
+        "description": "Lettuce, tomato, onion, 4 types of cheese, chicken kebab, yogurt sauce."
+      }
+    },
+    "price": "7.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Enrollados",
+    "emoji": "🧀"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Combinado de Kebab",
+        "description": "Kebab de pollo con ensalada y patatas fritas o pan con salsa picante y yogurt."
+      },
+      "en": {
+        "name": "Kebab Combo",
+        "description": "Chicken kebab with salad and fries or bread with spicy and yogurt sauce."
+      }
+    },
+    "price": "8.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Enrollados",
+    "emoji": "🥙"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Burger 2.0",
+        "description": "Burger de buey de 200g con bacon, queso, lechuga, tomate, cebolla y patatas."
+      },
+      "en": {
+        "name": "Burger 2.0",
+        "description": "200g beef burger with bacon, cheese, lettuce, tomato, onion and fries."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Burgers 2.0",
+    "emoji": "🍔"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Clásico",
+        "description": "Pollo o lomo, queso, lechuga, tomate, cebolla, all-in o salsa barbacoa."
+      },
+      "en": {
+        "name": "Classic",
+        "description": "Chicken or pork loin, cheese, lettuce, tomato, onion, all-in or BBQ sauce."
+      }
+    },
+    "price": "5.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Camperos",
+    "emoji": "🥖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Villacampa",
+        "description": "Jamón york, queso, lechuga, tomate, cebolla y alioli."
+      },
+      "en": {
+        "name": "Villacampa",
+        "description": "Ham, cheese, lettuce, tomato, onion and aioli."
+      }
+    },
+    "price": "6.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Camperos",
+    "emoji": "🥖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Calarpos",
+        "description": "Atún, queso, lechuga, tomate, alioli y mayonesa."
+      },
+      "en": {
+        "name": "Calarpos",
+        "description": "Tuna, cheese, lettuce, tomato, aioli and mayonnaise."
+      }
+    },
+    "price": "6.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Camperos",
+    "emoji": "🐟"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Serranito",
+        "description": "Jamón serrano, pollo, pimiento verde, tomate y alioli."
+      },
+      "en": {
+        "name": "Serranito",
+        "description": "Serrano ham, chicken, green pepper, tomato and aioli."
+      }
+    },
+    "price": "6.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Camperos",
+    "emoji": "🥖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Quier",
+        "description": "Kebab, bacon, queso, tomate y salsa argentina."
+      },
+      "en": {
+        "name": "Quier",
+        "description": "Kebab, bacon, cheese, tomato and Argentine sauce."
+      }
+    },
+    "price": "6.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Camperos",
+    "emoji": "🥙"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Super Marc",
+        "description": "Jamón york, bacon, pollo, huevo, pimiento verde, verdura, queso y salsa 2.0."
+      },
+      "en": {
+        "name": "Super Marc",
+        "description": "Ham, bacon, chicken, egg, green pepper, vegetables, cheese and 2.0 sauce."
+      }
+    },
+    "price": "7.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Camperos",
+    "emoji": "🥖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Crujiente",
+        "description": "Tiras de pollo crujiente, salsa cheddar, tomate y salsa brava."
+      },
+      "en": {
+        "name": "Crispy",
+        "description": "Crispy chicken strips, cheddar sauce, tomato and brava sauce."
+      }
+    },
+    "price": "6.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Camperos",
+    "emoji": "🍗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ración de Patatas",
+        "description": "Generosa ración de patatas fritas recién hechas."
+      },
+      "en": {
+        "name": "French Fries",
+        "description": "Generous portion of freshly made french fries."
+      }
+    },
+    "price": "4.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Varios",
+    "emoji": "🍟"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Patatas Gratinadas",
+        "description": "Patatas, bacon, queso, salsa y picante."
+      },
+      "en": {
+        "name": "Gratin Potatoes",
+        "description": "Potatoes, bacon, cheese, sauce and spicy."
+      }
+    },
+    "price": "5.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Varios",
+    "emoji": "🧀"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Mari_Lin",
+        "description": "Una preparación deliciosa que resalta sabores auténticos."
+      },
+      "en": {
+        "name": "Mari_Lin",
+        "description": "A delicious preparation that highlights authentic flavors."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Gaitanes",
+        "description": "Combinación única de ingredientes que crea una experiencia especial."
+      },
+      "en": {
+        "name": "Gaitanes",
+        "description": "Unique combination of ingredients delivering a special experience."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Serendipia",
+        "description": "Perfecta para disfrutar en cualquier momento, llena de frescura."
+      },
+      "en": {
+        "name": "Serendipia",
+        "description": "Perfect to enjoy anytime, full of freshness."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Rumiñaui",
+        "description": "Sabor intenso y equilibrio perfecto en cada bocado."
+      },
+      "en": {
+        "name": "Rumiñaui",
+        "description": "Rich taste and perfect balance in every bite."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Margarita",
+        "description": "Mozzarella, tomate natural y albahaca fresca."
+      },
+      "en": {
+        "name": "Margherita",
+        "description": "Mozzarella, natural tomato and fresh basil."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Básica",
+        "description": "Pizza clásica con tomate y queso mozzarella."
+      },
+      "en": {
+        "name": "Basic",
+        "description": "Classic pizza with tomato and mozzarella cheese."
+      }
+    },
+    "price": "7.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Duende",
+        "description": "Mozzarella, champiñones, jamón york y bacon."
+      },
+      "en": {
+        "name": "Duende",
+        "description": "Mozzarella, mushrooms, ham and bacon."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍄"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Turón",
+        "description": "Mozzarella, morcilla, bacon, piña y cebolla."
+      },
+      "en": {
+        "name": "Turón",
+        "description": "Mozzarella, blood sausage, bacon, pineapple and onion."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Fuente El Colegial",
+        "description": "Sabor intenso y equilibrio perfecto en cada bocado."
+      },
+      "en": {
+        "name": "Fuente El Colegial",
+        "description": "Rich taste and perfect balance in every bite."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Bobastro",
+        "description": "Jamón serrano, pimiento verde, pollo y cebolla."
+      },
+      "en": {
+        "name": "Bobastro",
+        "description": "Serrano ham, green pepper, chicken and onion."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Bombay",
+        "description": "Receta tradicional con un toque moderno que encanta a todos."
+      },
+      "en": {
+        "name": "Bombay",
+        "description": "Traditional recipe with a modern twist everyone enjoys."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🌶️"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Picardía",
+        "description": "Jamón york, pepperoni, mozzarella, cheddar y pimientos variados."
+      },
+      "en": {
+        "name": "Picardía",
+        "description": "Ham, pepperoni, mozzarella, cheddar and assorted peppers."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🌶️"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Alcaparaín",
+        "description": "Sabor intenso y equilibrio perfecto en cada bocado."
+      },
+      "en": {
+        "name": "Alcaparaín",
+        "description": "Rich taste and perfect balance in every bite."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🫒"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Sierra de las Nieves",
+        "description": "Ternera, mozzarella, bacon, cebolla y pimientos."
+      },
+      "en": {
+        "name": "Sierra de las Nieves",
+        "description": "Beef, mozzarella, bacon, onion and peppers."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🥩"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Moronta",
+        "description": "Pollo, bacon, jamón york, tomate y champiñones."
+      },
+      "en": {
+        "name": "Moronta",
+        "description": "Chicken, bacon, ham, tomato and mushrooms."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Capricho de la Tierra",
+        "description": "Perfecta para disfrutar en cualquier momento, llena de frescura."
+      },
+      "en": {
+        "name": "Capricho de la Tierra",
+        "description": "Perfect to enjoy anytime, full of freshness."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🌱"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Avocado",
+        "description": "Aguacate, salmón ahumado, rúcula, queso y tomate."
+      },
+      "en": {
+        "name": "Avocado",
+        "description": "Avocado, smoked salmon, arugula, cheese and tomato."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🥑"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "La Alternativa 2.0",
+        "description": "Nuestra pizza estrella con ingredientes premium y sabores únicos."
+      },
+      "en": {
+        "name": "La Alternativa 2.0",
+        "description": "Our signature pizza with premium ingredients and unique flavors."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "⭐"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Cucarra",
+        "description": "Sabor intenso y equilibrio perfecto en cada bocado."
+      },
+      "en": {
+        "name": "Cucarra",
+        "description": "Rich taste and perfect balance in every bite."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Alamedilla",
+        "description": "Cocinado con esmero para ofrecer un sabor inolvidable."
+      },
+      "en": {
+        "name": "Alamedilla",
+        "description": "Prepared with care to offer an unforgettable flavor."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Los Lunes al Sol",
+        "description": "Sabor intenso y equilibrio perfecto en cada bocado."
+      },
+      "en": {
+        "name": "Los Lunes al Sol",
+        "description": "Rich taste and perfect balance in every bite."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "☀️"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ortegicar",
+        "description": "Elaborado con dedicación para sorprender al paladar."
+      },
+      "en": {
+        "name": "Ortegicar",
+        "description": "Crafted with dedication to surprise your palate."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Charco la Olla",
+        "description": "Una preparación deliciosa que resalta sabores auténticos."
+      },
+      "en": {
+        "name": "Charco la Olla",
+        "description": "A delicious preparation that highlights authentic flavors."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Chano",
+        "description": "Un plato lleno de carácter, ideal para los amantes del buen comer."
+      },
+      "en": {
+        "name": "Chano",
+        "description": "A flavorful option crafted for true food lovers."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Gaitanejo",
+        "description": "Una preparación deliciosa que resalta sabores auténticos."
+      },
+      "en": {
+        "name": "Gaitanejo",
+        "description": "A delicious preparation that highlights authentic flavors."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Gratinada",
+        "description": "Jamón york, bacon y queso gratinado al horno."
+      },
+      "en": {
+        "name": "Gratin",
+        "description": "Ham, bacon and gratin cheese baked in the oven."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🧀"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Bogotá",
+        "description": "Perfecta para disfrutar en cualquier momento, llena de frescura."
+      },
+      "en": {
+        "name": "Bogotá",
+        "description": "Perfect to enjoy anytime, full of freshness."
+      }
+    },
+    "price": "12.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Marsella",
+        "description": "Elaborado con dedicación para sorprender al paladar."
+      },
+      "en": {
+        "name": "Marsella",
+        "description": "Crafted with dedication to surprise your palate."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🍕"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "The U2",
+        "description": "Cocinado con esmero para ofrecer un sabor inolvidable."
+      },
+      "en": {
+        "name": "The U2",
+        "description": "Prepared with care to offer an unforgettable flavor."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🎸"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "The Beatles",
+        "description": "Receta tradicional con un toque moderno que encanta a todos."
+      },
+      "en": {
+        "name": "The Beatles",
+        "description": "Traditional recipe with a modern twist everyone enjoys."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🎸"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Jhon Lenon",
+        "description": "Perfecta para disfrutar en cualquier momento, llena de frescura."
+      },
+      "en": {
+        "name": "John Lennon",
+        "description": "Perfect to enjoy anytime, full of freshness."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Pizzas",
+    "emoji": "🎤"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Plato de Jamón Ibérico",
+        "description": "Selección premium de jamón ibérico de bellota."
+      },
+      "en": {
+        "name": "Iberian Ham Plate",
+        "description": "Premium selection of acorn-fed Iberian ham."
+      }
+    },
+    "price": "22.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Entrantes",
+    "emoji": "🍖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Tabla de Quesos",
+        "description": "Selección de quesos artesanales de la región."
+      },
+      "en": {
+        "name": "Cheese Board",
+        "description": "Selection of artisan regional cheeses."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Entrantes",
+    "emoji": "🧀"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Surtido de Croquetas",
+        "description": "6 unidades de croquetas caseras variadas."
+      },
+      "en": {
+        "name": "Assorted Croquettes",
+        "description": "6 units of assorted homemade croquettes."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Entrantes",
+    "emoji": "🥟"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Plato de Alitas de Pollo",
+        "description": "6 unidades de alitas de pollo con salsa barbacoa o picante."
+      },
+      "en": {
+        "name": "Chicken Wings Plate",
+        "description": "6 chicken wings with BBQ or spicy sauce."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Entrantes",
+    "emoji": "🍗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Gambas al Pil Pil",
+        "description": "Gambas al ajillo con aceite de oliva y guindilla."
+      },
+      "en": {
+        "name": "Pil Pil Prawns",
+        "description": "Garlic prawns with olive oil and chili."
+      }
+    },
+    "price": "14.50",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Entrantes",
+    "emoji": "🦐"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Plato de Vieiras",
+        "description": "6 unidades de vieiras frescas a la plancha."
+      },
+      "en": {
+        "name": "Scallops Plate",
+        "description": "6 fresh grilled scallops."
+      }
+    },
+    "price": "16.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Entrantes",
+    "emoji": "🦪"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ensalada Mixta",
+        "description": "Lechuga, tomate, cebolla, zanahoria, maíz y atún."
+      },
+      "en": {
+        "name": "Mixed Salad",
+        "description": "Lettuce, tomato, onion, carrot, corn and tuna."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Ensaladas",
+    "emoji": "🥗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ensalada de Burrata",
+        "description": "Burratina, tomate, rúcula, vinagreta de mostaza y reducción balsámica."
+      },
+      "en": {
+        "name": "Burrata Salad",
+        "description": "Burrata, tomato, arugula, mustard vinaigrette and balsamic reduction."
+      }
+    },
+    "price": "13.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Ensaladas",
+    "emoji": "🧀"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Tomate de la Tierra",
+        "description": "Tomate natural, burrata, reducción balsámica, aceite y vinagre."
+      },
+      "en": {
+        "name": "Heirloom Tomato",
+        "description": "Natural tomato, burrata, balsamic reduction, oil and vinegar."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Ensaladas",
+    "emoji": "🍅"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ensalada Tropical",
+        "description": "Lechuga, tomate, piña, queso, pollo y salsa 2.0."
+      },
+      "en": {
+        "name": "Tropical Salad",
+        "description": "Lettuce, tomato, pineapple, cheese, chicken and 2.0 sauce."
+      }
+    },
+    "price": "10.50",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Ensaladas",
+    "emoji": "🍍"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ensalada César",
+        "description": "Lechuga, picatostes, parmesano, pollo y salsa césar."
+      },
+      "en": {
+        "name": "Caesar Salad",
+        "description": "Lettuce, croutons, parmesan, chicken and caesar dressing."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Ensaladas",
+    "emoji": "🥗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Ensalada Templada",
+        "description": "Tomate de ensalada, langostinos, rúcula, sal, salsa cocktail, ajo y picatostes."
+      },
+      "en": {
+        "name": "Warm Salad",
+        "description": "Salad tomato, prawns, arugula, salt, cocktail sauce, garlic and croutons."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": true,
+    "category": "Ensaladas",
+    "emoji": "🦐"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Costillar BBQ",
+        "description": "Costillas de ternera con salsa barbacoa casera."
+      },
+      "en": {
+        "name": "BBQ Ribs",
+        "description": "Beef ribs with homemade BBQ sauce."
+      }
+    },
+    "price": "16.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Carnes de Ternera",
+    "emoji": "🍖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Costillar a la Mostaza",
+        "description": "Costillas de ternera con salsa de mostaza y miel."
+      },
+      "en": {
+        "name": "Mustard Ribs",
+        "description": "Beef ribs with honey and mustard sauce."
+      }
+    },
+    "price": "16.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Carnes de Ternera",
+    "emoji": "🍖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Codillo al Horno",
+        "description": "Codillo de cerdo asado al horno con especias."
+      },
+      "en": {
+        "name": "Roasted Pork Knuckle",
+        "description": "Oven-roasted pork knuckle with spices."
+      }
+    },
+    "price": "18.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Carnes de Ternera",
+    "emoji": "🍖"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Rabo de Toro",
+        "description": "Rabo de toro estofado en su jugo con vino tinto."
+      },
+      "en": {
+        "name": "Oxtail Stew",
+        "description": "Oxtail stewed in its juice with red wine."
+      }
+    },
+    "price": "20.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Carnes de Ternera",
+    "emoji": "🐂"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Abanico Ibérico",
+        "description": "Abanico ibérico a la plancha con guarnición."
+      },
+      "en": {
+        "name": "Iberian Fan Steak",
+        "description": "Grilled Iberian fan steak with garnish."
+      }
+    },
+    "price": "18.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Ibéricos",
+    "emoji": "🥩"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Secreto Ibérico",
+        "description": "Secreto ibérico a la plancha con sal en escamas."
+      },
+      "en": {
+        "name": "Iberian Secret",
+        "description": "Grilled Iberian secret with flake salt."
+      }
+    },
+    "price": "21.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Ibéricos",
+    "emoji": "🥩"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Presa Ibérica",
+        "description": "Presa ibérica jugosa a la plancha."
+      },
+      "en": {
+        "name": "Iberian Shoulder",
+        "description": "Juicy grilled Iberian shoulder."
+      }
+    },
+    "price": "19.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Ibéricos",
+    "emoji": "🥩"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Pluma Ibérica",
+        "description": "Pluma ibérica premium a la plancha."
+      },
+      "en": {
+        "name": "Iberian Feather",
+        "description": "Premium grilled Iberian feather."
+      }
+    },
+    "price": "20.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Ibéricos",
+    "emoji": "🥩"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Lagarto Ibérico",
+        "description": "Lagarto ibérico tierno y jugoso."
+      },
+      "en": {
+        "name": "Iberian Lizard",
+        "description": "Tender and juicy Iberian lizard cut."
+      }
+    },
+    "price": "18.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Ibéricos",
+    "emoji": "🥩"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Chacina 900g",
+        "description": "Tabla de embutidos ibéricos de 900g."
+      },
+      "en": {
+        "name": "Chacina 900g",
+        "description": "900g Iberian cold cuts board."
+      }
+    },
+    "price": "25.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Ibéricos",
+    "emoji": "🥩"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Flamenco Casero",
+        "description": "Huevos rotos con jamón y patatas caseras."
+      },
+      "en": {
+        "name": "Homemade Flamenco",
+        "description": "Broken eggs with ham and homemade potatoes."
+      }
+    },
+    "price": "15.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Ibéricos",
+    "emoji": "🍳"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Pechuga de Pollo",
+        "description": "Pechuga de pollo a la plancha con guarnición."
+      },
+      "en": {
+        "name": "Chicken Breast",
+        "description": "Grilled chicken breast with garnish."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Pollo",
+    "emoji": "🍗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Pinchitos Ardaleños",
+        "description": "Brochetas de pollo marinado con especias."
+      },
+      "en": {
+        "name": "Ardales Skewers",
+        "description": "Marinated chicken skewers with spices."
+      }
+    },
+    "price": "10.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Pollo",
+    "emoji": "�串"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Churrasco de Pollo",
+        "description": "Churrasco de pollo a la parrilla con chimichurri."
+      },
+      "en": {
+        "name": "Chicken Churrasco",
+        "description": "Grilled chicken churrasco with chimichurri."
+      }
+    },
+    "price": "14.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Pollo",
+    "emoji": "🍗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Tiras de Pollo con Verdura y Soja",
+        "description": "Tiras de pollo salteadas con verduras y salsa de soja."
+      },
+      "en": {
+        "name": "Chicken Strips with Vegetables and Soy",
+        "description": "Sautéed chicken strips with vegetables and soy sauce."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Pollo",
+    "emoji": "🍗"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Salmón Plancha",
+        "description": "Filete de salmón fresco a la plancha."
+      },
+      "en": {
+        "name": "Grilled Salmon",
+        "description": "Fresh grilled salmon fillet."
+      }
+    },
+    "price": "16.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Pescados",
+    "emoji": "🐟"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Calamares Fritos",
+        "description": "Calamares rebozados y fritos, crujientes y tiernos."
+      },
+      "en": {
+        "name": "Fried Squid",
+        "description": "Battered and fried squid, crispy and tender."
+      }
+    },
+    "price": "12.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Pescados",
+    "emoji": "🦑"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Calamares Plancha",
+        "description": "Calamares frescos a la plancha con ajo y perejil."
+      },
+      "en": {
+        "name": "Grilled Squid",
+        "description": "Fresh grilled squid with garlic and parsley."
+      }
+    },
+    "price": "13.00",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Pescados",
+    "emoji": "🦑"
+  },
+  {
+    "translations": {
+      "es": {
+        "name": "Postres del Día",
+        "description": "Consultar postres disponibles del día."
+      },
+      "en": {
+        "name": "Desserts of the Day",
+        "description": "Ask for available desserts of the day."
+      }
+    },
+    "price": "4.50",
+    "available": true,
+    "allows_extra_ingredients": false,
+    "category": "Postres",
+    "emoji": "🍰"
+  }
+]

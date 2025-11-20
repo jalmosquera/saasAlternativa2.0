@@ -1,0 +1,450 @@
+[
+  {
+    "id": 1,
+    "translations": {
+      "es": {
+        "name": "4 tipos de quesos"
+      },
+      "en": {
+        "name": "4 Tipos De Quesos"
+      }
+    },
+    "icon": "🧀",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 2,
+    "translations": {
+      "es": {
+        "name": "alioli"
+      },
+      "en": {
+        "name": "Alioli"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 3,
+    "translations": {
+      "es": {
+        "name": "atún"
+      },
+      "en": {
+        "name": "Atún"
+      }
+    },
+    "icon": "🐟",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 4,
+    "translations": {
+      "es": {
+        "name": "bacon"
+      },
+      "en": {
+        "name": "Bacon"
+      }
+    },
+    "icon": "🥓",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 5,
+    "translations": {
+      "es": {
+        "name": "burger de buey"
+      },
+      "en": {
+        "name": "Burger De Buey"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 6,
+    "translations": {
+      "es": {
+        "name": "cebolla"
+      },
+      "en": {
+        "name": "Cebolla"
+      }
+    },
+    "icon": "🧅",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 7,
+    "translations": {
+      "es": {
+        "name": "huevo"
+      },
+      "en": {
+        "name": "Huevo"
+      }
+    },
+    "icon": "🥚",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 8,
+    "translations": {
+      "es": {
+        "name": "jamón serrano"
+      },
+      "en": {
+        "name": "Jamón Serrano"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 9,
+    "translations": {
+      "es": {
+        "name": "jamón york"
+      },
+      "en": {
+        "name": "Jamón York"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 10,
+    "translations": {
+      "es": {
+        "name": "kebab"
+      },
+      "en": {
+        "name": "Kebab"
+      }
+    },
+    "icon": "🥙",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 11,
+    "translations": {
+      "es": {
+        "name": "kebab de pollo"
+      },
+      "en": {
+        "name": "Kebab De Pollo"
+      }
+    },
+    "icon": "🍗",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 12,
+    "translations": {
+      "es": {
+        "name": "lechuga"
+      },
+      "en": {
+        "name": "Lechuga"
+      }
+    },
+    "icon": "🥬",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 13,
+    "translations": {
+      "es": {
+        "name": "lomo"
+      },
+      "en": {
+        "name": "Lomo"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 14,
+    "translations": {
+      "es": {
+        "name": "mayonesa"
+      },
+      "en": {
+        "name": "Mayonesa"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 15,
+    "translations": {
+      "es": {
+        "name": "naan"
+      },
+      "en": {
+        "name": "Naan"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 16,
+    "translations": {
+      "es": {
+        "name": "patatas"
+      },
+      "en": {
+        "name": "Patatas"
+      }
+    },
+    "icon": "🍟",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 17,
+    "translations": {
+      "es": {
+        "name": "patatas fritas"
+      },
+      "en": {
+        "name": "Patatas Fritas"
+      }
+    },
+    "icon": "🍟",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 18,
+    "translations": {
+      "es": {
+        "name": "pimiento verde"
+      },
+      "en": {
+        "name": "Pimiento Verde"
+      }
+    },
+    "icon": "🫑",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 19,
+    "translations": {
+      "es": {
+        "name": "pollo"
+      },
+      "en": {
+        "name": "Pollo"
+      }
+    },
+    "icon": "🍗",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 20,
+    "translations": {
+      "es": {
+        "name": "queso"
+      },
+      "en": {
+        "name": "Queso"
+      }
+    },
+    "icon": "🧀",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 21,
+    "translations": {
+      "es": {
+        "name": "salsa agridulce"
+      },
+      "en": {
+        "name": "Salsa Agridulce"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 22,
+    "translations": {
+      "es": {
+        "name": "salsa barbacoa"
+      },
+      "en": {
+        "name": "Salsa Barbacoa"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 23,
+    "translations": {
+      "es": {
+        "name": "salsa brava"
+      },
+      "en": {
+        "name": "Salsa Brava"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 24,
+    "translations": {
+      "es": {
+        "name": "salsa cheddar"
+      },
+      "en": {
+        "name": "Salsa Cheddar"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 25,
+    "translations": {
+      "es": {
+        "name": "salsa kermich"
+      },
+      "en": {
+        "name": "Salsa Kermich"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 26,
+    "translations": {
+      "es": {
+        "name": "salsa picante"
+      },
+      "en": {
+        "name": "Salsa Picante"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 27,
+    "translations": {
+      "es": {
+        "name": "salsa yogurt"
+      },
+      "en": {
+        "name": "Salsa Yogurt"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 28,
+    "translations": {
+      "es": {
+        "name": "salsa yogurt 2.0"
+      },
+      "en": {
+        "name": "Salsa Yogurt 2.0"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 29,
+    "translations": {
+      "es": {
+        "name": "tiras de pollo crujiente"
+      },
+      "en": {
+        "name": "Tiras De Pollo Crujiente"
+      }
+    },
+    "icon": "🍗",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 30,
+    "translations": {
+      "es": {
+        "name": "tomate"
+      },
+      "en": {
+        "name": "Tomate"
+      }
+    },
+    "icon": "🍅",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 31,
+    "translations": {
+      "es": {
+        "name": "tomate natural"
+      },
+      "en": {
+        "name": "Tomate Natural"
+      }
+    },
+    "icon": "🍅",
+    "be_extra": false,
+    "price": "1.00"
+  },
+  {
+    "id": 32,
+    "translations": {
+      "es": {
+        "name": "verduras"
+      },
+      "en": {
+        "name": "Verduras"
+      }
+    },
+    "icon": "🍽️",
+    "be_extra": false,
+    "price": "1.00"
+  }
+]
