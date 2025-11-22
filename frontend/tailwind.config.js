@@ -47,6 +47,7 @@ export default {
         }
       },
       fontFamily: {
+        'merienda': ['Merienda', 'sans-serif'],
         'cherry-bomb': ['Cherry Bomb One', 'sans-serif'],
         'gabarito': ['Gabarito', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
@@ -77,12 +78,23 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        orbit: {
+          '0%': { transform: 'rotate(0deg) translateX(55px) rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(55px) rotate(-360deg)' },
+        },
+        'orbit-rev': {
+          '0%': { transform: 'rotate(0deg) translateX(55px) rotate(0deg)' },
+          '100%': { transform: 'rotate(-360deg) translateX(55px) rotate(360deg)' },
+        },
       },
       animation: {
         fadeIn: 'fadeIn 0.2s ease-out',
         scaleIn: 'scaleIn 0.3s ease-out',
         'fade-in': 'fade-in 0.6s ease-out',
         'fade-in-up': 'fade-in-up 0.8s ease-out 0.2s both',
+        'spin-slow': 'spin 5s linear infinite',
+        orbit: 'orbit 2.4s linear infinite',
+        'orbit-rev': 'orbit-rev 2.4s linear infinite',
       },
     },
   },

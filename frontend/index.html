@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/equss.ico" />
+    <link rel="icon" type="image/svg+xml" href="/logoAlternativa.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>digitalletter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap" rel="stylesheet">
+    <title>Alternativa 2.0 </title>
     <style>
       /* Loading inicial - Aparece instantáneamente */
       #initial-loader {
@@ -14,76 +15,91 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #ffffff;
+        background-color: #000000;
         transition: opacity 400ms;
       }
 
-      /* Detectar tema oscuro del sistema */
-      @media (prefers-color-scheme: dark) {
-        #initial-loader {
-          background-color: #1a1a1a;
-        }
-        #initial-loader .loader-text-primary {
-          color: #ffffff;
-        }
-        #initial-loader .loader-text-secondary {
-          color: #a9a9a9;
-        }
-      }
-
       /* Animaciones */
-      @keyframes panTilt {
-        0% { transform: translateY(0) rotate(-4deg); }
-        25% { transform: translateY(-2px) rotate(0deg); }
-        50% { transform: translateY(0) rotate(4deg); }
-        75% { transform: translateY(-2px) rotate(0deg); }
-        100% { transform: translateY(0) rotate(-4deg); }
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
       }
 
-      @keyframes tossA {
-        0% { transform: translate(-16px, 0) rotate(-20deg); }
-        30% { transform: translate(-40px, -80px) rotate(20deg); }
-        65% { transform: translate(-16px, -4px) rotate(60deg); }
-        100% { transform: translate(-16px, 0) rotate(90deg); }
+      @keyframes orbit {
+        0% { transform: rotate(0deg) translateX(55px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(55px) rotate(-360deg); }
       }
 
-      @keyframes tossB {
-        0% { transform: translate(0, 0) rotate(-10deg); }
-        28% { transform: translate(0, -90px) rotate(10deg); }
-        62% { transform: translate(0, -6px) rotate(40deg); }
-        100% { transform: translate(0, 0) rotate(80deg); }
+      @keyframes orbit-rev {
+        0% { transform: rotate(0deg) translateX(55px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(55px) rotate(360deg); }
       }
 
-      @keyframes tossC {
-        0% { transform: translate(16px, 0) rotate(20deg); }
-        30% { transform: translate(40px, -80px) rotate(-20deg); }
-        65% { transform: translate(16px, -4px) rotate(-60deg); }
-        100% { transform: translate(16px, 0) rotate(-90deg); }
+      .loader-container {
+        position: relative;
+        width: 160px;
+        height: 160px;
       }
 
-      .loader-pan-svg {
-        animation: panTilt 1.6s ease-in-out infinite;
-        transform-origin: 50% 85%;
-      }
-
-      .loader-ingredient {
-        animation-timing-function: cubic-bezier(0.15, 0.85, 0.25, 1);
-        animation-iteration-count: infinite;
+      .loader-circle {
         position: absolute;
-        bottom: 35px;
-        left: 50%;
-        width: 18px;
-        height: 18px;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        inset: 0;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        animation: spin-slow 5s linear infinite;
       }
 
-      .loader-i1 { animation: tossA 1.6s infinite; animation-delay: 0s; }
-      .loader-i2 { animation: tossB 1.8s infinite; animation-delay: 0.25s; }
-      .loader-i3 { animation: tossC 1.5s infinite; animation-delay: 0.45s; }
-      .loader-i4 { animation: tossA 1.7s infinite; animation-delay: 0.6s; }
+      .loader-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
 
-      .loader-text-primary { color: #1f2937; }
-      .loader-text-secondary { color: #9ca3af; }
+      .loader-dot-1 {
+        background-color: #ffffff;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: orbit 2.4s linear infinite;
+      }
+
+      .loader-dot-2 {
+        background-color: #ef4444;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: orbit-rev 2.4s linear infinite;
+      }
+
+      .loader-dot-3 {
+        background-color: #fbbf24;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: orbit 2.4s linear infinite;
+      }
+
+      .loader-dot-4 {
+        background-color: #4ade80;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: orbit-rev 2.4s linear infinite;
+      }
+
+      .loader-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.025em;
+        text-align: center;
+      }
 
       /* Ocultar cuando React esté listo */
       #initial-loader.hidden {
@@ -95,54 +111,20 @@
   <body>
     <!-- Loading Screen Inicial -->
     <div id="initial-loader">
-      <div style="text-align: center;">
-        <!-- Animación de la sartén -->
-        <div style="position: relative; margin: 0 auto 24px; height: 160px; width: 200px;">
-          <!-- Ingredientes -->
-          <div class="loader-ingredient loader-i1">
-            <svg style="height: 22px; width: 28px;" viewBox="0 0 36 28" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="18" cy="14" rx="11" ry="9" fill="#fffbee" />
-              <circle cx="18" cy="14" r="5" fill="#ffcb2e" />
-            </svg>
-          </div>
-          <div class="loader-ingredient loader-i2">
-            <svg style="height: 18px; width: 18px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" fill="#ff5a5a" />
-            </svg>
-          </div>
-          <div class="loader-ingredient loader-i3">
-            <svg style="height: 16px; width: 16px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 12c2-5 6-7 10-8 0 0 2 4 1 8s-3 6-8 6S5 18 6 12z" fill="#7be26b" />
-            </svg>
-          </div>
-          <div class="loader-ingredient loader-i4">
-            <svg style="height: 12px; width: 12px;" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 0c1 1 2 1 3 2s1 2 1 3-1 2-2 3-2-1-3-2S3 7 2 6 3 2 6 0z" fill="#79d28b" />
-            </svg>
-          </div>
-          <!-- Sartén -->
-          <div style="position: absolute; bottom: 0; left: 50%; height: 100px; width: 180px; transform: translateX(-50%);">
-            <svg class="loader-pan-svg" style="width: 100%; height: 100%;" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="240" cy="160" rx="180" ry="60" fill="#c54e0d" />
-              <ellipse cx="240" cy="145" rx="170" ry="50" fill="#d95910" />
-              <ellipse cx="240" cy="155" rx="140" ry="40" fill="url(#panGradient)" />
-              <defs>
-                <linearGradient id="panGradient" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#f76511" />
-                  <stop offset="1" stop-color="#e05a0f" />
-                </linearGradient>
-              </defs>
-              <path d="M60 140 C120 100 360 100 420 140" fill="none" stroke="#ff7d2b" stroke-width="14" stroke-linecap="round" />
-              <rect x="420" y="118" width="120" height="18" rx="8" fill="#b84d0c" transform="rotate(-35 445 165)" />
-              <circle cx="488" cy="132" r="6" fill="#8a3b08" />
-            </svg>
-          </div>
-        </div>
+      <div class="loader-container">
+        <!-- Círculo girando -->
+        <div class="loader-circle"></div>
+
+        <!-- Ingredientes orbitando -->
+        <span class="loader-dot loader-dot-1"></span>
+        <span class="loader-dot loader-dot-2"></span>
+        <span class="loader-dot loader-dot-3"></span>
+        <span class="loader-dot loader-dot-4"></span>
+
         <!-- Texto -->
-        <div style="margin-bottom: 8px; font-size: 24px; font-weight: 700; letter-spacing: 0.025em;" class="loader-text-primary">
-          Equss Pub <span style="margin-left: 6px; font-size: 18px; font-weight: 400;" class="loader-text-secondary">Comida exquisita</span>
+        <div class="loader-text">
+          Alternativa<br/>2.0
         </div>
-        <div style="font-size: 14px; font-weight: 500;" class="loader-text-secondary">Cargando...</div>
       </div>
     </div>
 
