@@ -14,6 +14,7 @@ import useFetch from '@/shared/hooks/useFetch';
 import { useLanguage } from '@shared/contexts/LanguageContext';
 import { useCart } from '@shared/contexts/CartContext';
 import useOrderingEnabled from '@shared/hooks/useOrderingEnabled';
+import AlternativaLoader from '@shared/components/Loading';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -200,16 +201,7 @@ const ProductDetailPage = () => {
 
   // Estado de carga
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-white dark:bg-dark-bg">
-        <div className="text-center">
-          <div className="inline-block w-16 h-16 border-4 rounded-full animate-spin border-pepper-orange border-t-transparent"></div>
-          <p className="mt-4 text-xl font-semibold font-gabarito text-text-charcoal dark:text-white">
-            Cargando producto...
-          </p>
-        </div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   // Estado de error

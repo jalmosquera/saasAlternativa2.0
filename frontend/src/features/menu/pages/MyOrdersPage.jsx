@@ -13,6 +13,7 @@ import {
 import { useLanguage } from '@shared/contexts/LanguageContext';
 import { useAuth } from '@shared/contexts/AuthContext';
 import api from '@shared/services/api';
+import AlternativaLoader from '@shared/components/Loading';
 import toast from 'react-hot-toast';
 
 const MyOrdersPage = () => {
@@ -138,15 +139,7 @@ const MyOrdersPage = () => {
   }
 
   if (loading) {
-    return (
-      <div className="min-h-screen py-20 bg-gray-50 dark:bg-dark-bg">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center">
-            <FontAwesomeIcon icon={faSpinner} spin className="text-4xl text-pepper-orange" />
-          </div>
-        </div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   return (
