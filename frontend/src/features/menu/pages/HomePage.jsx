@@ -7,12 +7,14 @@ import { useLanguage } from '@shared/contexts/LanguageContext';
 import { useCompany } from '@shared/contexts/CompanyContext';
 import Pagination from '@shared/components/Pagination';
 import { trackVisit } from '@shared/services/visitTracker';
+import AlternativaLoader from '@/shared/components/Loading';
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showPromotionsModal, setShowPromotionsModal] = useState(false);
   const [activePromotions, setActivePromotions] = useState([]);
   const [carouselCards, setCarouselCards] = useState([]);
+  const [scrollY, setScrollY] = useState(0);
   const { t } = useLanguage();
   const { company } = useCompany();
 
@@ -22,6 +24,22 @@ const HomePage = () => {
   // Track page visit
   useEffect(() => {
     trackVisit();
+  }, []);
+
+  // Parallax scroll effect
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Fetch active promotions on mount
@@ -152,9 +170,9 @@ const HomePage = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex justify-between items-start justify h-full px-8 mx-auto lg:px-16 max-w-7xl">
+        <div className="relative z-10 flex justify-center  items-start justify h-full px-8 mx-auto lg:px-16 max-w-7xl">
           {/* Logo */}
-          <div className="mb-8 animate-fade-in">
+          {/* <div className="mb-8 animate-fade-in">
             <img
               src={companyLogo}
               alt="Logo"
@@ -163,12 +181,12 @@ const HomePage = () => {
               loading="eager"
               className="w-40 h-40 lg:w-48 lg:h-48 drop-shadow-2xl"
             />
-          </div>
+          </div> */}
 
 
 
           {/* Text Content */}
-          <div className="max-w-2xl mt-72 flex flex-col justify-center animate-fade-in-up">
+          <div className="max-w-2xl mt-20 flex flex-col justify-center animate-fade-in-up">
             <h1 className="mb-6 text-5xl font-bold text-white lg:text-6xl drop-shadow-lg font-gabarito">
               {t('home.mobileHeroTitle')}
             </h1>
@@ -200,7 +218,7 @@ const HomePage = () => {
       </section>
 
       {/* Mobile Hero Section - Only visible on mobile */}
-      <section className="relative block h-screen md:hidden">
+      <section className="relative block h-screen md:hidden z-10">
         {/* Background Image */}
         <div className="absolute inset-0 bg-center bg-cover bg-[url('/burger.png')]">
           {/* Gradient Overlay on dark area */}
@@ -262,9 +280,19 @@ const HomePage = () => {
       {/* Menu Section */}
       <section
         id="menu-section"
-        className="py-16 transition-colors duration-200 bg-white lg:py-24 dark:bg-dark-bg"
+        className="relative py-16 transition-colors duration-200 bg-white lg:py-24 dark:bg-dark-bg overflow-hidden"
       >
-        <div className="container-pepper">
+        {/* Parallax Background */}
+        <div
+          className="absolute inset-0 pointer-events-none -top-96 opacity-[0.08] dark:opacity-[0.15]"
+          style={{
+            backgroundImage: 'url(/ingredientes.png)',
+            backgroundSize: '400px',
+            backgroundRepeat: 'repeat',
+            transform: `translateY(${scrollY * 0.5}px)`,
+          }}
+        />
+        <div className="container-pepper relative z-10">
           <h2 className="mb-4 text-3xl font-black text-center font-gabarito md:text-4xl lg:text-5xl text-text-charcoal dark:text-white">
             {t('home.ourMenu')}
           </h2>
