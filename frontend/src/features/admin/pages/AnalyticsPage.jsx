@@ -8,6 +8,7 @@ import {
   faCalendarAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import useFetch from '@shared/hooks/useFetch';
+import AlternativaLoader from '@shared/components/Loading';
 
 const AnalyticsPage = () => {
   const [period, setPeriod] = useState('week'); // 'day', 'week', 'month'
@@ -80,11 +81,7 @@ const AnalyticsPage = () => {
   }, [filteredOrders]);
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando analíticas...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   if (error) {

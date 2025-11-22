@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import ProductModal from '@features/admin/components/ProductModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
+import AlternativaLoader from '@shared/components/Loading';
 
 const ProductsPage = () => {
   const { getTranslation } = useLanguage();
@@ -291,11 +292,7 @@ const ProductsPage = () => {
   const filteredProducts = products;
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-gray-300">Cargando productos...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   if (error) {

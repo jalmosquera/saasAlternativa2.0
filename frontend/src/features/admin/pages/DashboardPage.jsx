@@ -12,6 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import useFetch from '@shared/hooks/useFetch';
 import { getVisitStats } from '@shared/services/visitTracker';
+import AlternativaLoader from '@shared/components/Loading';
 
 const DashboardPage = () => {
   const { data: ordersData, loading, error } = useFetch('/orders/');
@@ -155,11 +156,7 @@ const DashboardPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-gray-300">Cargando dashboard...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   if (error) {

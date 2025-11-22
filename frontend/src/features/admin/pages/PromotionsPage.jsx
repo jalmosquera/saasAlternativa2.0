@@ -5,6 +5,7 @@ import useFetch from '@shared/hooks/useFetch';
 import toast from 'react-hot-toast';
 import PromotionModal from '@features/admin/components/PromotionModal';
 import { getAuthHeaders } from '@shared/utils/auth';
+import AlternativaLoader from '@shared/components/Loading';
 
 const PromotionsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,11 +76,7 @@ const PromotionsPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando promociones...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   if (error) {

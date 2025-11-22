@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import CategoryModal from '@features/admin/components/CategoryModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
+import AlternativaLoader from '@shared/components/Loading';
 
 const CategoriesPage = () => {
   const { getTranslation } = useLanguage();
@@ -87,11 +88,7 @@ const CategoriesPage = () => {
   const filteredCategories = categories;
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-gray-300">Cargando categorías...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   if (error) {

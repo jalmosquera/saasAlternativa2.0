@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSave, faPlus, faTrash, faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 import toast from 'react-hot-toast';
 import api from '@shared/services/api';
+import AlternativaLoader from '@shared/components/Loading';
 
 const COUNTRY_CODES = [
   { code: '+34', country: 'España' },
@@ -248,11 +249,7 @@ const SettingsPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-gray-300">Cargando configuraciones...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   return (

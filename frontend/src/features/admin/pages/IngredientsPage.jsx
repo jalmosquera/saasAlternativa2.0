@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import IngredientModal from '@features/admin/components/IngredientModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
+import AlternativaLoader from '@shared/components/Loading';
 
 const IngredientsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');

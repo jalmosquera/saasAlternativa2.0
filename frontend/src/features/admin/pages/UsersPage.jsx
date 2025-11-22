@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import UserModal from '@features/admin/components/UserModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
+import AlternativaLoader from '@shared/components/Loading';
 
 const UsersPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -102,11 +103,7 @@ const UsersPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando usuarios...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   if (error) {

@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import OrderModal from '@features/admin/components/OrderModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
+import AlternativaLoader from '@shared/components/Loading';
 
 const OrdersPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -121,11 +122,7 @@ const OrdersPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando pedidos...</div>
-      </div>
-    );
+    return <AlternativaLoader />;
   }
 
   if (error) {
