@@ -287,7 +287,7 @@ const SettingsPage = () => {
                 value={companyNameEs}
                 onChange={(e) => setCompanyNameEs(e.target.value)}
                 placeholder="Restaurante Delicioso"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                 required
               />
             </div>
@@ -302,7 +302,7 @@ const SettingsPage = () => {
                 value={companyNameEn}
                 onChange={(e) => setCompanyNameEn(e.target.value)}
                 placeholder="Delicious Restaurant"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                 required
               />
             </div>
@@ -317,7 +317,7 @@ const SettingsPage = () => {
                 value={companyAddressEs}
                 onChange={(e) => setCompanyAddressEs(e.target.value)}
                 placeholder="Calle Principal 123, Madrid"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                 required
               />
             </div>
@@ -332,7 +332,7 @@ const SettingsPage = () => {
                 value={companyAddressEn}
                 onChange={(e) => setCompanyAddressEn(e.target.value)}
                 placeholder="123 Main Street, Madrid"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                 required
               />
             </div>
@@ -347,7 +347,7 @@ const SettingsPage = () => {
                 value={companyEmail}
                 onChange={(e) => setCompanyEmail(e.target.value)}
                 placeholder="info@restaurant.com"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                 required
               />
             </div>
@@ -362,7 +362,7 @@ const SettingsPage = () => {
                 value={companyPhone}
                 onChange={(e) => setCompanyPhone(e.target.value.replace(/\D/g, ''))}
                 placeholder="123456789"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                 required
               />
               <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
@@ -386,7 +386,7 @@ const SettingsPage = () => {
                 <select
                   value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)}
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white sm:text-base"
+                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white sm:text-base"
                   required
                 >
                   {COUNTRY_CODES.map(({ code, country }) => (
@@ -400,7 +400,7 @@ const SettingsPage = () => {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ''))}
                   placeholder="623736566"
-                  className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white sm:text-base"
+                  className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white sm:text-base"
                   required
                 />
               </div>
@@ -439,14 +439,14 @@ const SettingsPage = () => {
                           type="time"
                           value={item.open}
                           onChange={(e) => handleScheduleChange(index, 'open', e.target.value)}
-                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                         />
                         <span className="text-sm text-gray-500">-</span>
                         <input
                           type="time"
                           value={item.close}
                           onChange={(e) => handleScheduleChange(index, 'close', e.target.value)}
-                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
                         />
                       </div>
                       {/* Delivery Enabled Checkbox */}
@@ -485,7 +485,7 @@ const SettingsPage = () => {
                 onChange={(e) => setNewLocationName(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddLocation())}
                 placeholder="Nombre del pueblo..."
-                className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-pepper-orange dark:bg-dark-bg dark:text-white"
               />
               <button
                 type="button"
