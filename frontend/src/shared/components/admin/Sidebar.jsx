@@ -17,11 +17,18 @@ import {
   faRectangleAd,
 } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import { useCompany } from '@shared/contexts/CompanyContext';
+import { useLanguage } from '@shared/contexts/LanguageContext';
 
 
 const Sidebar = ({ isCollapsed, onToggle }) => {
   const location = useLocation();
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const { company } = useCompany();
+  const { getTranslation } = useLanguage();
+
+  // Get company name from database or fallback to default
+  const companyName = company?.translations ? getTranslation(company.translations, 'name') : 'Restaurant';
 
 
   const menuItems = [
@@ -142,7 +149,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
       <div className="h-[70px] flex items-center justify-between px-4 bg-white dark:bg-dark-header border-b border-pepper-white dark:border-dark-border">
         {!isCollapsed && (
           <h1 className="text-xl font-bold text-pepper-orange">
-            Equus
+            {companyName}
           </h1>
         )}
         <button
