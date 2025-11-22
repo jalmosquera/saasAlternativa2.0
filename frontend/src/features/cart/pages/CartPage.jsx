@@ -23,7 +23,7 @@ const CartPage = () => {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg py-12">
         <div className="container-pepper">
           <div className="max-w-2xl mx-auto text-center">
             <FontAwesomeIcon
@@ -46,7 +46,7 @@ const CartPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg py-12">
       <div className="container-pepper">
         {/* Header */}
         <div className="mb-8">
@@ -102,7 +102,7 @@ const CartPage = () => {
               return (
                 <div
                   key={itemId}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col gap-4"
+                  className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4 flex flex-col gap-4"
                 >
                   <div className="flex gap-4">
                     {/* Product Image */}
@@ -174,7 +174,7 @@ const CartPage = () => {
 
                   {/* Show customization details if any */}
                   {hasCustomization && (
-                    <div className="border-t border-gray-200 dark:border-gray-700 pt-3 text-sm">
+                    <div className="border-t border-gray-200 dark:border-dark-border pt-3 text-sm">
                       {/* ============================================
                           COMENTADO: Mostrar ingredientes customizados
                           ============================================
@@ -247,7 +247,7 @@ const CartPage = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 sticky top-24">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 sticky top-24">
               <h2 className="font-gabarito font-bold text-xl text-pepper-charcoal dark:text-white mb-6">
                 {t('checkout.orderSummary')}
               </h2>
@@ -257,7 +257,7 @@ const CartPage = () => {
                   <span>{t('cart.subtotal')}</span>
                   <span>€{totalPrice.toFixed(2)}</span>
                 </div>
-                <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
+                <div className="border-t border-gray-200 dark:border-dark-border pt-3">
                   <div className="flex justify-between font-gabarito font-bold text-xl text-pepper-charcoal dark:text-white">
                     <span>{t('cart.total')}</span>
                     <span className="text-pepper-orange">€{totalPrice.toFixed(2)}</span>

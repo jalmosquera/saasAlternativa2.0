@@ -10,9 +10,9 @@ export default {
       colors: {
         // Pepper colors (Public Menu)
         pepper: {
-          orange: '#F76511',
-          yellow: '#ffcc00',
           red: '#ff003c',
+          orange: '#EF0404',
+          yellow: '#ffcc00',
           green: '#0a9900',
           blue: '#0080ff',
           charcoal: '#1a1a1a',
@@ -29,18 +29,21 @@ export default {
         },
         // Dark theme (Riday Admin)
         dark: {
-          bg: '#1a1a1a',
-          sidebar: '#2d2d2d',
-          card: '#232323',
-          header: '#333333',
-          border: '#404040',
+          bg: '#0f0f0f',         // Fondo principal muy oscuro
+          sidebar: '#1a1a1a',    // Sidebar gris muy oscuro
+          card: '#1e1e1e',       // Cards gris oscuro
+          header: '#1a1a1a',     // Header/Navbar gris muy oscuro
+          border: '#2d2d2d',     // Borders sutiles oscuros
         },
         // Text colors
         text: {
-          primary: '#ffffff',
-          secondary: '#a9a9a9',
-          muted: '#6b7280',
-          charcoal: '#1a1a1a',
+          primary: '#1a1a1a',    // Texto principal oscuro para fondo claro
+          secondary: '#4b5563',  // Gris medio para texto secundario en fondo claro
+          muted: '#9ca3af',      // Gris claro para texto menos importante
+          charcoal: '#1a1a1a',   // Negro para énfasis
+          white: '#ffffff',      // Blanco para fondos oscuros
+          light: '#e5e5e5',      // Gris muy claro para texto secundario en dark
+          dark: '#a1a1a1',       // Gris claro para texto terciario en dark
         }
       },
       fontFamily: {

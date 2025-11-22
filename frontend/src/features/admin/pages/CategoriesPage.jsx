@@ -89,7 +89,7 @@ const CategoriesPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando categorías...</div>
+        <div className="text-gray-600 dark:text-gray-300">Cargando categorías...</div>
       </div>
     );
   }
@@ -107,10 +107,10 @@ const CategoriesPage = () => {
       {/* Header */}
       <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-text-primary mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             Categorías
           </h1>
-          <p className="text-gray-600 dark:text-text-secondary">
+          <p className="text-gray-600 dark:text-gray-300">
             Gestiona las categorías de productos
           </p>
         </div>
@@ -137,7 +137,7 @@ const CategoriesPage = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleSearchKeyPress}
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-card text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
             />
           </div>
           <button
@@ -154,16 +154,16 @@ const CategoriesPage = () => {
         <table className="min-w-full divide-y divide-gray-200 dark:divide-dark-border">
           <thead className="bg-gray-50 dark:bg-dark-card">
             <tr>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-text-primary">
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-white">
                 ID
               </th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-text-primary">
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-white">
                 Nombre
               </th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-text-primary">
+              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-white">
                 Descripción
               </th>
-              <th className="px-4 py-3 text-right text-sm font-semibold text-gray-700 dark:text-text-primary">
+              <th className="px-4 py-3 text-right text-sm font-semibold text-gray-700 dark:text-white">
                 Acciones
               </th>
             </tr>
@@ -173,7 +173,7 @@ const CategoriesPage = () => {
               <tr>
                 <td
                   colSpan="4"
-                  className="text-center py-6 text-gray-600 dark:text-text-secondary"
+                  className="text-center py-6 text-gray-600 dark:text-gray-300"
                 >
                   No se encontraron categorías
                 </td>
@@ -188,15 +188,15 @@ const CategoriesPage = () => {
                 return (
                   <tr
                     key={category.id}
-                    className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                    className="hover:bg-gray-50 dark:hover:bg-pepper-white transition-colors"
                   >
-                    <td className="px-4 py-3 text-sm text-gray-700 dark:text-text-primary">
+                    <td className="px-4 py-3 text-sm text-gray-700 dark:text-white">
                       {category.id}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-text-primary font-medium">
+                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-white font-medium">
                       {name}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600 dark:text-text-secondary">
+                    <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
                       {description || (
                         <span className="italic text-gray-400">Sin descripción</span>
                       )}

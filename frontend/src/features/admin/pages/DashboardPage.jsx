@@ -157,7 +157,7 @@ const DashboardPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando dashboard...</div>
+        <div className="text-gray-600 dark:text-gray-300">Cargando dashboard...</div>
       </div>
     );
   }
@@ -174,10 +174,10 @@ const DashboardPage = () => {
     <div>
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-text-primary">
+        <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
           Dashboard
         </h1>
-        <p className="text-gray-600 dark:text-text-secondary">
+        <p className="text-gray-600 dark:text-gray-300">
           Bienvenido al panel de administración
         </p>
       </div>
@@ -204,8 +204,8 @@ const DashboardPage = () => {
                 {stat.change}
               </div>
             </div>
-            <h3 className="mb-1 text-sm text-gray-600 dark:text-text-secondary">{stat.title}</h3>
-            <p className="text-2xl font-bold text-gray-900 dark:text-text-primary">{stat.value}</p>
+            <h3 className="mb-1 text-sm text-gray-600 dark:text-gray-300">{stat.title}</h3>
+            <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
           </Link>
         ))}
       </div>
@@ -213,28 +213,28 @@ const DashboardPage = () => {
       {/* Recent Orders Table */}
       <div className="overflow-hidden bg-white border border-gray-200 rounded-lg dark:bg-dark-card dark:border-dark-border">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-text-primary">Pedidos Recientes</h2>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">Pedidos Recientes</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50 dark:bg-dark-bg">
               <tr>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   ID
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Cliente
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Ubicación
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Items
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Total
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Estado
                 </th>
               </tr>
@@ -244,7 +244,7 @@ const DashboardPage = () => {
                 <tr>
                   <td
                     colSpan="6"
-                    className="py-6 text-center text-gray-600 dark:text-text-secondary"
+                    className="py-6 text-center text-gray-600 dark:text-gray-300"
                   >
                     No hay pedidos recientes
                   </td>
@@ -252,19 +252,19 @@ const DashboardPage = () => {
               ) : (
                 recentOrders.map((order) => (
                   <tr key={order.id} className="transition-colors hover:bg-gray-50 dark:hover:bg-dark-bg">
-                    <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap dark:text-text-secondary">
+                    <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap dark:text-gray-300">
                       #{order.id}
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-text-primary">
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       {order.user_name || order.user_email || `User #${order.user}`}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap dark:text-text-primary">
+                    <td className="px-6 py-4 text-sm text-gray-900 whitespace-nowrap dark:text-white">
                       {order.delivery_location === 'ardales' ? 'Ardales' : 'Carratraca'}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap dark:text-text-secondary">
+                    <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap dark:text-gray-300">
                       {order.items_count} {order.items_count === 1 ? 'item' : 'items'}
                     </td>
-                    <td className="px-6 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-text-primary">
+                    <td className="px-6 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
                       €{parseFloat(order.total_price).toFixed(2)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

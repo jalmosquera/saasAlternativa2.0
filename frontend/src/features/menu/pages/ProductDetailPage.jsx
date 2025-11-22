@@ -201,10 +201,10 @@ const ProductDetailPage = () => {
   // Estado de carga
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen bg-white dark:bg-dark-bg">
         <div className="text-center">
           <div className="inline-block w-16 h-16 border-4 rounded-full animate-spin border-pepper-orange border-t-transparent"></div>
-          <p className="mt-4 text-xl font-semibold font-gabarito text-pepper-charcoal">
+          <p className="mt-4 text-xl font-semibold font-gabarito text-text-charcoal dark:text-white">
             Cargando producto...
           </p>
         </div>
@@ -215,7 +215,7 @@ const ProductDetailPage = () => {
   // Estado de error
   if (error || !productData) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen bg-white dark:bg-dark-bg">
         <div className="max-w-md text-center">
           <div className="flex items-center justify-center w-20 h-20 mx-auto mb-4 bg-red-100 rounded-full">
             <svg
@@ -232,10 +232,10 @@ const ProductDetailPage = () => {
               />
             </svg>
           </div>
-          <h3 className="mb-2 text-2xl font-bold font-gabarito text-pepper-charcoal">
+          <h3 className="mb-2 text-2xl font-bold font-gabarito text-text-charcoal dark:text-white">
             Producto no encontrado
           </h3>
-          <p className="mb-6 text-gray-600 font-inter">
+          <p className="mb-6 font-inter text-text-secondary dark:text-gray-300">
             {error || 'El producto que buscas no existe.'}
           </p>
           <button
@@ -290,7 +290,7 @@ const ProductDetailPage = () => {
 
   
   return (
-    <div className="min-h-screen py-8 transition-colors duration-200 bg-pepper-light dark:bg-gray-900">
+    <div className="min-h-screen py-8 transition-colors duration-200 bg-white dark:bg-dark-bg">
       <div className="container-pepper">
         {/* Botón volver */}
         <button
@@ -306,7 +306,7 @@ const ProductDetailPage = () => {
           {/* Imagen del producto */}
           <div className="relative">
             <div
-              className="relative overflow-hidden bg-white cursor-pointer card-pepper dark:bg-gray-800 group/image"
+              className="relative overflow-hidden bg-white cursor-pointer card-pepper dark:bg-dark-card group/image"
               onClick={() => setIsImageModalOpen(true)}
             >
               {/* Badges */}
@@ -374,7 +374,7 @@ const ProductDetailPage = () => {
                 {categories.map((category) => (
                   <span
                     key={category.id}
-                    className="inline-block px-3 py-1 text-sm font-semibold bg-white border-2 rounded-full dark:bg-gray-800 text-pepper-orange font-gabarito border-pepper-orange"
+                    className="inline-block px-3 py-1 text-sm font-semibold bg-white dark:bg-dark-card border-2 rounded-full text-pepper-orange font-gabarito border-pepper-orange"
                   >
                     {getTranslation(category.translations, 'name') || 'Sin categoría'}
                   </span>
@@ -383,13 +383,13 @@ const ProductDetailPage = () => {
             )}
 
             {/* Nombre */}
-            <h1 className="mb-4 text-3xl font-black font-gabarito md:text-4xl lg:text-5xl text-pepper-charcoal dark:text-white">
+            <h1 className="mb-4 text-3xl font-black font-gabarito md:text-4xl lg:text-5xl text-text-charcoal dark:text-white">
               {name}
             </h1>
 
             {/* Descripción */}
             {description && (
-              <p className="mb-6 text-lg leading-relaxed text-gray-600 font-inter dark:text-gray-300">
+              <p className="mb-6 text-lg leading-relaxed font-inter text-text-secondary dark:text-gray-300">
                 {description}
               </p>
             )}
@@ -402,7 +402,7 @@ const ProductDetailPage = () => {
 
                   return (
                     <div key={option.id} className="mb-6">
-                      <h3 className="mb-3 text-xl font-bold font-gabarito text-pepper-charcoal dark:text-white">
+                      <h3 className="mb-3 text-xl font-bold font-gabarito text-text-charcoal dark:text-white">
                         {optionName}
                         {isRequired && <span className="ml-2 text-sm text-pepper-orange">*</span>}
                       </h3>
@@ -417,7 +417,7 @@ const ProductDetailPage = () => {
                               className={`flex items-center space-x-2 px-4 py-3 rounded-lg border-2 cursor-pointer transition-all ${
                                 isSelected
                                   ? 'bg-pepper-orange border-pepper-orange text-white shadow-md'
-                                  : 'bg-white dark:bg-gray-800 border-pepper-gray-light dark:border-gray-600 text-pepper-charcoal dark:text-white hover:border-pepper-orange'
+                                  : 'bg-white dark:bg-dark-card border-pepper-orange text-text-charcoal dark:text-white hover:border-pepper-orange hover:bg-gray-50 dark:hover:bg-dark-card/80'
                               }`}
                             >
                               <input
@@ -445,7 +445,7 @@ const ProductDetailPage = () => {
             {isOrderingEnabled && (
                   <div className="mt-4">
                     <label htmlFor="additionalNotes" className="block mb-2 text-sm font-medium">
-                      <span className="inline-block px-3 py-2 leading-relaxed text-justify text-gray-800 bg-yellow-200 rounded-lg dark:bg-yellow-500/30 dark:text-gray-200">
+                      <span className="inline-block px-3 py-2 leading-relaxed text-justify text-gray-800 bg-yellow-200 rounded-lg dark:bg-yellow-200 dark:text-gray-800">
                         {t('productDetail.additionalIngredients')}
                       </span>
                     </label>
@@ -455,7 +455,7 @@ const ProductDetailPage = () => {
                       value={additionalNotes}
                       onChange={(e) => setAdditionalNotes(e.target.value)}
                       placeholder={t('productDetail.additionalIngredientsPlaceholder')}
-                      className="w-full px-4 py-2 transition-colors border-2 rounded-lg border-pepper-gray-light dark:border-gray-600 focus:border-pepper-orange focus:outline-none dark:bg-gray-800 dark:text-white "
+                      className="w-full px-4 py-2 transition-colors border-2 rounded-lg border-pepper-orange focus:border-pepper-orange focus:outline-none dark:bg-dark-card text-text-charcoal dark:text-white"
                     />
                   </div>
                 )}
@@ -581,8 +581,8 @@ const ProductDetailPage = () => {
 
                 {/* Lista de ingredientes extras */}
                 {showExtras && (
-                  <div className="p-4 mt-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-                    <p className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <div className="p-4 mt-3 bg-gray-50 dark:bg-dark-card rounded-lg border-2 border-gray-200 dark:border-dark-border">
+                    <p className="mb-3 text-sm font-medium text-text-secondary dark:text-gray-300">
                       {t('productDetail.selectAdditionalIngredients')}
                     </p>
                     <div className="flex flex-wrap gap-3">
@@ -597,7 +597,7 @@ const ProductDetailPage = () => {
                             className={`flex items-center space-x-2 px-4 py-2 rounded-lg border-2 cursor-pointer transition-all ${
                               isSelected
                                 ? 'bg-green-500 border-green-500 text-white'
-                                : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-pepper-charcoal dark:text-white hover:border-green-500'
+                                  : 'bg-white dark:bg-dark-card border-pepper-orange text-text-charcoal dark:text-white hover:bg-gray-50 dark:hover:bg-dark-card/80'
                             }`}
                           >
                             <input
@@ -631,32 +631,32 @@ const ProductDetailPage = () => {
               <div className="space-y-4">
                 {/* Selector de cantidad */}
                 <div className="flex items-center space-x-4">
-                  <span className="font-semibold font-gabarito text-pepper-charcoal dark:text-white">
+                  <span className="font-semibold font-gabarito text-text-charcoal dark:text-white">
                     Cantidad:
                   </span>
                   <div className="flex items-center space-x-3">
                     <button
                       onClick={handleDecrement}
-                      className="flex items-center justify-center w-10 h-10 transition-colors bg-white border-2 rounded-lg dark:bg-gray-800 border-pepper-gray-light dark:border-gray-600 hover:border-pepper-orange"
+                      className="flex items-center justify-center w-10 h-10 transition-colors bg-white dark:bg-dark-card border-2 rounded-lg border-pepper-orange hover:bg-gray-50 dark:hover:bg-dark-card/80"
                       disabled={quantity <= 1}
                     >
-                      <FontAwesomeIcon icon={faMinus} className="text-pepper-charcoal dark:text-white" />
+                      <FontAwesomeIcon icon={faMinus} className="text-text-charcoal dark:text-white" />
                     </button>
-                    <span className="font-gabarito font-bold text-2xl text-pepper-charcoal dark:text-white min-w-[3rem] text-center">
+                    <span className="font-gabarito font-bold text-2xl text-text-charcoal dark:text-white min-w-[3rem] text-center">
                       {quantity}
                     </span>
                     <button
                       onClick={handleIncrement}
-                      className="flex items-center justify-center w-10 h-10 transition-colors bg-white border-2 rounded-lg dark:bg-gray-800 border-pepper-gray-light dark:border-gray-600 hover:border-pepper-orange"
+                      className="flex items-center justify-center w-10 h-10 transition-colors bg-white dark:bg-dark-card border-2 rounded-lg border-pepper-orange hover:bg-gray-50 dark:hover:bg-dark-card/80"
                     >
-                      <FontAwesomeIcon icon={faPlus} className="text-pepper-charcoal dark:text-white" />
+                      <FontAwesomeIcon icon={faPlus} className="text-text-charcoal dark:text-white" />
                     </button>
                   </div>
                 </div>
 
                 {/* Total */}
-                <div className="flex items-center justify-between px-6 py-4 bg-white border-2 rounded-lg dark:bg-gray-800 border-pepper-gray-light dark:border-gray-600">
-                  <span className="text-lg font-semibold font-gabarito text-pepper-charcoal dark:text-white">
+                <div className="flex items-center justify-between px-6 py-4 bg-white dark:bg-dark-card border-2 rounded-lg border-pepper-orange">
+                  <span className="text-lg font-semibold font-gabarito text-text-charcoal dark:text-white">
                     Total:
                   </span>
                   <span className="text-2xl font-black font-gabarito text-pepper-orange">
@@ -677,8 +677,8 @@ const ProductDetailPage = () => {
 
             {/* Mensaje de producto no disponible - solo si producto no está available */}
             {!available && (
-              <div className="px-8 py-6 text-center bg-gray-100 rounded-lg dark:bg-gray-800">
-                <p className="text-xl font-bold text-gray-600 font-gabarito dark:text-gray-300">
+              <div className="px-8 py-6 text-center bg-gray-100 dark:bg-dark-card rounded-lg border-2 border-gray-200 dark:border-dark-border">
+                <p className="text-xl font-bold font-gabarito text-text-secondary dark:text-gray-300">
                   Este producto no está disponible en este momento
                 </p>
               </div>

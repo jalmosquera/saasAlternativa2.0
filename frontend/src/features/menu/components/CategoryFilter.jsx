@@ -57,7 +57,7 @@ const CategoryFilter = ({ categories, selectedCategory, onCategoryChange, loadin
 
   return (
     <div className="mb-12">
-      <h2 className="mb-6 text-2xl font-bold text-center font-gabarito md:text-3xl text-pepper-charcoal dark:text-white">
+      <h2 className="mb-6 text-2xl font-bold text-center font-gabarito md:text-3xl text-text-charcoal dark:text-white">
         Categorías
       </h2>
 
@@ -67,10 +67,10 @@ const CategoryFilter = ({ categories, selectedCategory, onCategoryChange, loadin
           {/* Opción "Todos" */}
           <button
             onClick={() => onCategoryChange(null)}
-            className={`flex flex-col items-center gap-2 px-4 py-3 rounded-xl transition-all duration-200 min-w-[120px] ${
+            className={`flex flex-col items-center gap-2 px-4 py-3 rounded-xl transition-all duration-200 min-w-[120px] border-2 ${
               selectedCategory === null
-                ? 'bg-pepper-orange text-white shadow-lg scale-105'
-                : 'bg-white dark:bg-gray-800 text-pepper-charcoal dark:text-white hover:bg-pepper-light dark:hover:bg-gray-700 border-2 border-pepper-gray-light dark:border-gray-600'
+                ? 'bg-pepper-orange text-white shadow-lg scale-105 border-pepper-orange'
+                : 'bg-white dark:bg-dark-card text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-dark-card/80 border-pepper-orange'
             }`}
           >
             <div className="flex items-center justify-center w-10 h-10">
@@ -89,10 +89,10 @@ const CategoryFilter = ({ categories, selectedCategory, onCategoryChange, loadin
               <button
                 key={category.id}
                 onClick={() => onCategoryChange(category.id)}
-                className={`flex flex-col items-center gap-2 px-3 py-3 rounded-xl transition-all duration-200 min-w-[120px] max-w-[140px] ${
+                className={`flex flex-col items-center gap-2 px-3 py-3 rounded-xl transition-all duration-200 min-w-[120px] max-w-[140px] border-2 ${
                   selectedCategory === category.id
-                    ? 'bg-pepper-orange text-white shadow-lg scale-105'
-                    : 'bg-white dark:bg-gray-800 text-pepper-charcoal dark:text-white hover:bg-pepper-light dark:hover:bg-gray-700 border-2 border-pepper-gray-light dark:border-gray-600'
+                    ? 'bg-pepper-orange text-white shadow-lg scale-105 border-pepper-orange'
+                    : 'bg-white dark:bg-dark-card text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-dark-card/80 border-pepper-orange'
                 }`}
               >
                 <div className="flex items-center justify-center w-10 h-10">

@@ -307,7 +307,7 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen py-12 bg-gray-50 dark:bg-dark-bg">
       <div className="container-pepper">
         {/* Header */}
         <div className="mb-8">
@@ -326,7 +326,7 @@ const CheckoutPage = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Delivery Form */}
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <form onSubmit={handleSubmit} className="p-6 bg-white rounded-lg shadow-md dark:bg-dark-card">
               <h2 className="mb-6 text-xl font-bold font-gabarito text-pepper-charcoal dark:text-white">
                 {t('checkout.deliveryInfo')}
               </h2>
@@ -347,8 +347,8 @@ const CheckoutPage = () => {
                     value={deliveryInfo.delivery_street}
                     onChange={handleChange}
                     className={`appearance-none relative block w-full px-3 py-2 border ${
-                      errors.delivery_street ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-800 transition-colors`}
+                      errors.delivery_street ? 'border-red-500' : 'border-gray-300 dark:border-dark-border'
+                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card transition-colors`}
                     placeholder={t('checkout.streetPlaceholder')}
                   />
                   {errors.delivery_street && (
@@ -373,8 +373,8 @@ const CheckoutPage = () => {
                     value={deliveryInfo.delivery_house_number}
                     onChange={handleChange}
                     className={`appearance-none relative block w-full px-3 py-2 border ${
-                      errors.delivery_house_number ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-800 transition-colors`}
+                      errors.delivery_house_number ? 'border-red-500' : 'border-gray-300 dark:border-dark-border'
+                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card transition-colors`}
                     placeholder={t('checkout.houseNumberPlaceholder')}
                   />
                   {errors.delivery_house_number && (
@@ -398,8 +398,8 @@ const CheckoutPage = () => {
                     value={deliveryInfo.delivery_location}
                     onChange={handleChange}
                     className={`appearance-none relative block w-full px-3 py-2 border ${
-                      errors.delivery_location ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-800 transition-colors`}
+                      errors.delivery_location ? 'border-red-500' : 'border-gray-300 dark:border-dark-border'
+                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card transition-colors`}
                   >
                     <option value="">{t('checkout.selectLocation')}</option>
                     {deliveryLocations.map((location) => (
@@ -430,8 +430,8 @@ const CheckoutPage = () => {
                     value={deliveryInfo.phone}
                     onChange={handleChange}
                     className={`appearance-none relative block w-full px-3 py-2 border ${
-                      errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-800 transition-colors`}
+                      errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-dark-border'
+                    } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card transition-colors`}
                     placeholder={t('auth.phonePlaceholder')}
                   />
                   {errors.phone && (
@@ -455,7 +455,7 @@ const CheckoutPage = () => {
                     rows="3"
                     value={deliveryInfo.notes}
                     onChange={handleChange}
-                    className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 transition-colors border border-gray-300 rounded-lg appearance-none resize-none dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-gray-800"
+                    className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 transition-colors border border-gray-300 rounded-lg appearance-none resize-none dark:border-dark-border dark:placeholder-gray-400 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card"
                     placeholder={t('checkout.notesPlaceholder')}
                   />
                 </div>
@@ -501,7 +501,7 @@ const CheckoutPage = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="sticky p-6 bg-white rounded-lg shadow-md dark:bg-gray-800 top-24">
+            <div className="sticky p-6 bg-white rounded-lg shadow-md dark:bg-dark-card top-24">
               <h2 className="mb-6 text-xl font-bold font-gabarito text-pepper-charcoal dark:text-white">
                 {t('checkout.orderSummary')}
               </h2>
@@ -527,7 +527,7 @@ const CheckoutPage = () => {
               </div>
 
               {/* Total */}
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="pt-4 border-t border-gray-200 dark:border-dark-border">
                 <div className="flex justify-between text-xl font-bold font-gabarito text-pepper-charcoal dark:text-white">
                   <span>{t('cart.total')}</span>
                   <span className="text-pepper-orange">€{totalPrice.toFixed(2)}</span>

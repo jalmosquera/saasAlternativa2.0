@@ -139,7 +139,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
       `}
     >
       {/* Logo & Toggle */}
-      <div className="h-[70px] flex items-center justify-between px-4 bg-white dark:bg-dark-header border-b border-gray-200 dark:border-dark-border">
+      <div className="h-[70px] flex items-center justify-between px-4 bg-white dark:bg-dark-header border-b border-pepper-white dark:border-dark-border">
         {!isCollapsed && (
           <h1 className="text-xl font-bold text-pepper-orange">
             Equus
@@ -147,7 +147,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
         )}
         <button
           onClick={onToggle}
-          className="flex items-center justify-center w-10 h-10 text-gray-600 transition-colors rounded-lg hover:bg-gray-200 dark:hover:bg-dark-card dark:text-text-secondary hover:text-gray-900 dark:hover:text-text-primary"
+          className="flex items-center justify-center w-10 h-10 text-gray-600 dark:text-gray-300 transition-colors rounded-lg hover:bg-pepper-white dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-white"
           aria-label="Toggle sidebar"
         >
           <FontAwesomeIcon icon={faBars} />
@@ -162,7 +162,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
           <li>
             <Link
               to="/"
-              className="flex items-center px-4 py-3 mx-2 mb-2 text-gray-600 transition-all duration-200 border-b border-gray-200 rounded-lg dark:text-text-secondary hover:bg-gray-200 dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-text-primary dark:border-dark-border"
+              className="flex items-center px-4 py-3 mx-2 mb-2 text-gray-600 dark:text-gray-300 transition-all duration-200 border-b border-pepper-white rounded-lg hover:bg-gray-200 dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-white dark:border-dark-border"
             >
               <FontAwesomeIcon
                 icon={faStore}
@@ -190,7 +190,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
                           transition-all duration-200
                           ${active
                             ? 'bg-pepper-orange text-white'
-                            : 'text-gray-600 dark:text-text-secondary hover:bg-gray-200 dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-text-primary'
+                            : 'text-gray-600 dark:text-gray-300 hover:bg-pepper-white dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-white'
                           }
                         `}
                       >
@@ -208,7 +208,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
                             transition-all duration-200 justify-between
                             ${active
                               ? 'bg-pepper-orange text-white'
-                              : 'text-gray-600 dark:text-text-secondary hover:bg-gray-200 dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-text-primary'
+                              : 'text-gray-600 dark:text-gray-300 hover:bg-pepper-white dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-white'
                             }
                           `}
                         >
@@ -239,7 +239,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
                                     transition-colors
                                     ${isActive(subItem.path)
                                       ? 'bg-gray-200 dark:bg-dark-card text-pepper-orange'
-                                      : 'text-gray-600 dark:text-text-secondary hover:bg-gray-200 dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-text-primary'
+                                      : 'text-gray-600 dark:text-gray-300 hover:bg-pepper-white dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-white'
                                     }
                                   `}
                                 >
@@ -260,7 +260,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
                       transition-all duration-200
                       ${active
                         ? 'bg-pepper-orange text-white'
-                        : 'text-gray-600 dark:text-text-secondary hover:bg-gray-200 dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-text-primary'
+                        : 'text-gray-600 dark:text-gray-300 hover:bg-pepper-white dark:hover:bg-dark-card hover:text-gray-900 dark:hover:text-white'
                       }
                       ${isCollapsed ? 'justify-center' : 'justify-between'}
                     `}

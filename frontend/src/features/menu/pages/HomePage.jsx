@@ -4,6 +4,7 @@ import { ProductGrid, CategoryFilter } from '../components';
 import PromotionsModal from '../components/PromotionsModal';
 import PromotionsCarousel from '../components/PromotionsCarousel';
 import { useLanguage } from '@shared/contexts/LanguageContext';
+import { useCompany } from '@shared/contexts/CompanyContext';
 import Pagination from '@shared/components/Pagination';
 import { trackVisit } from '@shared/services/visitTracker';
 
@@ -13,6 +14,10 @@ const HomePage = () => {
   const [activePromotions, setActivePromotions] = useState([]);
   const [carouselCards, setCarouselCards] = useState([]);
   const { t } = useLanguage();
+  const { company } = useCompany();
+
+  // Get logo from company or fallback to default
+  const companyLogo = company?.image || '/logoEquss.png';
 
   // Track page visit
   useEffect(() => {
@@ -76,15 +81,17 @@ const HomePage = () => {
 
   // Preload hero images for better performance
   useEffect(() => {
-    const heroImages = ['/homePage.jpg', '/burger.jpg', '/logoEquss.png'];
+    const heroImages = ['/homePage.jpg', '/burger.png', companyLogo];
     heroImages.forEach((src) => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = src;
-      document.head.appendChild(link);
+      if (src) {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+      }
     });
-  }, []);
+  }, [companyLogo]);
 
   // Construir filtros para la API
   const apiFilters = useMemo(() => {
@@ -145,11 +152,11 @@ const HomePage = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-start justify-center h-full px-8 mx-auto lg:px-16 max-w-7xl">
+        <div className="relative z-10 flex justify-between items-start justify h-full px-8 mx-auto lg:px-16 max-w-7xl">
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
             <img
-              src="/logoEquss.png"
+              src={companyLogo}
               alt="Logo"
               width="192"
               height="192"
@@ -157,10 +164,11 @@ const HomePage = () => {
               className="w-40 h-40 lg:w-48 lg:h-48 drop-shadow-2xl"
             />
           </div>
-   
+
+
 
           {/* Text Content */}
-          <div className="max-w-2xl animate-fade-in-up">
+          <div className="max-w-2xl mt-72 flex flex-col justify-center animate-fade-in-up">
             <h1 className="mb-6 text-5xl font-bold text-white lg:text-6xl drop-shadow-lg font-gabarito">
               {t('home.mobileHeroTitle')}
             </h1>
@@ -169,7 +177,7 @@ const HomePage = () => {
             </p>
             <a
               href="#menu-section"
-              className="inline-block px-10 py-4 text-xl font-semibold text-white transition-all duration-300 shadow-xl bg-pepper-orange rounded-xl hover:bg-pepper-orange/90 hover:scale-105 active:scale-95"
+              className="inline-block px-10 py-4 text-xl font-semibold text-center text-white transition-all duration-300 shadow-xl bg-pepper-orange rounded-xl hover:bg-pepper-orange/90 hover:scale-105 active:scale-95"
             >
               {t('home.mobileHeroCta')}
             </a>
@@ -194,7 +202,7 @@ const HomePage = () => {
       {/* Mobile Hero Section - Only visible on mobile */}
       <section className="relative block h-screen md:hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 bg-center bg-cover bg-[url('/burger.jpg')]">
+        <div className="absolute inset-0 bg-center bg-cover bg-[url('/burger.png')]">
           {/* Gradient Overlay on dark area */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent"></div>
         </div>
@@ -204,7 +212,7 @@ const HomePage = () => {
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
             <img
-              src="/logoEquss.png"
+              src={companyLogo}
               alt="Logo"
               width="256"
               height="256"
@@ -254,13 +262,13 @@ const HomePage = () => {
       {/* Menu Section */}
       <section
         id="menu-section"
-        className="py-16 transition-colors duration-200 bg-white lg:py-24 dark:bg-gray-900"
+        className="py-16 transition-colors duration-200 bg-white lg:py-24 dark:bg-dark-bg"
       >
         <div className="container-pepper">
-          <h2 className="mb-4 text-3xl font-black text-center font-gabarito md:text-4xl lg:text-5xl text-pepper-charcoal dark:text-white">
+          <h2 className="mb-4 text-3xl font-black text-center font-gabarito md:text-4xl lg:text-5xl text-text-charcoal dark:text-white">
             {t('home.ourMenu')}
           </h2>
-          <p className="max-w-2xl mx-auto mb-12 text-lg text-center text-gray-600 font-inter md:text-xl dark:text-gray-300">
+          <p className="max-w-2xl mx-auto mb-12 text-lg text-center font-inter md:text-xl text-text-secondary dark:text-gray-300">
             {t('home.menuDescription')}
           </p>
 

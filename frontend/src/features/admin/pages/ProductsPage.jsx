@@ -293,7 +293,7 @@ const ProductsPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando productos...</div>
+        <div className="text-gray-600 dark:text-gray-300">Cargando productos...</div>
       </div>
     );
   }
@@ -311,10 +311,10 @@ const ProductsPage = () => {
       {/* Header */}
       <div className="flex flex-col gap-4 mb-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-text-primary">
+          <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Productos
           </h1>
-          <p className="text-gray-600 dark:text-text-secondary">
+          <p className="text-gray-600 dark:text-gray-300">
             Gestiona los productos de tu menú
           </p>
         </div>
@@ -341,7 +341,7 @@ const ProductsPage = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleSearchKeyPress}
-              className="w-full py-2 pl-10 pr-4 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+              className="w-full py-2 pl-10 pr-4 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
             />
           </div>
           <button
@@ -355,7 +355,7 @@ const ProductsPage = () => {
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+          className="px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
         >
           <option value="all">Todas las categorías</option>
           {categories.map(category => (
@@ -415,28 +415,28 @@ const ProductsPage = () => {
           <table className="w-full">
             <thead className="bg-gray-50 dark:bg-dark-bg">
               <tr>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Imagen
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Nombre (ES)
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Nombre (EN)
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Precio
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Stock
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Categoría
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Disponible
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-gray-300">
                   Acciones
                 </th>
               </tr>
@@ -444,7 +444,7 @@ const ProductsPage = () => {
             <tbody className="divide-y divide-gray-200 dark:divide-dark-border">
               {filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan="8" className="px-6 py-12 text-center text-gray-600 dark:text-text-secondary">
+                  <td colSpan="8" className="px-6 py-12 text-center text-gray-600 dark:text-gray-300">
                     No se encontraron productos
                   </td>
                 </tr>
@@ -494,10 +494,10 @@ const ProductsPage = () => {
                                 handleFieldChange('name_es', e.target.value);
                               }
                             }}
-                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           />
                         ) : (
-                          <span className="text-sm font-medium text-gray-900 dark:text-text-primary">
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">
                             {nameES}
                           </span>
                         )}
@@ -516,10 +516,10 @@ const ProductsPage = () => {
                                 handleFieldChange('name_en', e.target.value);
                               }
                             }}
-                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           />
                         ) : (
-                          <span className="text-sm text-gray-600 dark:text-text-secondary">
+                          <span className="text-sm text-gray-600 dark:text-gray-300">
                             {nameEN || '-'}
                           </span>
                         )}
@@ -539,10 +539,10 @@ const ProductsPage = () => {
                                 handleFieldChange('price', e.target.value);
                               }
                             }}
-                            className="w-24 px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-24 px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           />
                         ) : (
-                          <span className="text-sm font-semibold text-gray-900 dark:text-text-primary">
+                          <span className="text-sm font-semibold text-gray-900 dark:text-white">
                             €{parseFloat(price).toFixed(2)}
                           </span>
                         )}
@@ -561,10 +561,10 @@ const ProductsPage = () => {
                                 handleFieldChange('stock', e.target.value);
                               }
                             }}
-                            className="w-20 px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-20 px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           />
                         ) : (
-                          <span className="text-sm text-gray-900 dark:text-text-primary">
+                          <span className="text-sm text-gray-900 dark:text-white">
                             {product.stock}
                           </span>
                         )}
@@ -582,7 +582,7 @@ const ProductsPage = () => {
                                 handleFieldChange('category', e.target.value);
                               }
                             }}
-                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           >
                             <option value="">Seleccionar...</option>
                             {categories.map(cat => (
@@ -592,7 +592,7 @@ const ProductsPage = () => {
                             ))}
                           </select>
                         ) : (
-                          <span className="text-sm text-gray-600 dark:text-text-secondary">
+                          <span className="text-sm text-gray-600 dark:text-gray-300">
                             {categoryName}
                           </span>
                         )}

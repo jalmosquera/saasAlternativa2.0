@@ -70,7 +70,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen py-12 lg:py-20 bg-white dark:bg-dark-bg transition-colors duration-200">
       <div className="container-pepper">
         {/* Header */}
         <div className="text-center mb-12">
@@ -180,7 +180,7 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="card-pepper p-8 dark:bg-gray-800">
+          <div className="card-pepper p-8 dark:bg-dark-card">
             <h2 className="font-gabarito font-bold text-2xl md:text-3xl text-pepper-charcoal dark:text-white mb-6">
               {t('contact.formTitle')}
             </h2>
@@ -198,7 +198,7 @@ const ContactPage = () => {
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="input-pepper dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                  className="input-pepper dark:bg-dark-card dark:text-white dark:border-dark-border"
                   placeholder={t('contact.namePlaceholder')}
                 />
               </div>
@@ -216,7 +216,7 @@ const ContactPage = () => {
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="input-pepper dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                  className="input-pepper dark:bg-dark-card dark:text-white dark:border-dark-border"
                   placeholder={t('contact.emailPlaceholder')}
                 />
               </div>
@@ -234,7 +234,7 @@ const ContactPage = () => {
                   id="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="input-pepper dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                  className="input-pepper dark:bg-dark-card dark:text-white dark:border-dark-border"
                   placeholder={t('contact.subjectPlaceholder')}
                 />
               </div>
@@ -252,7 +252,7 @@ const ContactPage = () => {
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  className="input-pepper resize-none dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                  className="input-pepper resize-none dark:bg-dark-card dark:text-white dark:border-dark-border"
                   placeholder={t('contact.messagePlaceholder')}
                 ></textarea>
               </div>

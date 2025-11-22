@@ -46,7 +46,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
 
 
   return (
-    <nav className="sticky top-0 z-50 transition-colors duration-200 bg-white shadow-sm dark:bg-pepper-charcoal dark:shadow-gray-800">
+    <nav className="sticky top-0 z-50 transition-colors duration-200 bg-white shadow-sm dark:bg-dark-header dark:shadow-gray-800">
       <div className="container-pepper">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -201,7 +201,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
           isMenuOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 h-0'
         }`}
       >
-        <div className="px-4 pt-2 pb-4 space-y-3 bg-white border-t dark:bg-pepper-charcoal border-pepper-gray-light dark:border-gray-700">
+        <div className="px-4 pt-2 pb-4 space-y-3 bg-white dark:bg-dark-header border-t border-pepper-gray-light dark:border-dark-border">
           {navLinks.map(link => (
             <NavLink
               key={link.to}

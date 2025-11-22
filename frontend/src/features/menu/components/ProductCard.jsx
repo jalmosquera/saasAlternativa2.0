@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="card-pepper overflow-hidden group cursor-pointer relative transition-all duration-200 hover:shadow-xl bg-white dark:bg-gray-800 dark:border-gray-700"
+      className="card-pepper overflow-hidden group cursor-pointer relative transition-all duration-200 hover:shadow-xl bg-white dark:bg-dark-card dark:border-dark-border"
     >
       {/* Badge - Popular o Nuevo */}
       {(is_popular || is_new) && (
@@ -94,9 +94,9 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Contenido */}
-      <div className="p-4">
+      <div className="p-4 bg-white dark:bg-dark-card border-t-4 border-pepper-orange">
         {/* Nombre del producto */}
-        <h3 className="font-gabarito font-bold text-lg md:text-xl text-pepper-charcoal dark:text-white mb-2 line-clamp-1">
+        <h3 className="font-gabarito font-bold text-lg md:text-xl text-gray-900 dark:text-white mb-2 line-clamp-1">
           {name}
         </h3>
 
