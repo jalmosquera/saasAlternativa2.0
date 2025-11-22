@@ -60,7 +60,7 @@ const OrderModal = ({ isOpen, onClose, order }) => {
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-dark-border">
             <div className="flex items-center gap-3">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-text-primary">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                 Pedido #{order?.id}
               </h3>
               {order && (
@@ -81,25 +81,25 @@ const OrderModal = ({ isOpen, onClose, order }) => {
           <div className="px-6 py-4">
             {loading ? (
               <div className="flex items-center justify-center h-48">
-                <div className="text-gray-600 dark:text-text-secondary">Cargando detalles...</div>
+                <div className="text-gray-600 dark:text-gray-300">Cargando detalles...</div>
               </div>
             ) : (
               <div className="space-y-6 max-h-[60vh] overflow-y-auto">
                 {/* Customer Info */}
                 <div>
-                  <h4 className="mb-3 text-sm font-semibold text-gray-700 dark:text-text-primary">
+                  <h4 className="mb-3 text-sm font-semibold text-gray-700 dark:text-white">
                     Información del Cliente
                   </h4>
                   <div className="p-4 space-y-2 rounded-lg bg-gray-50 dark:bg-dark-bg">
                     <div>
-                      <span className="text-sm text-gray-600 dark:text-text-secondary">Nombre:</span>
-                      <span className="ml-2 text-sm font-medium text-gray-900 dark:text-text-primary">
+                      <span className="text-sm text-gray-600 dark:text-gray-300">Nombre:</span>
+                      <span className="ml-2 text-sm font-medium text-gray-900 dark:text-white">
                         {orderDetails?.user_name || order?.user_name || 'N/A'}
                       </span>
                     </div>
                     <div>
-                      <span className="text-sm text-gray-600 dark:text-text-secondary">Email:</span>
-                      <span className="ml-2 text-sm font-medium text-gray-900 dark:text-text-primary">
+                      <span className="text-sm text-gray-600 dark:text-gray-300">Email:</span>
+                      <span className="ml-2 text-sm font-medium text-gray-900 dark:text-white">
                         {orderDetails?.user_email || order?.user_email || 'N/A'}
                       </span>
                     </div>
@@ -108,31 +108,31 @@ const OrderModal = ({ isOpen, onClose, order }) => {
 
                 {/* Delivery Info */}
                 <div>
-                  <h4 className="mb-3 text-sm font-semibold text-gray-700 dark:text-text-primary">
+                  <h4 className="mb-3 text-sm font-semibold text-gray-700 dark:text-white">
                     Información de Entrega
                   </h4>
                   <div className="p-4 space-y-3 rounded-lg bg-gray-50 dark:bg-dark-bg">
                     <div className="flex items-start gap-2">
                       <FontAwesomeIcon icon={faMapMarkerAlt} className="mt-1 text-pepper-orange" />
                       <div>
-                        <p className="text-sm font-medium text-gray-900 dark:text-text-primary">
+                        <p className="text-sm font-medium text-gray-900 dark:text-white">
                           {orderDetails?.delivery_street || order?.delivery_street}, {orderDetails?.delivery_house_number || order?.delivery_house_number}
                         </p>
-                        <p className="text-sm text-gray-600 dark:text-text-secondary">
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
                           {(orderDetails?.delivery_location || order?.delivery_location) === 'ardales' ? 'Ardales' : 'Carratraca'}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <FontAwesomeIcon icon={faPhone} className="text-pepper-orange" />
-                      <span className="text-sm text-gray-900 dark:text-text-primary">
+                      <span className="text-sm text-gray-900 dark:text-white">
                         {orderDetails?.phone || order?.phone}
                       </span>
                     </div>
                     {(orderDetails?.notes || order?.notes) && (
                       <div className="flex items-start gap-2">
                         <FontAwesomeIcon icon={faStickyNote} className="mt-1 text-pepper-orange" />
-                        <p className="text-sm italic text-gray-600 dark:text-text-secondary">
+                        <p className="text-sm italic text-gray-600 dark:text-gray-300">
                           {orderDetails?.notes || order?.notes}
                         </p>
                       </div>
@@ -142,23 +142,23 @@ const OrderModal = ({ isOpen, onClose, order }) => {
 
                 {/* Order Items */}
                 <div>
-                  <h4 className="mb-3 text-sm font-semibold text-gray-700 dark:text-text-primary">
+                  <h4 className="mb-3 text-sm font-semibold text-gray-700 dark:text-white">
                     Productos ({orderDetails?.items?.length || 0})
                   </h4>
                   <div className="overflow-hidden border border-gray-200 rounded-lg dark:border-dark-border">
                     <table className="min-w-full divide-y divide-gray-200 dark:divide-dark-border">
                       <thead className="bg-gray-50 dark:bg-dark-bg">
                         <tr>
-                          <th className="px-4 py-2 text-xs font-medium text-left text-gray-600 dark:text-text-secondary">
+                          <th className="px-4 py-2 text-xs font-medium text-left text-gray-600 dark:text-gray-300">
                             Producto
                           </th>
-                          <th className="px-4 py-2 text-xs font-medium text-center text-gray-600 dark:text-text-secondary">
+                          <th className="px-4 py-2 text-xs font-medium text-center text-gray-600 dark:text-gray-300">
                             Cantidad
                           </th>
-                          <th className="px-4 py-2 text-xs font-medium text-right text-gray-600 dark:text-text-secondary">
+                          <th className="px-4 py-2 text-xs font-medium text-right text-gray-600 dark:text-gray-300">
                             Precio Unit.
                           </th>
-                          <th className="px-4 py-2 text-xs font-medium text-right text-gray-600 dark:text-text-secondary">
+                          <th className="px-4 py-2 text-xs font-medium text-right text-gray-600 dark:text-gray-300">
                             Subtotal
                           </th>
                         </tr>
@@ -166,11 +166,11 @@ const OrderModal = ({ isOpen, onClose, order }) => {
                       <tbody className="bg-white divide-y divide-gray-200 dark:bg-dark-card dark:divide-dark-border">
                         {orderDetails?.items?.map((item) => (
                           <tr key={item.id}>
-                            <td className="px-4 py-3 text-sm text-gray-900 dark:text-text-primary">
+                            <td className="px-4 py-3 text-sm text-gray-900 dark:text-white">
                               <div>
                                 <div className="font-medium">{item.product_name}</div>
                                 {item.customization && (
-                                  <div className="mt-1 space-y-1 text-xs text-gray-600 dark:text-text-secondary">
+                                  <div className="mt-1 space-y-1 text-xs text-gray-600 dark:text-gray-300">
                                     {/* Show deselected ingredients */}
                                     {item.customization.deselectedIngredients && item.customization.deselectedIngredients.length > 0 && (
                                       <div className="text-red-600 dark:text-red-400">
@@ -200,13 +200,13 @@ const OrderModal = ({ isOpen, onClose, order }) => {
                                 )}
                               </div>
                             </td>
-                            <td className="px-4 py-3 text-sm text-center text-gray-600 dark:text-text-secondary">
+                            <td className="px-4 py-3 text-sm text-center text-gray-600 dark:text-gray-300">
                               {item.quantity}
                             </td>
-                            <td className="px-4 py-3 text-sm text-right text-gray-600 dark:text-text-secondary">
+                            <td className="px-4 py-3 text-sm text-right text-gray-600 dark:text-gray-300">
                               €{parseFloat(item.unit_price).toFixed(2)}
                             </td>
-                            <td className="px-4 py-3 text-sm font-medium text-right text-gray-900 dark:text-text-primary">
+                            <td className="px-4 py-3 text-sm font-medium text-right text-gray-900 dark:text-white">
                               €{parseFloat(item.subtotal).toFixed(2)}
                             </td>
                           </tr>
@@ -219,7 +219,7 @@ const OrderModal = ({ isOpen, onClose, order }) => {
                 {/* Total */}
                 <div className="pt-4 border-t border-gray-200 dark:border-dark-border">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-gray-900 dark:text-text-primary">
+                    <span className="text-lg font-bold text-gray-900 dark:text-white">
                       Total
                     </span>
                     <span className="text-2xl font-bold text-pepper-orange">
@@ -229,7 +229,7 @@ const OrderModal = ({ isOpen, onClose, order }) => {
                 </div>
 
                 {/* Order Date */}
-                <div className="text-xs text-right text-gray-500 dark:text-text-secondary">
+                <div className="text-xs text-right text-gray-500 dark:text-gray-300">
                   Pedido realizado el: {orderDetails?.created_at ? new Date(orderDetails.created_at).toLocaleString('es-ES') : 'N/A'}
                 </div>
               </div>

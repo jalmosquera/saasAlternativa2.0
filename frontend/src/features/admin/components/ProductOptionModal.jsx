@@ -259,12 +259,12 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
       <div className="w-full max-w-4xl overflow-hidden bg-white rounded-lg shadow-xl dark:bg-dark-card max-h-[90vh] flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-dark-border">
-          <h2 className="text-2xl font-bold font-gabarito text-pepper-charcoal dark:text-text-primary">
+          <h2 className="text-2xl font-bold font-gabarito text-pepper-charcoal dark:text-white">
             {option ? 'Editar Opción' : 'Nueva Opción'}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-gray-500 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-dark-hover dark:text-text-secondary"
+            className="p-2 text-gray-500 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-dark-hover dark:text-gray-300"
           >
             <FontAwesomeIcon icon={faTimes} className="text-xl" />
           </button>
@@ -275,13 +275,13 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
           <div className="flex-1 p-6 space-y-6 overflow-y-auto">
             {/* Option Basic Info */}
             <div className="p-4 border border-gray-200 rounded-lg dark:border-gray-700">
-              <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-text-primary">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
                 Información de la Opción
               </h3>
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+                  <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                     Nombre (Español) *
                   </label>
                   <input
@@ -291,12 +291,12 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                     onChange={handleChange}
                     placeholder="ej: Tipo de Carne"
                     required
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                   />
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+                  <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                     Nombre (Inglés) *
                   </label>
                   <input
@@ -306,12 +306,12 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                     onChange={handleChange}
                     placeholder="eg: Meat Type"
                     required
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                   />
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+                  <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                     Orden
                   </label>
                   <input
@@ -320,7 +320,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                     value={formData.order}
                     onChange={handleChange}
                     min="0"
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                   />
                 </div>
 
@@ -333,7 +333,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                       onChange={handleChange}
                       className="w-5 h-5 border-gray-300 rounded text-pepper-orange focus:ring-pepper-orange"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+                    <span className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                       Opción requerida
                     </span>
                   </label>
@@ -344,7 +344,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
             {/* Choices Section */}
             <div className="p-4 border border-gray-200 rounded-lg dark:border-gray-700">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-text-primary">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Opciones
                 </h3>
                 <button
@@ -358,7 +358,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
               </div>
 
               {choices.length === 0 ? (
-                <p className="py-4 text-center text-gray-500 dark:text-text-secondary">
+                <p className="py-4 text-center text-gray-500 dark:text-gray-300">
                   No hay opciones. Agrega al menos una.
                 </p>
               ) : (
@@ -371,7 +371,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                       {/* Primera fila: Nombres */}
                       <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                         <div>
-                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-text-secondary">
+                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-gray-300">
                             Nombre (ES) *
                           </label>
                           <input
@@ -380,12 +380,12 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                             onChange={(e) => handleChoiceChange(index, 'name_es', e.target.value)}
                             placeholder="ej: Pollo"
                             required
-                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-text-primary focus:outline-none focus:ring-1 focus:ring-pepper-orange"
+                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-pepper-orange"
                           />
                         </div>
 
                         <div>
-                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-text-secondary">
+                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-gray-300">
                             Nombre (EN) *
                           </label>
                           <input
@@ -394,7 +394,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                             onChange={(e) => handleChoiceChange(index, 'name_en', e.target.value)}
                             placeholder="eg: Chicken"
                             required
-                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-text-primary focus:outline-none focus:ring-1 focus:ring-pepper-orange"
+                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-pepper-orange"
                           />
                         </div>
                       </div>
@@ -402,7 +402,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                       {/* Segunda fila: Icono, Precio, Eliminar */}
                       <div className="grid grid-cols-1 gap-3 mt-3 md:grid-cols-4">
                         <div>
-                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-text-secondary">
+                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-gray-300">
                             Icono
                           </label>
                           <input
@@ -411,12 +411,12 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                             onChange={(e) => handleChoiceChange(index, 'icon', e.target.value)}
                             placeholder=""
                             maxLength="10"
-                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-text-primary focus:outline-none focus:ring-1 focus:ring-pepper-orange"
+                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-pepper-orange"
                           />
                         </div>
 
                         <div className="md:col-span-2">
-                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-text-secondary">
+                          <label className="block mb-1 text-xs font-medium text-gray-700 dark:text-gray-300">
                             Ajuste de Precio (€)
                           </label>
                           <input
@@ -425,7 +425,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
                             min="0"
                             value={choice.price_adjustment}
                             onChange={(e) => handleChoiceChange(index, 'price_adjustment', e.target.value)}
-                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-text-primary focus:outline-none focus:ring-1 focus:ring-pepper-orange"
+                            className="w-full px-2 py-1 text-sm border border-gray-200 rounded dark:border-gray-600 bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-pepper-orange"
                           />
                         </div>
 
@@ -453,7 +453,7 @@ const ProductOptionModal = ({ option, onClose, onSuccess }) => {
               type="button"
               onClick={onClose}
               disabled={loading}
-              className="px-6 py-2 text-gray-700 transition-colors bg-gray-200 rounded-lg dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50"
+              className="px-6 py-2 text-gray-700 transition-colors bg-gray-200 rounded-lg dark:bg-dark-bg dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50"
             >
               Cancelar
             </button>

@@ -157,7 +157,7 @@ const PromotionModal = ({ promotion, onClose, onSuccess }) => {
         <div className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-dark-card sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
               {promotion ? 'Editar Promoción' : 'Nueva Promoción'}
             </h3>
             <button
@@ -183,7 +183,7 @@ const PromotionModal = ({ promotion, onClose, onSuccess }) => {
                   onChange={handleChange}
                   required
                   placeholder="Ej: Promoción Verano 2024"
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -198,7 +198,7 @@ const PromotionModal = ({ promotion, onClose, onSuccess }) => {
                   onChange={handleChange}
                   rows="3"
                   placeholder="Texto que aparecerá en el modal..."
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg resize-none dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg resize-none dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -233,7 +233,7 @@ const PromotionModal = ({ promotion, onClose, onSuccess }) => {
                 <div className="flex items-center justify-center w-full">
                   <label
                     htmlFor="image-upload"
-                    className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-dark-bg hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       <FontAwesomeIcon
@@ -269,7 +269,7 @@ const PromotionModal = ({ promotion, onClose, onSuccess }) => {
                   value={formData.order}
                   onChange={handleChange}
                   min="0"
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                   Las promociones con menor número se muestran primero
@@ -284,7 +284,7 @@ const PromotionModal = ({ promotion, onClose, onSuccess }) => {
                   name="is_active"
                   checked={formData.is_active}
                   onChange={handleChange}
-                  className="w-4 h-4 text-pepper-orange bg-gray-100 border-gray-300 rounded focus:ring-pepper-orange dark:focus:ring-pepper-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-pepper-orange bg-gray-100 border-gray-300 rounded focus:ring-pepper-orange dark:focus:ring-pepper-orange dark:ring-offset-gray-800 focus:ring-2 dark:bg-dark-bg dark:border-gray-600"
                 />
                 <label
                   htmlFor="is_active"

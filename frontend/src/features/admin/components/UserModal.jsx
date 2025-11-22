@@ -113,7 +113,7 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
         <div className="inline-block align-bottom bg-white dark:bg-dark-card rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
               {user ? 'Editar Usuario' : 'Nuevo Usuario'}
             </h3>
             <button
@@ -139,7 +139,7 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
                   onChange={handleChange}
                   required
                   maxLength="150"
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -155,7 +155,7 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
                   onChange={handleChange}
                   required
                   maxLength="255"
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -170,7 +170,7 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -186,7 +186,7 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
                   onChange={handleChange}
                   required={!user}
                   minLength="8"
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
                 {user && (
                   <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -205,7 +205,7 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
                   value={formData.role}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 >
                   <option value="client">Cliente</option>
                   <option value="employe">Empleado</option>

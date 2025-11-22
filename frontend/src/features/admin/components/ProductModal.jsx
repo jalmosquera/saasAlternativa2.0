@@ -230,7 +230,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
         <div className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-dark-card sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
               {product ? 'Editar Producto' : 'Nuevo Producto'}
             </h3>
             <button
@@ -255,7 +255,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                   value={formData.name_es}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -270,7 +270,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                   value={formData.name_en}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -284,7 +284,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                   value={formData.description_es}
                   onChange={handleChange}
                   rows="3"
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg resize-none dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg resize-none dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -298,7 +298,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                   value={formData.description_en}
                   onChange={handleChange}
                   rows="3"
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg resize-none dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg resize-none dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -316,7 +316,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                     step="0.01"
                     min="0"
                     required
-                    className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                    className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                   />
                 </div>
 
@@ -331,7 +331,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                     onChange={handleChange}
                     min="0"
                     required
-                    className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                    className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                   />
                 </div>
 
@@ -344,7 +344,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                     value={formData.category}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                    className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                   >
                     <option value="">Seleccionar...</option>
                     {categories.map(cat => (
@@ -429,7 +429,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                   name="image"
                   accept="image/*"
                   onChange={handleChange}
-                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-bg dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
                 {imagePreview && (
                   <img

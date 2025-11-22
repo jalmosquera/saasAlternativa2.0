@@ -251,7 +251,7 @@ const IngredientsPage = () => {
   if (loading)
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando ingredientes...</div>
+        <div className="text-gray-600 dark:text-gray-300">Cargando ingredientes...</div>
       </div>
     );
 
@@ -267,10 +267,10 @@ const IngredientsPage = () => {
       {/* Header */}
       <div className="flex flex-col gap-4 mb-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-text-primary">
+          <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Ingredientes
           </h1>
-          <p className="text-gray-600 dark:text-text-secondary">
+          <p className="text-gray-600 dark:text-gray-300">
             Gestiona los ingredientes de tus productos
           </p>
         </div>
@@ -297,7 +297,7 @@ const IngredientsPage = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleSearchKeyPress}
-              className="w-full py-2 pl-10 pr-4 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+              className="w-full py-2 pl-10 pr-4 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
             />
           </div>
           <button
@@ -311,7 +311,7 @@ const IngredientsPage = () => {
         <select
           value={selectedBeExtra}
           onChange={(e) => setSelectedBeExtra(e.target.value)}
-          className="px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+          className="px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-dark-border dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
         >
           <option value="all">Todos los ingredientes</option>
           <option value="true">Puede ser extra</option>
@@ -368,25 +368,25 @@ const IngredientsPage = () => {
           <table className="w-full">
             <thead className="bg-gray-50 dark:bg-dark-bg">
               <tr>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Icon
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   ID
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-600 uppercase dark:text-gray-300">
                   Puede ser Extra
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Nombre (ES)
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Nombre (EN)
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Precio Extra
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-text-secondary">
+                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-gray-300">
                   Acciones
                 </th>
               </tr>
@@ -396,7 +396,7 @@ const IngredientsPage = () => {
                 <tr>
                   <td
                     colSpan="7"
-                    className="px-6 py-12 text-center text-gray-600 dark:text-text-secondary"
+                    className="px-6 py-12 text-center text-gray-600 dark:text-gray-300"
                   >
                     No se encontraron ingredientes
                   </td>
@@ -431,7 +431,7 @@ const IngredientsPage = () => {
                                 setEditedIcon(e.target.value);
                               }
                             }}
-                            className="w-12 h-10 text-2xl text-center bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-12 h-10 text-2xl text-center bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                             placeholder="🍅"
                           />
                         ) : (
@@ -446,7 +446,7 @@ const IngredientsPage = () => {
                       </td>
 
                       {/* ID Column */}
-                      <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap dark:text-text-secondary">
+                      <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap dark:text-gray-300">
                         #{ingredient.id}
                       </td>
 
@@ -463,7 +463,7 @@ const IngredientsPage = () => {
                                 setEditedBeExtra(value);
                               }
                             }}
-                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           >
                             <option value="false">No</option>
                             <option value="true">Sí</option>
@@ -480,7 +480,7 @@ const IngredientsPage = () => {
                       </td>
 
                       {/* Nombre ES Column */}
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-text-primary">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {isEditing ? (
                           <input
                             type="text"
@@ -492,7 +492,7 @@ const IngredientsPage = () => {
                                 setEditedNameEs(e.target.value);
                               }
                             }}
-                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           />
                         ) : (
                           nameEs || '-'
@@ -500,7 +500,7 @@ const IngredientsPage = () => {
                       </td>
 
                       {/* Nombre EN Column */}
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-text-primary">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {isEditing ? (
                           <input
                             type="text"
@@ -512,7 +512,7 @@ const IngredientsPage = () => {
                                 setEditedNameEn(e.target.value);
                               }
                             }}
-                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-full px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           />
                         ) : (
                           nameEn || '-'
@@ -534,10 +534,10 @@ const IngredientsPage = () => {
                                 setEditedPrice(e.target.value);
                               }
                             }}
-                            className="w-24 px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-text-primary focus:ring-2 focus:ring-pepper-orange focus:outline-none"
+                            className="w-24 px-2 py-1 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:border-gray-600 dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-pepper-orange focus:outline-none"
                           />
                         ) : (
-                          <span className="text-sm font-semibold text-gray-900 dark:text-text-primary">
+                          <span className="text-sm font-semibold text-gray-900 dark:text-white">
                             {ingredient.be_extra ? `€${parseFloat(ingredient.price || 0).toFixed(2)}` : '-'}
                           </span>
                         )}

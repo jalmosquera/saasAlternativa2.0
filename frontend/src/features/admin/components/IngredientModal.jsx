@@ -113,7 +113,7 @@ const IngredientModal = ({ isOpen, onClose, ingredient, onSuccess }) => {
         <div className="inline-block align-bottom bg-white dark:bg-dark-card rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-dark-border">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
               {ingredient ? 'Editar Ingrediente' : 'Nuevo Ingrediente'}
             </h3>
             <button
@@ -139,7 +139,7 @@ const IngredientModal = ({ isOpen, onClose, ingredient, onSuccess }) => {
                   onChange={handleChange}
                   required
                   maxLength="50"
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -155,7 +155,7 @@ const IngredientModal = ({ isOpen, onClose, ingredient, onSuccess }) => {
                   onChange={handleChange}
                   required
                   maxLength="50"
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
               </div>
 
@@ -171,7 +171,7 @@ const IngredientModal = ({ isOpen, onClose, ingredient, onSuccess }) => {
                   onChange={handleChange}
                   placeholder="ej: fa-cheese, fa-tomato"
                   maxLength="50"
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                   Ejemplo: fa-cheese, fa-leaf, fa-pepper-hot
@@ -191,7 +191,7 @@ const IngredientModal = ({ isOpen, onClose, ingredient, onSuccess }) => {
                   required
                   step="0.01"
                   min="0"
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
                 />
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                   Cargo adicional si se agrega como extra
