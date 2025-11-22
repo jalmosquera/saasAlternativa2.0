@@ -40,10 +40,6 @@ const SettingsPage = () => {
     DAYS.map(day => ({ day, open: '08:00', close: '23:00', closed: false, deliveryEnabled: true }))
   );
 
-  // Juan Porras WhatsApp (frontend only)
-  const [juanCountryCode, setJuanCountryCode] = useState('+34');
-  const [juanPhoneNumber, setJuanPhoneNumber] = useState('');
-
   // Delivery locations (frontend only)
   const [deliveryLocations, setDeliveryLocations] = useState([
     { id: 1, name: 'Ardales', value: 'ardales', enabled: true },
@@ -53,19 +49,6 @@ const SettingsPage = () => {
 
   useEffect(() => {
     fetchCompanyData();
-    // Load Juan Porras phone from localStorage
-    const savedJuanPhone = localStorage.getItem('juanPorrasWhatsapp');
-    if (savedJuanPhone) {
-      const matchedCode = COUNTRY_CODES.find(c => savedJuanPhone.startsWith(c.code));
-      if (matchedCode) {
-        setJuanCountryCode(matchedCode.code);
-        setJuanPhoneNumber(savedJuanPhone.substring(matchedCode.code.length));
-      }
-    } else {
-      // Default value
-      setJuanCountryCode('+34');
-      setJuanPhoneNumber('652411939');
-    }
 
     // Load delivery locations from localStorage
     const savedLocations = localStorage.getItem('deliveryLocations');
@@ -228,10 +211,6 @@ const SettingsPage = () => {
 
       // Generate whatsapp_phone
       const whatsappPhone = `${countryCode}${phoneNumber}`;
-
-      // Save Juan Porras phone to localStorage (frontend only)
-      const juanWhatsappPhone = `${juanCountryCode}${juanPhoneNumber}`;
-      localStorage.setItem('juanPorrasWhatsapp', juanWhatsappPhone);
 
       // Save to backend (delivery locations and enabled days included)
       await api.patch(`/company/${companyId}/`, {
@@ -427,36 +406,6 @@ const SettingsPage = () => {
               </div>
               <p className="mt-1 text-sm text-gray-500 dark:text-text-secondary">
                 Número que recibirá los pedidos por WhatsApp
-              </p>
-            </div>
-
-            {/* Juan Porras WhatsApp Phone (Frontend only) */}
-            <div className="mb-0">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
-                Número de WhatsApp (Juan Porras)
-              </label>
-              <div className="flex flex-col gap-2 sm:flex-row">
-                <select
-                  value={juanCountryCode}
-                  onChange={(e) => setJuanCountryCode(e.target.value)}
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary sm:text-base"
-                >
-                  {COUNTRY_CODES.map(({ code, country }) => (
-                    <option key={code} value={code}>
-                      {code} ({country})
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="tel"
-                  value={juanPhoneNumber}
-                  onChange={(e) => setJuanPhoneNumber(e.target.value.replace(/\D/g, ''))}
-                  placeholder="652411939"
-                  className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary sm:text-base"
-                />
-              </div>
-              <p className="mt-1 text-sm text-gray-500 dark:text-text-secondary">
-                Número para la página de Juan Porras
               </p>
             </div>
           </div>

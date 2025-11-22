@@ -33,7 +33,6 @@ import AnalyticsPage from './features/admin/pages/AnalyticsPage';
 import SettingsPage from './features/admin/pages/SettingsPage';
 import PromotionsPage from './features/admin/pages/PromotionsPage';
 import CarouselCardsPage from './features/admin/pages/CarouselCardsPage';
-import JuanPorras from './pages/JuanPorras';
 
 
 function App() {
@@ -137,9 +136,6 @@ function App() {
                   <Route path="checkout" element={<CheckoutPage />} />
                   <Route path="my-orders" element={<MyOrdersPage />} />
                 </Route>
-
-                {/* Juan landing */}
-                <Route path="juanporras" element={<JuanPorras />} />
 
                 {/* Admin (protegido) */}
                 <Route
