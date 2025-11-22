@@ -8,6 +8,7 @@ import { AuthProvider } from '@shared/contexts/AuthContext';
 import { ThemeProvider } from '@shared/contexts/ThemeContext';
 import { LanguageProvider } from '@shared/contexts/LanguageContext';
 import { CartProvider } from '@shared/contexts/CartContext';
+import { CompanyProvider } from '@shared/contexts/CompanyContext';
 
 
 // Layouts y páginas
@@ -87,7 +88,8 @@ function App() {
 
   return (
     <ThemeProvider>
-        <LanguageProvider>
+      <LanguageProvider>
+        <CompanyProvider>
           <AuthProvider>
             <CartProvider>
               <BrowserRouter>
@@ -166,8 +168,9 @@ function App() {
             </BrowserRouter>
           </CartProvider>
         </AuthProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+      </CompanyProvider>
+    </LanguageProvider>
+  </ThemeProvider>
   );
 }
 
