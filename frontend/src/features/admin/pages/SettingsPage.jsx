@@ -250,7 +250,7 @@ const SettingsPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-gray-600 dark:text-text-secondary">Cargando configuraciones...</div>
+        <div className="text-gray-600 dark:text-gray-300">Cargando configuraciones...</div>
       </div>
     );
   }
@@ -259,11 +259,11 @@ const SettingsPage = () => {
     <div>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="flex items-center gap-3 mb-2 text-3xl font-bold text-gray-900 dark:text-text-primary">
+        <h1 className="flex items-center gap-3 mb-2 text-3xl font-bold text-gray-900 dark:text-white">
           <FontAwesomeIcon icon={faCog} />
           Configuraciones
         </h1>
-        <p className="text-gray-600 dark:text-text-secondary">
+        <p className="text-gray-600 dark:text-gray-300">
           Configura la información de la empresa, números de WhatsApp, horarios de atención y ubicaciones de entrega
         </p>
       </div>
@@ -273,13 +273,13 @@ const SettingsPage = () => {
         <form onSubmit={handleSubmit} className="p-4 bg-white rounded-lg shadow-md dark:bg-dark-card md:p-6">
           {/* ========== SECTION 1: GENERAL INFORMATION ========== */}
           <div id="general" className="pb-6 mb-6 border-b border-gray-200 dark:border-dark-border scroll-mt-20">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
               Información General
             </h2>
 
             {/* Company Name ES */}
             <div className="mb-4">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Nombre de la Empresa (Español)
               </label>
               <input
@@ -287,14 +287,14 @@ const SettingsPage = () => {
                 value={companyNameEs}
                 onChange={(e) => setCompanyNameEs(e.target.value)}
                 placeholder="Restaurante Delicioso"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                 required
               />
             </div>
 
             {/* Company Name EN */}
             <div className="mb-4">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Nombre de la Empresa (Inglés)
               </label>
               <input
@@ -302,14 +302,14 @@ const SettingsPage = () => {
                 value={companyNameEn}
                 onChange={(e) => setCompanyNameEn(e.target.value)}
                 placeholder="Delicious Restaurant"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                 required
               />
             </div>
 
             {/* Company Address ES */}
             <div className="mb-4">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Dirección (Español)
               </label>
               <input
@@ -317,14 +317,14 @@ const SettingsPage = () => {
                 value={companyAddressEs}
                 onChange={(e) => setCompanyAddressEs(e.target.value)}
                 placeholder="Calle Principal 123, Madrid"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                 required
               />
             </div>
 
             {/* Company Address EN */}
             <div className="mb-4">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Dirección (Inglés)
               </label>
               <input
@@ -332,14 +332,14 @@ const SettingsPage = () => {
                 value={companyAddressEn}
                 onChange={(e) => setCompanyAddressEn(e.target.value)}
                 placeholder="123 Main Street, Madrid"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                 required
               />
             </div>
 
             {/* Company Email */}
             <div className="mb-4">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Email
               </label>
               <input
@@ -347,14 +347,14 @@ const SettingsPage = () => {
                 value={companyEmail}
                 onChange={(e) => setCompanyEmail(e.target.value)}
                 placeholder="info@restaurant.com"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                 required
               />
             </div>
 
             {/* Company Phone */}
             <div className="mb-0">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Teléfono
               </label>
               <input
@@ -362,10 +362,10 @@ const SettingsPage = () => {
                 value={companyPhone}
                 onChange={(e) => setCompanyPhone(e.target.value.replace(/\D/g, ''))}
                 placeholder="123456789"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                 required
               />
-              <p className="mt-1 text-sm text-gray-500 dark:text-text-secondary">
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
                 Número de teléfono principal de contacto
               </p>
             </div>
@@ -373,20 +373,20 @@ const SettingsPage = () => {
 
           {/* ========== SECTION 2: WHATSAPP NUMBERS ========== */}
           <div id="whatsapp" className="pb-6 mb-6 border-b border-gray-200 dark:border-dark-border scroll-mt-20">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
               Números de WhatsApp
             </h2>
 
             {/* WhatsApp Phone (Orders) */}
             <div className="mb-6">
-              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-text-secondary">
+              <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 Número de WhatsApp (Pedidos)
               </label>
               <div className="flex flex-col gap-2 sm:flex-row">
                 <select
                   value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)}
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary sm:text-base"
+                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white sm:text-base"
                   required
                 >
                   {COUNTRY_CODES.map(({ code, country }) => (
@@ -400,11 +400,11 @@ const SettingsPage = () => {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ''))}
                   placeholder="623736566"
-                  className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary sm:text-base"
+                  className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg sm:px-4 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white sm:text-base"
                   required
                 />
               </div>
-              <p className="mt-1 text-sm text-gray-500 dark:text-text-secondary">
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
                 Número que recibirá los pedidos por WhatsApp
               </p>
             </div>
@@ -412,14 +412,14 @@ const SettingsPage = () => {
 
           {/* ========== SECTION 3: BUSINESS HOURS ========== */}
           <div id="horarios" className="pb-6 mb-6 border-b border-gray-200 dark:border-dark-border scroll-mt-20">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
               Horarios de Atención
             </h2>
             <div className="space-y-2 sm:space-y-3">
               {schedule.map((item, index) => (
-                <div key={item.day} className="flex flex-col gap-2 p-2 rounded-lg sm:flex-row sm:items-center sm:gap-4 sm:p-2 bg-gray-50 dark:bg-dark-bg sm:bg-transparent">
+                <div key={item.day} className="flex flex-col gap-2 p-2 rounded-lg sm:flex-row sm:items-center sm:gap-4 sm:p-2 bg-gray-50 dark:bg-dark-card sm:bg-transparent">
                   <div className="flex items-center gap-3 sm:gap-3">
-                    <div className="w-10 text-sm font-semibold text-gray-700 sm:w-12 dark:text-text-secondary">
+                    <div className="w-10 text-sm font-semibold text-gray-700 sm:w-12 dark:text-gray-300">
                       {item.day}
                     </div>
                     <input
@@ -428,7 +428,7 @@ const SettingsPage = () => {
                       onChange={(e) => handleScheduleChange(index, 'closed', !e.target.checked)}
                       className="w-4 h-4 text-pepper-orange focus:ring-pepper-orange"
                     />
-                    <span className="text-xs text-gray-600 sm:text-sm dark:text-text-secondary w-14 sm:w-16">
+                    <span className="text-xs text-gray-600 sm:text-sm dark:text-gray-300 w-14 sm:w-16">
                       {item.closed ? 'Cerrado' : 'Abierto'}
                     </span>
                   </div>
@@ -439,14 +439,14 @@ const SettingsPage = () => {
                           type="time"
                           value={item.open}
                           onChange={(e) => handleScheduleChange(index, 'open', e.target.value)}
-                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                         />
                         <span className="text-sm text-gray-500">-</span>
                         <input
                           type="time"
                           value={item.close}
                           onChange={(e) => handleScheduleChange(index, 'close', e.target.value)}
-                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                          className="px-2 py-1 text-sm border border-gray-300 rounded-lg sm:px-3 dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
                         />
                       </div>
                       {/* Delivery Enabled Checkbox */}
@@ -457,7 +457,7 @@ const SettingsPage = () => {
                           onChange={(e) => handleScheduleChange(index, 'deliveryEnabled', e.target.checked)}
                           className="w-4 h-4 text-green-600 focus:ring-green-500"
                         />
-                        <span className="text-xs font-medium text-gray-600 sm:text-sm dark:text-text-secondary whitespace-nowrap">
+                        <span className="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-300 whitespace-nowrap">
                           Habilitar pedidos
                         </span>
                       </div>
@@ -466,14 +466,14 @@ const SettingsPage = () => {
                 </div>
               ))}
             </div>
-            <p className="mt-2 text-sm text-gray-500 dark:text-text-secondary">
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
               Selecciona los días abiertos y configura los horarios
             </p>
           </div>
 
           {/* ========== SECTION 4: DELIVERY LOCATIONS ========== */}
           <div id="ubicaciones" className="mb-6 scroll-mt-20">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-text-primary">
+            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
               Ubicaciones de Entrega
             </h2>
 
@@ -485,7 +485,7 @@ const SettingsPage = () => {
                 onChange={(e) => setNewLocationName(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddLocation())}
                 placeholder="Nombre del pueblo..."
-                className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-bg dark:text-text-primary"
+                className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg dark:border-dark-border focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card dark:text-white"
               />
               <button
                 type="button"
@@ -502,7 +502,7 @@ const SettingsPage = () => {
               {deliveryLocations.map((location) => (
                 <div
                   key={location.id}
-                  className="flex items-center justify-between p-3 border border-gray-200 rounded-lg dark:border-dark-border bg-gray-50 dark:bg-dark-bg"
+                  className="flex items-center justify-between p-3 border border-gray-200 rounded-lg dark:border-dark-border bg-gray-50 dark:bg-dark-card"
                 >
                   <div className="flex items-center gap-3">
                     <button
@@ -515,7 +515,7 @@ const SettingsPage = () => {
                     >
                       <FontAwesomeIcon icon={location.enabled ? faToggleOn : faToggleOff} size="lg" />
                     </button>
-                    <span className={`font-medium ${location.enabled ? 'text-gray-900 dark:text-text-primary' : 'text-gray-400 dark:text-gray-600'}`}>
+                    <span className={`font-medium ${location.enabled ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
                       {location.name}
                     </span>
                     {!location.enabled && (
@@ -536,7 +536,7 @@ const SettingsPage = () => {
               ))}
             </div>
 
-            <p className="mt-2 text-sm text-gray-500 dark:text-text-secondary">
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
               Agrega pueblos y habilítalos/deshabilítalos según disponibilidad de reparto
             </p>
           </div>
