@@ -18,9 +18,9 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
 
       {/* Modal */}
       <div className="flex items-center justify-center min-h-screen p-4">
-        <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+        <div className="relative bg-white dark:bg-dark-card rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-pepper-orange to-orange-500 p-6 text-white">
+          <div className="bg-pepper-charcoal p-6 text-white">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold font-gabarito">
                 {t('checkout.confirmOrder')}
@@ -28,7 +28,7 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
               <button
                 onClick={onClose}
                 disabled={loading}
-                className="text-white hover:text-gray-200 transition-colors disabled:opacity-50"
+                className="text-white hover:text-pepper-gray-light transition-colors disabled:opacity-50"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -43,11 +43,11 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
           {/* Content */}
           <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
             {/* Delivery Info */}
-            <div className="mb-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-pepper-orange rounded">
+            <div className="mb-6 p-4 bg-pepper-light dark:bg-dark-card border-l-4 border-pepper-orange rounded">
               <h3 className="font-semibold text-lg mb-3 text-pepper-charcoal dark:text-white font-gabarito">
                 📍 {t('checkout.deliveryInfo')}
               </h3>
-              <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <div className="space-y-2 text-sm text-pepper-charcoal dark:text-text-light">
                 <p>
                   <span className="font-medium">{t('checkout.address')}:</span>{' '}
                   {deliveryInfo.delivery_street}, {deliveryInfo.delivery_house_number}
@@ -92,14 +92,14 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
                   return (
                     <div
                       key={index}
-                      className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-600"
+                      className="p-4 bg-pepper-light dark:bg-dark-card rounded-lg border border-pepper-gray-light dark:border-dark-border"
                     >
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1">
                           <p className="font-semibold text-pepper-charcoal dark:text-white">
                             {item.quantity}x {productName}
                           </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                          <p className="text-sm text-text-secondary dark:text-text-light">
                             {t('cart.unitPrice')}: €{pricePerUnit.toFixed(2)}
                             {extrasPrice > 0 && (
                               <span className="text-xs ml-1">
@@ -115,7 +115,7 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
 
                       {/* Customizations */}
                       {item.customization && (
-                        <div className="mt-3 pt-3 border-t border-gray-300 dark:border-gray-600 space-y-1 text-sm">
+                        <div className="mt-3 pt-3 border-t border-pepper-gray-light dark:border-dark-border space-y-1 text-sm">
                           {/* ============================================
                               COMENTADO: Ingredientes deseleccionados
                               ============================================
@@ -160,28 +160,28 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
             </div>
 
             {/* Total */}
-            <div className="p-4 bg-gradient-to-r from-pepper-orange to-orange-500 rounded-lg">
+            <div className="p-4 bg-pepper-charcoal rounded-lg border-2 border-pepper-orange">
               <div className="flex justify-between items-center text-white">
                 <span className="text-lg font-semibold">{t('cart.total')}</span>
-                <span className="text-3xl font-bold">€{totalPrice.toFixed(2)}</span>
+                <span className="text-3xl font-bold text-pepper-orange">€{totalPrice.toFixed(2)}</span>
               </div>
             </div>
           </div>
 
           {/* Footer Actions */}
-          <div className="p-6 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+          <div className="p-6 bg-pepper-light dark:bg-dark-bg border-t border-pepper-gray-light dark:border-dark-border">
             <div className="flex gap-3">
               <button
                 onClick={onClose}
                 disabled={loading}
-                className="flex-1 px-6 py-3 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-6 py-3 bg-pepper-gray-medium hover:bg-pepper-charcoal hover:text-white dark:bg-dark-card dark:hover:bg-dark-sidebar text-pepper-charcoal dark:text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {t('common.cancel')}
               </button>
               <button
                 onClick={onConfirm}
                 disabled={loading}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-pepper-orange to-orange-500 hover:from-orange-600 hover:to-orange-600 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="flex-1 px-6 py-3 bg-pepper-orange hover:bg-pepper-red text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">

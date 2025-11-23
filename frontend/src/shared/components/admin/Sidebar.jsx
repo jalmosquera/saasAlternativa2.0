@@ -148,7 +148,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
       {/* Logo & Toggle */}
       <div className="h-[70px] flex items-center justify-between px-4 bg-white dark:bg-dark-header border-b border-pepper-white dark:border-dark-border">
         {!isCollapsed && (
-          <h1 className="text-xl font-bold text-pepper-orange">
+          <h1 className="text-xl font-merienda font-bold text-pepper-orange">
             {companyName}
           </h1>
         )}

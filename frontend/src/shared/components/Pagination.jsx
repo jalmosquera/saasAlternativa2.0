@@ -56,10 +56,10 @@ const Pagination = ({ count, currentPage, pageSize, onPageChange }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 px-4 py-6 mt-6">
       {/* Info Text */}
-      <div className="text-sm text-center text-gray-600 dark:text-text-secondary">
-        Mostrando <span className="font-semibold text-gray-900 dark:text-text-primary">{startItem}</span> a{' '}
-        <span className="font-semibold text-gray-900 dark:text-text-primary">{endItem}</span> de{' '}
-        <span className="font-semibold text-gray-900 dark:text-text-primary">{count}</span> resultados
+      <div className="text-sm text-center text-gray-600 dark:text-white">
+        Mostrando <span className="font-bold text-gray-900 dark:text-white">{startItem}</span> a{' '}
+        <span className="font-bold text-gray-900 dark:text-white">{endItem}</span> de{' '}
+        <span className="font-bold text-gray-900 dark:text-white ">{count}</span> resultados
       </div>
 
       {/* Pagination Buttons */}
@@ -70,8 +70,8 @@ const Pagination = ({ count, currentPage, pageSize, onPageChange }) => {
           disabled={currentPage === 1}
           className={`px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg border transition-colors ${
             currentPage === 1
-              ? 'border-gray-200 dark:border-dark-border text-gray-400 dark:text-gray-600 cursor-not-allowed'
-              : 'border-gray-300 dark:border-dark-border text-gray-700 dark:text-text-secondary hover:bg-gray-50 dark:hover:bg-dark-bg'
+              ? 'border-gray-200 dark:border-white text-gray-400 dark:text-white cursor-not-allowed'
+              : 'border-gray-300 dark:border-white text-gray-700 dark:text-text-secondary hover:bg-gray-50 dark:hover:bg-dark-bg'
           }`}
           aria-label="Página anterior"
         >
@@ -85,7 +85,7 @@ const Pagination = ({ count, currentPage, pageSize, onPageChange }) => {
               return (
                 <span
                   key={`ellipsis-${index}`}
-                  className="px-2 py-1.5 sm:px-3 sm:py-2 text-sm sm:text-base text-gray-500 dark:text-text-secondary"
+                  className="px-2 py-1.5 sm:px-3 sm:py-2 text-sm sm:text-base text-gray-500 dark:text-white"
                 >
                   ...
                 </span>
@@ -99,7 +99,7 @@ const Pagination = ({ count, currentPage, pageSize, onPageChange }) => {
                 className={`px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg border transition-colors min-w-[32px] sm:min-w-[40px] text-sm sm:text-base ${
                   currentPage === page
                     ? 'bg-pepper-orange text-white border-pepper-orange font-semibold'
-                    : 'border-gray-300 dark:border-dark-border text-gray-700 dark:text-text-secondary hover:bg-gray-50 dark:hover:bg-dark-bg'
+                    : 'border-gray-300 dark:border-white text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-dark-bg'
                 }`}
               >
                 {page}
@@ -114,8 +114,8 @@ const Pagination = ({ count, currentPage, pageSize, onPageChange }) => {
           disabled={currentPage === totalPages}
           className={`px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg border transition-colors ${
             currentPage === totalPages
-              ? 'border-gray-200 dark:border-dark-border text-gray-400 dark:text-gray-600 cursor-not-allowed'
-              : 'border-gray-300 dark:border-dark-border text-gray-700 dark:text-text-secondary hover:bg-gray-50 dark:hover:bg-dark-bg'
+              ? 'border-gray-200 dark:border-white text-gray-400 dark:text-white cursor-not-allowed'
+              : 'border-gray-300 dark:border-white text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-dark-bg'
           }`}
           aria-label="Página siguiente"
         >

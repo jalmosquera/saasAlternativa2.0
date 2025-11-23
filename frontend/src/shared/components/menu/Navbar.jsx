@@ -46,7 +46,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
 
 
   return (
-    <nav className="sticky top-0 z-50 transition-colors duration-200 bg-white shadow-sm dark:bg-dark-header dark:shadow-gray-800">
+    <nav className="sticky top-0 z-50 transition-colors duration-200 bg-dark-header text-white shadow-sm dark:bg-dark-header dark:shadow-gray-800">
       <div className="container-pepper">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -56,7 +56,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             onClick={closeMenu}
           >
             
-            <span className="text-2xl lg:text-3xl font-cherry-bomb text-pepper-orange">
+            <span className="text-2xl lg:text-3xl font-merienda text-pepper-orange">
               {companyName}
             </span>
           </Link>
@@ -71,7 +71,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
                   `font-gabarito font-semibold text-base transition-colors duration-200 ${
                     isActive
                       ? 'text-pepper-orange'
-                      : 'text-pepper-charcoal dark:text-white hover:text-pepper-orange'
+                      : 'text-white dark:text-white hover:text-pepper-orange'
                   }`
                 }
               >
@@ -85,7 +85,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             {/* Language Toggle (Desktop) */}
             <button
               onClick={toggleLanguage}
-              className="relative p-2 transition-colors duration-200 text-pepper-charcoal hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
+              className="relative p-2 transition-colors duration-200 text-white hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
               aria-label="Toggle language"
               title={t('nav.changeLanguage')}
             >
@@ -97,7 +97,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             {/* Dark Mode Toggle (Desktop) */}
             <button
               onClick={toggleTheme}
-              className="p-2 transition-colors duration-200 text-pepper-charcoal hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
+              className="p-2 transition-colors duration-200 text-white hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
               aria-label="Toggle dark mode"
             >
               <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} size="lg" />
@@ -107,7 +107,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             {isOrderingEnabled && (
               <Link
                 to="/cart"
-                className="relative p-2 transition-colors duration-200 text-pepper-charcoal hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
+                className="relative p-2 transition-colors duration-200 text-white hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
                 aria-label={`${t('cart.title')} - ${itemCount} ${itemCount === 1 ? t('cart.item') : t('cart.items')}`}
               >
                 <FontAwesomeIcon icon={faShoppingCart} size="lg" />
@@ -151,7 +151,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             {/* Language Toggle (Mobile) */}
             <button
               onClick={toggleLanguage}
-              className="relative p-2 transition-colors duration-200 text-pepper-charcoal hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
+              className="relative p-2 transition-colors duration-200 text-white hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
               aria-label="Toggle language"
               title={t('nav.changeLanguage')}
             >
@@ -163,7 +163,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             {/* Dark Mode Toggle (Mobile) */}
             <button
               onClick={toggleTheme}
-              className="p-2 transition-colors duration-200 text-pepper-charcoal hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
+              className="p-2 transition-colors duration-200 text-white hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
               aria-label="Toggle dark mode"
             >
               <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} size="lg" />
@@ -172,7 +172,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             {isOrderingEnabled && (
               <Link
                 to="/cart"
-                className="relative p-2 transition-colors duration-200 text-pepper-charcoal hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
+                className="relative p-2 transition-colors duration-200 text-white hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
                 aria-label={`${t('cart.title')} - ${itemCount} ${itemCount === 1 ? t('cart.item') : t('cart.items')}`}
               >
                 <FontAwesomeIcon icon={faShoppingCart} size="lg" />
@@ -186,7 +186,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="p-2 transition-colors duration-200 text-pepper-charcoal hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
+              className="p-2 transition-colors duration-200 text-white hover:text-pepper-orange dark:text-white dark:hover:text-pepper-orange"
               aria-label="Toggle menu"
             >
               <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} size="lg" />

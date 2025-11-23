@@ -97,7 +97,7 @@ const AnalyticsPage = () => {
       {/* Header */}
       <div className="flex flex-col gap-4 mb-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-text-primary">
+          <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-text-white">
             Analíticas
           </h1>
           <p className="text-gray-600 dark:text-text-secondary">

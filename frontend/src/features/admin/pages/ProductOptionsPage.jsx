@@ -127,7 +127,7 @@ const ProductOptionsPage = () => {
       {/* Header */}
       <div className="flex flex-col gap-4 mb-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-gabarito text-pepper-charcoal dark:text-text-primary">
+          <h1 className="text-2xl font-bold font-gabarito text-pepper-charcoal dark:text-text-white">
             <FontAwesomeIcon icon={faCog} className="mr-2 text-pepper-orange" />
             Opciones de Productos
           </h1>
