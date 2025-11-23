@@ -14,13 +14,13 @@ Typical usage example:
 """
 
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiResponse
 
 from apps.ingredients.models import Ingredient
 from apps.ingredients.api.serializers import IngredientSerializer
+from apps.users.permisionsUsers import ProductRolePermission
 
 
 @extend_schema_view(
@@ -84,9 +84,18 @@ from apps.ingredients.api.serializers import IngredientSerializer
     ),
 )
 class IngredientViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet for managing ingredients with role-based permissions.
+
+    Permissions:
+    - boss: Full CRUD access
+    - employe: Can view (GET) and create (POST), but cannot update or delete
+    - client: Read-only access (GET)
+    - anonymous: Read-only access (GET)
+    """
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [ProductRolePermission]
     filter_backends = [SearchFilter]
     search_fields = ['translations__name']
     pagination_class = None  # Disable pagination for ingredients

@@ -18,7 +18,6 @@ Typical usage example:
 from typing import Any
 
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.serializers import Serializer
 from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiResponse
 from django_filters.rest_framework import DjangoFilterBackend
@@ -31,6 +30,7 @@ from apps.products.api.serializer import (
     ProductOptionSerializer,
     ProductOptionChoiceSerializer,
 )
+from apps.users.permisionsUsers import ProductRolePermission
 
 
 @extend_schema_view(
@@ -75,7 +75,16 @@ from apps.products.api.serializer import (
     ),
 )
 class ProductViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    """
+    ViewSet for managing products with role-based permissions.
+
+    Permissions:
+    - boss: Full CRUD access
+    - employe: Can view (GET) and create (POST) products, but cannot update or delete
+    - client: Read-only access (GET)
+    - anonymous: Read-only access (GET)
+    """
+    permission_classes = [ProductRolePermission]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['available', 'categories', 'ingredients']
     ordering_fields = ['price', 'stock', 'created_at', 'updated_at']
@@ -137,11 +146,19 @@ class ProductViewSet(viewsets.ModelViewSet):
     ),
 )
 class ProductOptionViewSet(viewsets.ModelViewSet):
-    """ViewSet for managing product options (e.g., Meat Type, Sauce Type)."""
+    """
+    ViewSet for managing product options (e.g., Meat Type, Sauce Type).
+
+    Permissions:
+    - boss: Full CRUD access
+    - employe: Can view (GET) and create (POST), but cannot update or delete
+    - client: Read-only access (GET)
+    - anonymous: Read-only access (GET)
+    """
 
     queryset = ProductOption.objects.all()
     serializer_class = ProductOptionSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [ProductRolePermission]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ['translations__name']
     ordering_fields = ['order', 'created_at']
@@ -190,11 +207,19 @@ class ProductOptionViewSet(viewsets.ModelViewSet):
     ),
 )
 class ProductOptionChoiceViewSet(viewsets.ModelViewSet):
-    """ViewSet for managing product option choices (e.g., Chicken, Beef, Fish)."""
+    """
+    ViewSet for managing product option choices (e.g., Chicken, Beef, Fish).
+
+    Permissions:
+    - boss: Full CRUD access
+    - employe: Can view (GET) and create (POST), but cannot update or delete
+    - client: Read-only access (GET)
+    - anonymous: Read-only access (GET)
+    """
 
     queryset = ProductOptionChoice.objects.all()
     serializer_class = ProductOptionChoiceSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [ProductRolePermission]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['option']
     search_fields = ['translations__name']
