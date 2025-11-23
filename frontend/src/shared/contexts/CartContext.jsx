@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { calculateExtrasPrice } from '@shared/utils/priceCalculations';
 
 const CartContext = createContext();
 
@@ -147,18 +148,26 @@ export const CartProvider = ({ children }) => {
 
   /**
    * Get total price of all items in cart
+   * Considers ingredient swapping when calculating extras price
    * @returns {number} Total price
    */
   const getTotalPrice = () => {
     return items.reduce((total, item) => {
       const basePrice = parseFloat(item.product.price) || 0;
 
-      // Calculate extras price if customization exists
+      // Calculate extras price considering ingredient swapping
       let extrasPrice = 0;
       if (item.customization?.selectedExtras) {
-        extrasPrice = item.customization.selectedExtras.reduce((sum, extra) => {
-          return sum + (parseFloat(extra.price) || 0);
-        }, 0);
+        const deselectedCount = item.customization?.deselectedCount || 0;
+        const allowSwap = item.product?.allow_ingredient_swap || false;
+
+        const extrasCalculation = calculateExtrasPrice(
+          item.customization.selectedExtras,
+          deselectedCount,
+          allowSwap
+        );
+
+        extrasPrice = extrasCalculation.totalPrice;
       }
 
       return total + ((basePrice + extrasPrice) * item.quantity);

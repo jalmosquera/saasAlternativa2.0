@@ -172,6 +172,11 @@ class Product(TranslatableModel):
     )
     available = models.BooleanField(default=True)
     allows_extra_ingredients = models.BooleanField(default=True)
+    allow_ingredient_swap = models.BooleanField(
+        'Allow Ingredient Swap',
+        default=False,
+        help_text='Allows swapping original ingredients for extras without additional charge (1 for 1)'
+    )
     image = models.ImageField(upload_to='Products/', blank=True, null=True)
     categories = models.ManyToManyField(Category, related_name='products', blank=True)
     ingredients = models.ManyToManyField(Ingredient, related_name='products', blank=True)
