@@ -27,6 +27,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
     stock: 0,
     available: true,
     allows_extra_ingredients: true,
+    allow_ingredient_swap: false,
     image: null,
     ingredients: [],
     options: [],
@@ -46,6 +47,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
         stock: product.stock || 0,
         available: product.available ?? true,
         allows_extra_ingredients: product.allows_extra_ingredients ?? true,
+        allow_ingredient_swap: product.allow_ingredient_swap ?? false,
         image: null,
         ingredients: product.ingredients?.map(ing => ing.id) || [],
         options: product.options?.map(opt => opt.id) || [],
@@ -68,6 +70,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
         stock: 0,
         available: true,
         allows_extra_ingredients: true,
+        allow_ingredient_swap: false,
         image: null,
         ingredients: [],
         options: [],
@@ -137,6 +140,7 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
     // Boolean
     formDataToSend.append('available', formData.available);
     formDataToSend.append('allows_extra_ingredients', formData.allows_extra_ingredients);
+    formDataToSend.append('allow_ingredient_swap', formData.allow_ingredient_swap);
 
     // Categorías (como string separado por comas)
     formDataToSend.append('categories', formData.category);
@@ -467,6 +471,23 @@ const ProductModal = ({ isOpen, onClose, product, onSuccess }) => {
                   Permite ingredientes extra
                   <span className="block text-xs font-normal text-gray-500 dark:text-gray-400">
                     Los clientes pueden agregar ingredientes adicionales al producto
+                  </span>
+                </label>
+              </div>
+
+              {/* Permite Intercambio de Ingredientes */}
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  name="allow_ingredient_swap"
+                  checked={formData.allow_ingredient_swap}
+                  onChange={handleChange}
+                  className="w-4 h-4 border-gray-300 rounded text-pepper-orange focus:ring-pepper-orange"
+                />
+                <label className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Permite intercambio de ingredientes
+                  <span className="block text-xs font-normal text-gray-500 dark:text-gray-400">
+                    Los ingredientes deseleccionados permiten agregar extras gratis (1 por 1)
                   </span>
                 </label>
               </div>

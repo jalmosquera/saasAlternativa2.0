@@ -4,6 +4,7 @@ import { faShoppingCart, faTrash, faPlus, faMinus, faArrowLeft } from '@fortawes
 import { useCart } from '@shared/contexts/CartContext';
 import { useLanguage } from '@shared/contexts/LanguageContext';
 import { useAuth } from '@shared/contexts/AuthContext';
+import { calculateExtrasPrice } from '@shared/utils/priceCalculations';
 
 const CartPage = () => {
   const { items, removeFromCart, incrementQuantity, decrementQuantity, getTotalPrice, clearCart } = useCart();
@@ -76,12 +77,21 @@ const CartPage = () => {
               // Calculate base price
               const basePrice = parseFloat(product.price) || 0;
 
-              // Calculate extras price
+              // Calculate extras price considering ingredient swapping
               let extrasPrice = 0;
+              let extrasCalculation = { totalPrice: 0, freeExtrasCount: 0, paidExtrasCount: 0 };
+
               if (customization?.selectedExtras) {
-                extrasPrice = customization.selectedExtras.reduce((sum, extra) => {
-                  return sum + (parseFloat(extra.price) || 0);
-                }, 0);
+                const deselectedCount = customization?.deselectedCount || 0;
+                const allowSwap = product?.allow_ingredient_swap || false;
+
+                extrasCalculation = calculateExtrasPrice(
+                  customization.selectedExtras,
+                  deselectedCount,
+                  allowSwap
+                );
+
+                extrasPrice = extrasCalculation.totalPrice;
               }
 
               // Total price per unit (base + extras)
@@ -128,10 +138,20 @@ const CartPage = () => {
                         <p className="text-pepper-orange font-bold text-xl">
                           €{pricePerUnit.toFixed(2)}
                         </p>
-                        {extrasPrice > 0 && (
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
-                            Base: €{basePrice.toFixed(2)} + Extras: €{extrasPrice.toFixed(2)}
-                          </p>
+                        {customization?.selectedExtras && customization.selectedExtras.length > 0 && (
+                          <div className="text-xs space-y-1">
+                            {extrasCalculation.freeExtrasCount > 0 && (
+                              <p className="text-green-600 dark:text-green-400 font-semibold">
+                                🎁 {extrasCalculation.freeExtrasCount} {extrasCalculation.freeExtrasCount === 1 ? 'extra gratis' : 'extras gratis'} (intercambio)
+                              </p>
+                            )}
+                            <p className="text-gray-500 dark:text-gray-400">
+                              Base: €{basePrice.toFixed(2)}
+                              {extrasCalculation.paidExtrasCount > 0 && (
+                                <> + {extrasCalculation.paidExtrasCount} extra{extrasCalculation.paidExtrasCount > 1 ? 's' : ''}: €{extrasPrice.toFixed(2)}</>
+                              )}
+                            </p>
+                          </div>
                         )}
                       </div>
 

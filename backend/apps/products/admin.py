@@ -36,31 +36,56 @@ class ProductAdmin(TranslatableAdmin):
 
     Attributes:
         list_display: Tuple of field names to display in the admin list view,
-            showing name, description, and timestamps for easy management.
+            showing name, price, availability, and key feature flags.
+        list_filter: Fields available for filtering in the admin sidebar.
+        search_fields: Translatable fields that can be searched.
+        filter_horizontal: Many-to-many fields with horizontal filter widget.
 
     Examples:
         Access the admin interface::
 
             # Navigate to /admin/products/product/
-            # View list of products with names, descriptions, and timestamps
+            # View list of products with names, prices, and availability
+            # Filter by availability, extra ingredients, or swap capabilities
             # Click on a product to edit its details in multiple languages
 
         Managing products::
 
             # Add new products with translated names and descriptions
-            # View when products were created and last updated
-            # Edit product information in different languages
+            # Set price, stock, and feature flags
+            # Enable/disable ingredient swap functionality
+            # Assign categories, ingredients, and options
 
     Notes:
         - Automatically registered with Django admin via @admin.register.
         - TranslatableAdmin provides language tabs for editing translations.
-        - List view shows: name, description, created_at, updated_at.
+        - List view shows: name, price, available, allows_extra_ingredients, allow_ingredient_swap.
         - Products can be related to categories and ingredients.
         - Fields can be edited in multiple languages as configured in settings.
         - Timestamp fields (created_at, updated_at) are typically auto-managed.
     """
 
-    list_display = ('name', 'description', 'created_at', 'updated_at')
+    list_display = ('name', 'price', 'stock', 'available', 'allows_extra_ingredients', 'allow_ingredient_swap', 'created_at')
+    list_filter = ('available', 'allows_extra_ingredients', 'allow_ingredient_swap', 'categories')
+    search_fields = ('translations__name', 'translations__description')
+    filter_horizontal = ('categories', 'ingredients', 'options')
+
+    fieldsets = (
+        ('Información Básica', {
+            'fields': ('name', 'description', 'image')
+        }),
+        ('Precio y Stock', {
+            'fields': ('price', 'stock', 'available')
+        }),
+        ('Configuración de Ingredientes', {
+            'fields': ('allows_extra_ingredients', 'allow_ingredient_swap'),
+            'description': 'Configure cómo los clientes pueden personalizar este producto con ingredientes.'
+        }),
+        ('Relaciones', {
+            'fields': ('categories', 'ingredients', 'options'),
+            'classes': ('collapse',)
+        }),
+    )
 
 
 class ProductOptionChoiceInline(TranslatableTabularInline):

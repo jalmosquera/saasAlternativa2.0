@@ -15,6 +15,7 @@ import { useLanguage } from '@shared/contexts/LanguageContext';
 import { useCart } from '@shared/contexts/CartContext';
 import useOrderingEnabled from '@shared/hooks/useOrderingEnabled';
 import AlternativaLoader from '@shared/components/Loading';
+import { calculateExtrasPrice } from '@shared/utils/priceCalculations';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -145,6 +146,7 @@ const ProductDetailPage = () => {
     const customization = {
       selectedIngredients,
       deselectedIngredients: deselectedIngredientNames,
+      deselectedCount: deselectedIngredientIds.length,
       selectedExtras: extrasWithPrices,
       selectedOptions: selectedOptionsDetails,
       additionalNotes: additionalNotes.trim(),
@@ -251,12 +253,23 @@ const ProductDetailPage = () => {
   // Para calcular el total, necesitamos extraer el número del string
   const priceNumber = parseFloat(price?.replace(/[^\d.]/g, '') || 0);
 
-  // Calcular precio de extras sumando el precio de cada ingrediente extra seleccionado
-  const extrasPrice = selectedExtras.reduce((total, extraId) => {
-    const extra = extraIngredients.find(ing => ing.id === extraId);
-    return total + (extra ? parseFloat(extra.price || 0) : 0);
-  }, 0);
+  // Get full extra objects for price calculation
+  const extrasWithPrices = selectedExtras.map(extraId => {
+    return extraIngredients.find(ing => ing.id === extraId);
+  }).filter(Boolean);
 
+  // Calculate deselected ingredients count for swap calculation
+  const allIngredientIds = productData?.ingredients?.map(ing => ing.id) || [];
+  const deselectedCount = allIngredientIds.filter(id => !selectedIngredients.includes(id)).length;
+
+  // Calculate extras price considering ingredient swapping
+  const extrasCalculation = calculateExtrasPrice(
+    extrasWithPrices,
+    deselectedCount,
+    productData?.allow_ingredient_swap || false
+  );
+
+  const extrasPrice = extrasCalculation.totalPrice;
   const totalPrice = ((priceNumber + extrasPrice) * quantity).toFixed(2) + ' €';
 
 
@@ -571,13 +584,24 @@ const ProductDetailPage = () => {
                 </div>
 
                 {/* Total */}
-                <div className="flex items-center justify-between px-6 py-4 bg-white dark:bg-dark-card border-2 rounded-lg border-pepper-orange">
-                  <span className="text-lg font-semibold font-gabarito text-text-charcoal dark:text-white">
-                    Total:
-                  </span>
-                  <span className="text-2xl font-black font-gabarito text-pepper-orange">
-                    {totalPrice}
-                  </span>
+                <div className="px-6 py-4 bg-white dark:bg-dark-card border-2 rounded-lg border-pepper-orange">
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-semibold font-gabarito text-text-charcoal dark:text-white">
+                      Total:
+                    </span>
+                    <span className="text-2xl font-black font-gabarito text-pepper-orange">
+                      {totalPrice}
+                    </span>
+                  </div>
+
+                  {/* Indicator for free extras due to ingredient swap */}
+                  {productData?.allow_ingredient_swap && extrasCalculation.freeExtrasCount > 0 && (
+                    <div className="mt-2 pt-2 border-t border-pepper-gray-light dark:border-dark-border">
+                      <p className="text-sm text-green-600 dark:text-green-400 font-semibold">
+                        🎁 {extrasCalculation.freeExtrasCount} {extrasCalculation.freeExtrasCount === 1 ? 'extra gratis' : 'extras gratis'} por intercambio de ingredientes
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Botón agregar al carrito */}

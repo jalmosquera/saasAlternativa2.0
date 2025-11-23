@@ -1,5 +1,6 @@
 import { useLanguage } from '@shared/contexts/LanguageContext';
 import PropTypes from 'prop-types';
+import { calculateExtrasPrice } from '@shared/utils/priceCalculations';
 
 const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading }) => {
   const { t, getTranslation } = useLanguage();
@@ -79,11 +80,21 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
                   const productName = getTranslation(item.product.translations, 'name');
                   const basePrice = parseFloat(item.product.price) || 0;
 
+                  // Calculate extras price considering ingredient swapping
                   let extrasPrice = 0;
+                  let extrasCalculation = { totalPrice: 0, freeExtrasCount: 0, paidExtrasCount: 0 };
+
                   if (item.customization?.selectedExtras) {
-                    extrasPrice = item.customization.selectedExtras.reduce((sum, extra) => {
-                      return sum + (parseFloat(extra.price) || 0);
-                    }, 0);
+                    const deselectedCount = item.customization?.deselectedCount || 0;
+                    const allowSwap = item.product?.allow_ingredient_swap || false;
+
+                    extrasCalculation = calculateExtrasPrice(
+                      item.customization.selectedExtras,
+                      deselectedCount,
+                      allowSwap
+                    );
+
+                    extrasPrice = extrasCalculation.totalPrice;
                   }
 
                   const pricePerUnit = basePrice + extrasPrice;
@@ -99,14 +110,26 @@ const OrderConfirmationModal = ({ isOpen, onClose, onConfirm, orderData, loading
                           <p className="font-semibold text-pepper-charcoal dark:text-white">
                             {item.quantity}x {productName}
                           </p>
-                          <p className="text-sm text-text-secondary dark:text-text-light">
-                            {t('cart.unitPrice')}: €{pricePerUnit.toFixed(2)}
-                            {extrasPrice > 0 && (
-                              <span className="text-xs ml-1">
-                                (Base: €{basePrice.toFixed(2)} + Extras: €{extrasPrice.toFixed(2)})
-                              </span>
+                          <div className="text-sm space-y-1">
+                            <p className="text-text-secondary dark:text-text-light">
+                              {t('cart.unitPrice')}: €{pricePerUnit.toFixed(2)}
+                            </p>
+                            {item.customization?.selectedExtras && item.customization.selectedExtras.length > 0 && (
+                              <div className="text-xs">
+                                {extrasCalculation.freeExtrasCount > 0 && (
+                                  <p className="text-green-600 dark:text-green-400 font-semibold">
+                                    🎁 {extrasCalculation.freeExtrasCount} {extrasCalculation.freeExtrasCount === 1 ? 'extra gratis' : 'extras gratis'} (intercambio)
+                                  </p>
+                                )}
+                                <p className="text-text-secondary dark:text-text-light">
+                                  Base: €{basePrice.toFixed(2)}
+                                  {extrasCalculation.paidExtrasCount > 0 && (
+                                    <> + {extrasCalculation.paidExtrasCount} extra{extrasCalculation.paidExtrasCount > 1 ? 's' : ''}: €{extrasPrice.toFixed(2)}</>
+                                  )}
+                                </p>
+                              </div>
                             )}
-                          </p>
+                          </div>
                         </div>
                         <p className="font-bold text-pepper-orange">
                           €{itemSubtotal.toFixed(2)}
