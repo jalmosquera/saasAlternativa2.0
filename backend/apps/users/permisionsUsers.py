@@ -24,24 +24,48 @@ class IsStaffOrEmploye(BasePermission):
         )
 
 class ProductRolePermission(BasePermission):
+    """Permission class for granular role-based CRUD access control.
+
+    Permissions by role:
+    - boss: Full CRUD access (GET, POST, PUT, PATCH, DELETE)
+    - employe: Granular permissions based on can_create, can_update, can_delete fields
+    - client: Read-only access (GET)
+    - anonymous: Read-only access (GET)
+    """
     def has_permission(self, request, view):
         user = request.user
 
-        # No autenticado → solo lectura
+        # No autenticado → solo GET
         if not user or not user.is_authenticated:
             return request.method in SAFE_METHODS
 
         role = getattr(user, "role", None)
 
+        # --- boss: CRUD completo ---
         if role == "boss":
-            return True  # CRUD completo
+            return True
 
+        # --- employe: verificar permisos granulares ---
         if role == "employe":
+            # Lectura siempre permitida
             if request.method in SAFE_METHODS:
                 return True
-            return request.method == "POST"  # solo crear
 
+            # Verificar permisos específicos
+            if request.method == "POST":
+                return getattr(user, "can_create", False)
+
+            if request.method in ["PUT", "PATCH"]:
+                return getattr(user, "can_update", False)
+
+            if request.method == "DELETE":
+                return getattr(user, "can_delete", False)
+
+            return False
+
+        # --- client: solo lectura ---
         if role == "client":
-            return request.method in SAFE_METHODS  # solo GET
+            return request.method in SAFE_METHODS
 
+        # Cualquier otro rol → solo lectura
         return request.method in SAFE_METHODS

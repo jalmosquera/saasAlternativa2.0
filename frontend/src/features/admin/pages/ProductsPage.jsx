@@ -9,9 +9,11 @@ import ProductModal from '@features/admin/components/ProductModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
 import AlternativaLoader from '@shared/components/Loading';
+import useUserPermissions from '@shared/hooks/useUserPermissions';
 
 const ProductsPage = () => {
   const { getTranslation } = useLanguage();
+  const { canCreate, canUpdate, canDelete, hasAnyWritePermission } = useUserPermissions();
   const [searchTerm, setSearchTerm] = useState('');
   const [appliedSearchTerm, setAppliedSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -315,13 +317,15 @@ const ProductsPage = () => {
             Gestiona los productos de tu menú
           </p>
         </div>
-        <button
-          onClick={() => handleOpenModal()}
-          className="flex items-center space-x-2 btn-pepper-primary"
-        >
-          <FontAwesomeIcon icon={faPlus} />
-          <span>Nuevo Producto</span>
-        </button>
+        {canCreate && (
+          <button
+            onClick={() => handleOpenModal()}
+            className="flex items-center space-x-2 btn-pepper-primary"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+            <span>Nuevo Producto</span>
+          </button>
+        )}
       </div>
 
       {/* Search and Filter */}
@@ -362,20 +366,22 @@ const ProductsPage = () => {
           ))}
         </select>
 
-        <button
-          onClick={handleBulkEdit}
-          className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors whitespace-nowrap ${
-            bulkEditMode
-              ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-          }`}
-          title="Editar todos los productos filtrados"
-        >
-          <FontAwesomeIcon icon={faPenToSquare} />
-          <span className="hidden sm:inline">
-            {bulkEditMode ? 'Desactivar edición' : 'Editar en lote'}
-          </span>
-        </button>
+        {canUpdate && (
+          <button
+            onClick={handleBulkEdit}
+            className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors whitespace-nowrap ${
+              bulkEditMode
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+            }`}
+            title="Editar todos los productos filtrados"
+          >
+            <FontAwesomeIcon icon={faPenToSquare} />
+            <span className="hidden sm:inline">
+              {bulkEditMode ? 'Desactivar edición' : 'Editar en lote'}
+            </span>
+          </button>
+        )}
       </div>
 
       {bulkEditMode && (
@@ -433,15 +439,17 @@ const ProductsPage = () => {
                 <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Disponible
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-gray-300">
-                  Acciones
-                </th>
+                {hasAnyWritePermission && (
+                  <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-gray-300">
+                    Acciones
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-dark-border">
               {filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan="8" className="px-6 py-12 text-center text-gray-600 dark:text-gray-300">
+                  <td colSpan={hasAnyWritePermission ? "8" : "7"} className="px-6 py-12 text-center text-gray-600 dark:text-gray-300">
                     No se encontraron productos
                   </td>
                 </tr>
@@ -627,69 +635,83 @@ const ProductsPage = () => {
                       </td>
 
                       {/* Acciones */}
-                      <td className="px-6 py-4 space-x-2 text-sm text-right whitespace-nowrap">
-                        {bulkEditMode ? (
-                          <button
-                            onClick={() => handleSaveEdit(product.id)}
-                            className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
-                            title="Guardar"
-                          >
-                            <FontAwesomeIcon icon={faCheck} />
-                          </button>
-                        ) : (
-                          <>
-                            {isEditing ? (
-                              <>
-                                <button
-                                  onClick={() => handleSaveEdit(product.id)}
-                                  className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
-                                  title="Guardar"
-                                >
-                                  <FontAwesomeIcon icon={faCheck} />
-                                </button>
-                                <button
-                                  onClick={handleCancelEdit}
-                                  className="ml-3 text-gray-600 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-                                  title="Cancelar"
-                                >
-                                  <FontAwesomeIcon icon={faX} />
-                                </button>
-                              </>
-                            ) : (
-                              <>
-                                <button
-                                  onClick={() => handleStartEdit(product)}
-                                  className="p-2 text-blue-600 transition-colors rounded hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20"
-                                  title="Editar inline"
-                                >
-                                  <FontAwesomeIcon icon={faEdit} className="text-lg" />
-                                </button>
-                                <button
-                                  onClick={() => handleOpenModal(product)}
-                                  className="p-2 ml-2 transition-colors rounded text-pepper-orange hover:bg-orange-50 dark:hover:bg-orange-900/20"
-                                  title="Editar completo (ingredientes, imagen, etc)"
-                                >
-                                  <FontAwesomeIcon icon={faPlus} className="text-lg" />
-                                </button>
-                                <button
-                                  onClick={() => handleDuplicate(product)}
-                                  className="p-2 ml-2 text-teal-600 transition-colors rounded hover:bg-teal-50 dark:text-teal-400 dark:hover:bg-teal-900/20"
-                                  title="Duplicar producto"
-                                >
-                                  <FontAwesomeIcon icon={faCopy} className="text-lg" />
-                                </button>
-                                <button
-                                  onClick={() => handleDelete(product.id)}
-                                  className="p-2 ml-2 text-red-500 transition-colors rounded hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
-                                  title="Eliminar"
-                                >
-                                  <FontAwesomeIcon icon={faTrash} className="text-lg" />
-                                </button>
-                              </>
-                            )}
-                          </>
-                        )}
-                      </td>
+                      {hasAnyWritePermission && (
+                        <td className="px-6 py-4 space-x-2 text-sm text-right whitespace-nowrap">
+                          {bulkEditMode ? (
+                            canUpdate && (
+                              <button
+                                onClick={() => handleSaveEdit(product.id)}
+                                className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
+                                title="Guardar"
+                              >
+                                <FontAwesomeIcon icon={faCheck} />
+                              </button>
+                            )
+                          ) : (
+                            <>
+                              {isEditing ? (
+                                <>
+                                  {canUpdate && (
+                                    <button
+                                      onClick={() => handleSaveEdit(product.id)}
+                                      className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
+                                      title="Guardar"
+                                    >
+                                      <FontAwesomeIcon icon={faCheck} />
+                                    </button>
+                                  )}
+                                  <button
+                                    onClick={handleCancelEdit}
+                                    className="ml-3 text-gray-600 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                                    title="Cancelar"
+                                  >
+                                    <FontAwesomeIcon icon={faX} />
+                                  </button>
+                                </>
+                              ) : (
+                                <>
+                                  {canUpdate && (
+                                    <>
+                                      <button
+                                        onClick={() => handleStartEdit(product)}
+                                        className="p-2 text-blue-600 transition-colors rounded hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20"
+                                        title="Editar inline"
+                                      >
+                                        <FontAwesomeIcon icon={faEdit} className="text-lg" />
+                                      </button>
+                                      <button
+                                        onClick={() => handleOpenModal(product)}
+                                        className="p-2 ml-2 transition-colors rounded text-pepper-orange hover:bg-orange-50 dark:hover:bg-orange-900/20"
+                                        title="Editar completo (ingredientes, imagen, etc)"
+                                      >
+                                        <FontAwesomeIcon icon={faPlus} className="text-lg" />
+                                      </button>
+                                    </>
+                                  )}
+                                  {canCreate && (
+                                    <button
+                                      onClick={() => handleDuplicate(product)}
+                                      className="p-2 ml-2 text-teal-600 transition-colors rounded hover:bg-teal-50 dark:text-teal-400 dark:hover:bg-teal-900/20"
+                                      title="Duplicar producto"
+                                    >
+                                      <FontAwesomeIcon icon={faCopy} className="text-lg" />
+                                    </button>
+                                  )}
+                                  {canDelete && (
+                                    <button
+                                      onClick={() => handleDelete(product.id)}
+                                      className="p-2 ml-2 text-red-500 transition-colors rounded hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                                      title="Eliminar"
+                                    >
+                                      <FontAwesomeIcon icon={faTrash} className="text-lg" />
+                                    </button>
+                                  )}
+                                </>
+                              )}
+                            </>
+                          )}
+                        </td>
+                      )}
                     </tr>
                   );
                 })

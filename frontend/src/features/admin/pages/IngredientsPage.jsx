@@ -7,8 +7,10 @@ import IngredientModal from '@features/admin/components/IngredientModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
 import AlternativaLoader from '@shared/components/Loading';
+import useUserPermissions from '@shared/hooks/useUserPermissions';
 
 const IngredientsPage = () => {
+  const { canCreate, canUpdate, canDelete, hasAnyWritePermission } = useUserPermissions();
   const [searchTerm, setSearchTerm] = useState('');
   const [appliedSearchTerm, setAppliedSearchTerm] = useState('');
   const [selectedBeExtra, setSelectedBeExtra] = useState('all');
@@ -275,13 +277,15 @@ const IngredientsPage = () => {
             Gestiona los ingredientes de tus productos
           </p>
         </div>
-        <button
-          onClick={() => handleOpenModal()}
-          className="flex items-center space-x-2 btn-pepper-primary"
-        >
-          <FontAwesomeIcon icon={faPlus} />
-          <span>Nuevo Ingrediente</span>
-        </button>
+        {canCreate && (
+          <button
+            onClick={() => handleOpenModal()}
+            className="flex items-center space-x-2 btn-pepper-primary"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+            <span>Nuevo Ingrediente</span>
+          </button>
+        )}
       </div>
 
       {/* Search and Filters */}
@@ -319,20 +323,22 @@ const IngredientsPage = () => {
           <option value="false">No puede ser extra</option>
         </select>
 
-        <button
-          onClick={handleBulkEdit}
-          className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors whitespace-nowrap ${
-            bulkEditMode
-              ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-          }`}
-          title="Editar todos los ingredientes"
-        >
-          <FontAwesomeIcon icon={faPenToSquare} />
-          <span className="hidden sm:inline">
-            {bulkEditMode ? 'Desactivar edición' : 'Editar en lote'}
-          </span>
-        </button>
+        {canUpdate && (
+          <button
+            onClick={handleBulkEdit}
+            className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors whitespace-nowrap ${
+              bulkEditMode
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+            }`}
+            title="Editar todos los ingredientes"
+          >
+            <FontAwesomeIcon icon={faPenToSquare} />
+            <span className="hidden sm:inline">
+              {bulkEditMode ? 'Desactivar edición' : 'Editar en lote'}
+            </span>
+          </button>
+        )}
       </div>
 
       {/* Bulk Edit Banner */}
@@ -387,16 +393,18 @@ const IngredientsPage = () => {
                 <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-gray-300">
                   Precio Extra
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-gray-300">
-                  Acciones
-                </th>
+                {hasAnyWritePermission && (
+                  <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-gray-300">
+                    Acciones
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-dark-border">
               {filteredIngredients.length === 0 ? (
                 <tr>
                   <td
-                    colSpan="7"
+                    colSpan={hasAnyWritePermission ? "7" : "6"}
                     className="px-6 py-12 text-center text-gray-600 dark:text-gray-300"
                   >
                     No se encontraron ingredientes
@@ -545,62 +553,74 @@ const IngredientsPage = () => {
                       </td>
 
                       {/* Actions Column */}
-                      <td className="px-6 py-4 space-x-2 text-sm text-right whitespace-nowrap">
-                        {bulkEditMode ? (
-                          <button
-                            onClick={() => handleSaveEdit(ingredient.id)}
-                            className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
-                            title="Guardar"
-                          >
-                            <FontAwesomeIcon icon={faCheck} />
-                          </button>
-                        ) : (
-                          <>
-                            {isEditing ? (
-                              <>
-                                <button
-                                  onClick={() => handleSaveEdit(ingredient.id)}
-                                  className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
-                                  title="Guardar"
-                                >
-                                  <FontAwesomeIcon icon={faCheck} />
-                                </button>
-                                <button
-                                  onClick={handleCancelEdit}
-                                  className="ml-3 text-gray-600 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-                                  title="Cancelar"
-                                >
-                                  <FontAwesomeIcon icon={faX} />
-                                </button>
-                              </>
-                            ) : (
-                              <>
-                                <button
-                                  onClick={() => handleStartEdit(ingredient)}
-                                  className="text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-                                  title="Editar inline"
-                                >
-                                  <FontAwesomeIcon icon={faEdit} className="text-lg" />
-                                </button>
-                                <button
-                                  onClick={() => handleOpenModal(ingredient)}
-                                  className="ml-3 transition-colors text-pepper-orange hover:text-pepper-orange/80"
-                                  title="Editar completo"
-                                >
-                                  <FontAwesomeIcon icon={faPlus} />
-                                </button>
-                                <button
-                                  onClick={() => handleDelete(ingredient.id)}
-                                  className="ml-3 text-red-500 transition-colors hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
-                                  title="Eliminar"
-                                >
-                                  <FontAwesomeIcon icon={faTrash} className="text-lg" />
-                                </button>
-                              </>
-                            )}
-                          </>
-                        )}
-                      </td>
+                      {hasAnyWritePermission && (
+                        <td className="px-6 py-4 space-x-2 text-sm text-right whitespace-nowrap">
+                          {bulkEditMode ? (
+                            canUpdate && (
+                              <button
+                                onClick={() => handleSaveEdit(ingredient.id)}
+                                className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
+                                title="Guardar"
+                              >
+                                <FontAwesomeIcon icon={faCheck} />
+                              </button>
+                            )
+                          ) : (
+                            <>
+                              {isEditing ? (
+                                <>
+                                  {canUpdate && (
+                                    <button
+                                      onClick={() => handleSaveEdit(ingredient.id)}
+                                      className="text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
+                                      title="Guardar"
+                                    >
+                                      <FontAwesomeIcon icon={faCheck} />
+                                    </button>
+                                  )}
+                                  <button
+                                    onClick={handleCancelEdit}
+                                    className="ml-3 text-gray-600 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                                    title="Cancelar"
+                                  >
+                                    <FontAwesomeIcon icon={faX} />
+                                  </button>
+                                </>
+                              ) : (
+                                <>
+                                  {canUpdate && (
+                                    <>
+                                      <button
+                                        onClick={() => handleStartEdit(ingredient)}
+                                        className="text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                                        title="Editar inline"
+                                      >
+                                        <FontAwesomeIcon icon={faEdit} className="text-lg" />
+                                      </button>
+                                      <button
+                                        onClick={() => handleOpenModal(ingredient)}
+                                        className="ml-3 transition-colors text-pepper-orange hover:text-pepper-orange/80"
+                                        title="Editar completo"
+                                      >
+                                        <FontAwesomeIcon icon={faPlus} />
+                                      </button>
+                                    </>
+                                  )}
+                                  {canDelete && (
+                                    <button
+                                      onClick={() => handleDelete(ingredient.id)}
+                                      className="ml-3 text-red-500 transition-colors hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+                                      title="Eliminar"
+                                    >
+                                      <FontAwesomeIcon icon={faTrash} className="text-lg" />
+                                    </button>
+                                  )}
+                                </>
+                              )}
+                            </>
+                          )}
+                        </td>
+                      )}
                     </tr>
                   );
                 })

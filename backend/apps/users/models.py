@@ -209,6 +209,10 @@ class User(AbstractUser):
     # Permissions
     is_staff = models.BooleanField(default=False)
     role = models.CharField("Role", choices=ROLE, max_length=50, default="client")
+    # Granular permissions for employe role
+    can_create = models.BooleanField("Can Create", default=True, help_text="Allow user to create new items")
+    can_update = models.BooleanField("Can Update", default=True, help_text="Allow user to update existing items")
+    can_delete = models.BooleanField("Can Delete", default=False, help_text="Allow user to delete items")
     # Profile data
     address = models.CharField("Address", max_length=250, blank=True, null=True)
     location = models.CharField("Location", max_length=250, blank=True, null=True)

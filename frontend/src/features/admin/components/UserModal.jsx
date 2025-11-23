@@ -4,14 +4,20 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
 import { getAuthHeaders } from '@shared/utils/auth';
+import { useAuth } from '@shared/contexts/AuthContext';
 
 const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
+  const { user: currentUser } = useAuth();
+  const isBoss = currentUser?.role === 'boss';
   const [formData, setFormData] = useState({
     username: '',
     name: '',
     email: '',
     password: '',
     role: 'client',
+    can_create: true,
+    can_update: true,
+    can_delete: false,
   });
   const [loading, setLoading] = useState(false);
 
@@ -23,6 +29,9 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
         email: user.email || '',
         password: '', // Never pre-fill password for security
         role: user.role || 'client',
+        can_create: user.can_create ?? true,
+        can_update: user.can_update ?? true,
+        can_delete: user.can_delete ?? false,
       });
     } else {
       setFormData({
@@ -31,13 +40,19 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
         email: '',
         password: '',
         role: 'client',
+        can_create: true,
+        can_update: true,
+        can_delete: false,
       });
     }
   }, [user]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -49,8 +64,15 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
         username: formData.username,
         name: formData.name,
         email: formData.email,
-        role: formData.role,
       };
+
+      // Solo los boss pueden modificar roles y permisos
+      if (isBoss) {
+        dataToSend.role = formData.role;
+        dataToSend.can_create = formData.can_create;
+        dataToSend.can_update = formData.can_update;
+        dataToSend.can_delete = formData.can_delete;
+      }
 
       // Only include password if it's provided
       if (formData.password) {
@@ -195,23 +217,92 @@ const UserModal = ({ isOpen, onClose, user, onSuccess }) => {
                 )}
               </div>
 
-              {/* Role */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Rol *
-                </label>
-                <select
-                  name="role"
-                  value={formData.role}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
-                >
-                  <option value="client">Cliente</option>
-                  <option value="employe">Empleado</option>
-                  <option value="boss">Propietario</option>
-                </select>
-              </div>
+              {/* Role - Solo visible para boss */}
+              {isBoss ? (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Rol *
+                  </label>
+                  <select
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pepper-orange"
+                  >
+                    <option value="client">Cliente</option>
+                    <option value="employe">Empleado</option>
+                    <option value="boss">Propietario</option>
+                  </select>
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Rol
+                  </label>
+                  <div className="w-full px-3 py-2 border border-gray-200 dark:border-dark-border rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                    {formData.role === 'client' ? 'Cliente' : formData.role === 'employe' ? 'Empleado' : 'Propietario'}
+                  </div>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    Solo los propietarios pueden modificar roles
+                  </p>
+                </div>
+              )}
+
+              {/* Permisos granulares - solo para empleados y solo editable por boss */}
+              {isBoss && formData.role === 'employe' && (
+                <div className="p-4 bg-gray-50 dark:bg-dark-bg/50 rounded-lg border border-gray-200 dark:border-dark-border">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+                    Permisos de Empleado
+                  </label>
+                  <div className="space-y-2">
+                    {/* Can Create */}
+                    <label className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="can_create"
+                        checked={formData.can_create}
+                        onChange={handleChange}
+                        className="w-4 h-4 text-pepper-orange bg-white dark:bg-dark-bg border-gray-300 dark:border-dark-border rounded focus:ring-pepper-orange focus:ring-2"
+                      />
+                      <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                        Puede crear nuevos elementos
+                      </span>
+                    </label>
+
+                    {/* Can Update */}
+                    <label className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="can_update"
+                        checked={formData.can_update}
+                        onChange={handleChange}
+                        className="w-4 h-4 text-pepper-orange bg-white dark:bg-dark-bg border-gray-300 dark:border-dark-border rounded focus:ring-pepper-orange focus:ring-2"
+                      />
+                      <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                        Puede actualizar elementos existentes
+                      </span>
+                    </label>
+
+                    {/* Can Delete */}
+                    <label className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="can_delete"
+                        checked={formData.can_delete}
+                        onChange={handleChange}
+                        className="w-4 h-4 text-pepper-orange bg-white dark:bg-dark-bg border-gray-300 dark:border-dark-border rounded focus:ring-pepper-orange focus:ring-2"
+                      />
+                      <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+                        Puede eliminar elementos
+                      </span>
+                    </label>
+                  </div>
+                  <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    Los empleados siempre tienen acceso de lectura a todos los elementos
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Footer */}

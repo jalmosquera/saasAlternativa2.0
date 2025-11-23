@@ -7,8 +7,10 @@ import UserModal from '@features/admin/components/UserModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
 import AlternativaLoader from '@shared/components/Loading';
+import useUserPermissions from '@shared/hooks/useUserPermissions';
 
 const UsersPage = () => {
+  const { canCreate, canUpdate, canDelete, hasAnyWritePermission } = useUserPermissions();
   const [searchTerm, setSearchTerm] = useState('');
   const [appliedSearchTerm, setAppliedSearchTerm] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
@@ -126,13 +128,15 @@ const UsersPage = () => {
             Gestiona los usuarios del sistema
           </p>
         </div>
-        <button
-          onClick={() => handleOpenModal()}
-          className="flex items-center space-x-2 btn-pepper-primary"
-        >
-          <FontAwesomeIcon icon={faPlus} />
-          <span>Nuevo Usuario</span>
-        </button>
+        {canCreate && (
+          <button
+            onClick={() => handleOpenModal()}
+            className="flex items-center space-x-2 btn-pepper-primary"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+            <span>Nuevo Usuario</span>
+          </button>
+        )}
       </div>
 
       {/* Search and Filters */}
@@ -192,15 +196,17 @@ const UsersPage = () => {
                 <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-600 uppercase dark:text-text-secondary">
                   Activo
                 </th>
-                <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-text-secondary">
-                  Acciones
-                </th>
+                {hasAnyWritePermission && (
+                  <th className="px-6 py-3 text-xs font-medium tracking-wider text-right text-gray-600 uppercase dark:text-text-secondary">
+                    Acciones
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-dark-border">
               {filteredUsers.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="px-6 py-12 text-center text-gray-600 dark:text-text-secondary">
+                  <td colSpan={hasAnyWritePermission ? "5" : "4"} className="px-6 py-12 text-center text-gray-600 dark:text-text-secondary">
                     No se encontraron usuarios
                   </td>
                 </tr>
@@ -236,22 +242,28 @@ const UsersPage = () => {
                         {user.is_active ? 'Activo' : 'Inactivo'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 space-x-2 text-sm text-right whitespace-nowrap">
-                      <button
-                        onClick={() => handleOpenModal(user)}
-                        className="transition-colors text-pepper-orange hover:text-pepper-orange/80"
-                        title="Editar"
-                      >
-                        <FontAwesomeIcon icon={faEdit} className="text-lg" />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(user.id)}
-                        className="ml-3 text-red-500 transition-colors hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
-                        title="Eliminar"
-                      >
-                        <FontAwesomeIcon icon={faTrash} className="text-lg" />
-                      </button>
-                    </td>
+                    {hasAnyWritePermission && (
+                      <td className="px-6 py-4 space-x-2 text-sm text-right whitespace-nowrap">
+                        {canUpdate && (
+                          <button
+                            onClick={() => handleOpenModal(user)}
+                            className="transition-colors text-pepper-orange hover:text-pepper-orange/80"
+                            title="Editar"
+                          >
+                            <FontAwesomeIcon icon={faEdit} className="text-lg" />
+                          </button>
+                        )}
+                        {canDelete && (
+                          <button
+                            onClick={() => handleDelete(user.id)}
+                            className="ml-3 text-red-500 transition-colors hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+                            title="Eliminar"
+                          >
+                            <FontAwesomeIcon icon={faTrash} className="text-lg" />
+                          </button>
+                        )}
+                      </td>
+                    )}
                   </tr>
                 ))
               )}

@@ -35,7 +35,7 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
   };
 
   // Check if user is admin (boss or employee)
-  const isAdmin = user?.role === 'boss' || user?.role === 'employee';
+  const isAdmin = user?.role === 'boss' || user?.role === 'employe';
 
   const navLinks = [
     { to: '/', label: t('nav.home') },

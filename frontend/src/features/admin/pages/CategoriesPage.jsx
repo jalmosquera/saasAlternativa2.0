@@ -8,9 +8,11 @@ import CategoryModal from '@features/admin/components/CategoryModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
 import AlternativaLoader from '@shared/components/Loading';
+import useUserPermissions from '@shared/hooks/useUserPermissions';
 
 const CategoriesPage = () => {
   const { getTranslation } = useLanguage();
+  const { canCreate, canUpdate, canDelete, hasAnyWritePermission } = useUserPermissions();
   const [searchTerm, setSearchTerm] = useState('');
   const [appliedSearchTerm, setAppliedSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -111,13 +113,15 @@ const CategoriesPage = () => {
             Gestiona las categorías de productos
           </p>
         </div>
-        <button
-          onClick={() => handleOpenModal()}
-          className="btn-pepper-primary flex items-center space-x-2"
-        >
-          <FontAwesomeIcon icon={faPlus} />
-          <span>Nueva Categoría</span>
-        </button>
+        {canCreate && (
+          <button
+            onClick={() => handleOpenModal()}
+            className="btn-pepper-primary flex items-center space-x-2"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+            <span>Nueva Categoría</span>
+          </button>
+        )}
       </div>
 
       {/* Search */}
@@ -160,16 +164,18 @@ const CategoriesPage = () => {
               <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-white">
                 Descripción
               </th>
-              <th className="px-4 py-3 text-right text-sm font-semibold text-gray-700 dark:text-white">
-                Acciones
-              </th>
+              {hasAnyWritePermission && (
+                <th className="px-4 py-3 text-right text-sm font-semibold text-gray-700 dark:text-white">
+                  Acciones
+                </th>
+              )}
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-dark-card divide-y divide-gray-200 dark:divide-dark-border">
             {filteredCategories.length === 0 ? (
               <tr>
                 <td
-                  colSpan="4"
+                  colSpan={hasAnyWritePermission ? "4" : "3"}
                   className="text-center py-6 text-gray-600 dark:text-gray-300"
                 >
                   No se encontraron categorías
@@ -198,22 +204,28 @@ const CategoriesPage = () => {
                         <span className="italic text-gray-400">Sin descripción</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-right space-x-2">
-                      <button
-                        onClick={() => handleOpenModal(category)}
-                        className="text-pepper-orange hover:text-pepper-orange/80 transition-colors p-2"
-                        title="Editar"
-                      >
-                        <FontAwesomeIcon icon={faEdit} className="text-lg" />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(category.id)}
-                        className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors p-2"
-                        title="Eliminar"
-                      >
-                        <FontAwesomeIcon icon={faTrash} className="text-lg" />
-                      </button>
-                    </td>
+                    {hasAnyWritePermission && (
+                      <td className="px-4 py-3 text-right space-x-2">
+                        {canUpdate && (
+                          <button
+                            onClick={() => handleOpenModal(category)}
+                            className="text-pepper-orange hover:text-pepper-orange/80 transition-colors p-2"
+                            title="Editar"
+                          >
+                            <FontAwesomeIcon icon={faEdit} className="text-lg" />
+                          </button>
+                        )}
+                        {canDelete && (
+                          <button
+                            onClick={() => handleDelete(category.id)}
+                            className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition-colors p-2"
+                            title="Eliminar"
+                          >
+                            <FontAwesomeIcon icon={faTrash} className="text-lg" />
+                          </button>
+                        )}
+                      </td>
+                    )}
                   </tr>
                 );
               })

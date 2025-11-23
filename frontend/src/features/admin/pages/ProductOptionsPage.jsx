@@ -12,9 +12,11 @@ import {
 import toast from 'react-hot-toast';
 import usePaginatedFetch from '@shared/hooks/usePaginatedFetch';
 import { useLanguage } from '@shared/contexts/LanguageContext';
+import useUserPermissions from '@shared/hooks/useUserPermissions';
 import Pagination from '@shared/components/Pagination';
 import ProductOptionModal from '@features/admin/components/ProductOptionModal';
 import { getAuthHeaders } from '@shared/utils/auth';
+  const { canCreate, canUpdate, canDelete, hasAnyWritePermission } = useUserPermissions();
 
 const ProductOptionsPage = () => {
   const { getTranslation } = useLanguage();
@@ -135,13 +137,15 @@ const ProductOptionsPage = () => {
             Gestiona las opciones personalizables de tus productos (Tipo de Carne, Tipo de Salsa, etc.)
           </p>
         </div>
-        <button
-          onClick={() => handleOpenModal()}
-          className="btn-pepper-primary"
-        >
-          <FontAwesomeIcon icon={faPlus} className="mr-2" />
-          Nueva Opción
-        </button>
+        {canCreate && (
+          <button
+            onClick={() => handleOpenModal()}
+            className="btn-pepper-primary"
+          >
+            <FontAwesomeIcon icon={faPlus} className="mr-2" />
+            Nueva Opción
+          </button>
+        )}
       </div>
 
       {/* Search Bar */}
@@ -199,22 +203,24 @@ const ProductOptionsPage = () => {
                 <th className="px-4 py-3 text-xs font-semibold tracking-wider text-left text-gray-700 uppercase dark:text-text-secondary">
                   Orden
                 </th>
-                <th className="px-4 py-3 text-xs font-semibold tracking-wider text-right text-gray-700 uppercase dark:text-text-secondary">
-                  Acciones
-                </th>
+                {hasAnyWritePermission && (
+                  <th className="px-4 py-3 text-xs font-semibold tracking-wider text-right text-gray-700 uppercase dark:text-text-secondary">
+                    Acciones
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-dark-border">
               {loading ? (
                 <tr>
-                  <td colSpan="6" className="px-4 py-8 text-center">
+                  <td colSpan={hasAnyWritePermission ? "6" : "5"} className="px-4 py-8 text-center">
                     <div className="inline-block w-8 h-8 border-4 border-gray-200 rounded-full animate-spin border-t-pepper-orange"></div>
                     <p className="mt-2 text-gray-600 dark:text-text-secondary">Cargando opciones...</p>
                   </td>
                 </tr>
               ) : options.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="px-4 py-8 text-center text-gray-600 dark:text-text-secondary">
+                  <td colSpan={hasAnyWritePermission ? "6" : "5"} className="px-4 py-8 text-center text-gray-600 dark:text-text-secondary">
                     {appliedSearchTerm
                       ? 'No se encontraron opciones con esos criterios'
                       : 'No hay opciones registradas. Crea una nueva opción para empezar.'}
@@ -261,29 +267,35 @@ const ProductOptionsPage = () => {
                         <td className="px-4 py-3 text-sm text-gray-900 dark:text-text-primary">
                           {option.order}
                         </td>
-                        <td className="px-4 py-3">
-                          <div className="flex justify-end gap-3">
-                            <button
-                              onClick={() => handleOpenModal(option)}
-                              className="p-3 text-blue-600 transition-colors rounded hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20"
-                              title="Editar"
-                            >
-                              <FontAwesomeIcon icon={faEdit} className="text-lg" />
-                            </button>
-                            <button
-                              onClick={() => handleDelete(option.id)}
-                              className="p-3 text-red-600 transition-colors rounded hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
-                              title="Eliminar"
-                            >
-                              <FontAwesomeIcon icon={faTrash} className="text-lg" />
-                            </button>
-                          </div>
-                        </td>
+                        {hasAnyWritePermission && (
+                          <td className="px-4 py-3">
+                            <div className="flex justify-end gap-3">
+                              {canUpdate && (
+                                <button
+                                  onClick={() => handleOpenModal(option)}
+                                  className="p-3 text-blue-600 transition-colors rounded hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20"
+                                  title="Editar"
+                                >
+                                  <FontAwesomeIcon icon={faEdit} className="text-lg" />
+                                </button>
+                              )}
+                              {canDelete && (
+                                <button
+                                  onClick={() => handleDelete(option.id)}
+                                  className="p-3 text-red-600 transition-colors rounded hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                                  title="Eliminar"
+                                >
+                                  <FontAwesomeIcon icon={faTrash} className="text-lg" />
+                                </button>
+                              )}
+                            </div>
+                          </td>
+                        )}
                       </tr>
                       {/* Expanded Choices Row */}
                       {isExpanded && option.choices && option.choices.length > 0 && (
                         <tr key={`${option.id}-expanded`} className="bg-gray-50 dark:bg-dark-bg">
-                          <td colSpan="6" className="px-4 py-4">
+                          <td colSpan={hasAnyWritePermission ? "6" : "5"} className="px-4 py-4">
                             <div className="ml-8">
                               <h4 className="mb-2 text-sm font-semibold text-gray-700 dark:text-text-secondary">
                                 Opciones disponibles:
