@@ -1,24 +1,20 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { faShoppingCart, faTrash, faPlus, faMinus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useCart } from '@shared/contexts/CartContext';
 import { useLanguage } from '@shared/contexts/LanguageContext';
-import { useAuth } from '@shared/contexts/AuthContext';
 import { calculateExtrasPrice } from '@shared/utils/priceCalculations';
 
 const CartPage = () => {
   const { items, removeFromCart, incrementQuantity, decrementQuantity, getTotalPrice, clearCart } = useCart();
   const { t, getTranslation } = useLanguage();
-  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const totalPrice = getTotalPrice();
 
   const handleCheckout = () => {
-    if (!isAuthenticated) {
-      navigate('/login');
-      return;
-    }
+    // Allow both authenticated and guest users to proceed to checkout
     navigate('/checkout');
   };
 
@@ -285,27 +281,14 @@ const CartPage = () => {
                 </div>
               </div>
 
-              {/* Checkout Button */}
-              {!isAuthenticated ? (
-                <div className="space-y-3">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                    {t('cart.loginRequired')}
-                  </p>
-                  <Link
-                    to="/login"
-                    className="block w-full text-center btn-pepper-primary"
-                  >
-                    {t('cart.loginToOrder')}
-                  </Link>
-                </div>
-              ) : (
-                <button
-                  onClick={handleCheckout}
-                  className="w-full btn-pepper-primary"
-                >
-                  {t('cart.proceedToCheckout')}
-                </button>
-              )}
+              {/* Checkout Button - Available for all users */}
+              <button
+                onClick={handleCheckout}
+                className="w-full btn-pepper-primary flex items-center justify-center gap-2"
+              >
+                {t('cart.proceedToCheckout')}
+                <FontAwesomeIcon icon={faPaperPlane} />
+              </button>
 
               <Link
                 to="/"

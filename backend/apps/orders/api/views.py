@@ -21,7 +21,11 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.serializers import Serializer
 from rest_framework.filters import SearchFilter
+from rest_framework.throttling import AnonRateThrottle
 from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiResponse
+from django.db import transaction
+from django.contrib.auth import get_user_model
+import secrets
 
 from apps.orders.models import Order
 from apps.orders.api.serializers import (
@@ -31,6 +35,13 @@ from apps.orders.api.serializers import (
 )
 from apps.orders.email_service import send_order_confirmation_emails, send_order_cancellation_email
 from apps.company.models import Company
+
+User = get_user_model()
+
+
+class GuestOrderThrottle(AnonRateThrottle):
+    """Custom throttle for guest orders: 5 requests per hour."""
+    rate = '5/hour'
 
 
 @extend_schema_view(
@@ -432,3 +443,158 @@ class OrderViewSet(viewsets.ModelViewSet):
         return Response({
             "message": "Order confirmation initiated. Emails will be sent shortly."
         }, status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=['post'], permission_classes=[], throttle_classes=[GuestOrderThrottle])
+    @transaction.atomic
+    def guest_checkout(self, request: Request) -> Response:
+        """Create order as guest without authentication.
+
+        Creates a temporary guest user account and associated order in draft status.
+        The frontend should then confirm the order (PATCH to pending) to trigger
+        notifications and emails.
+
+        Protection: Rate limited to 5 requests per hour per IP.
+
+        Request body should include:
+        - guest_name: Full name of the guest
+        - guest_email: Email address (will be used as username)
+        - guest_phone: Phone number
+        - delivery_street: Delivery street address
+        - delivery_house_number: House/building number
+        - delivery_location: City/locality
+        - notes: Optional delivery notes
+        - items: Array of order items with product ID and customization
+
+        Returns:
+            Response: 201 with order details (draft status) or 400/409 with errors
+
+        Example:
+            >>> POST /api/orders/guest_checkout/
+            >>> {
+            ...     "guest_name": "John Doe",
+            ...     "guest_email": "john@example.com",
+            ...     "guest_phone": "+34623736566",
+            ...     "delivery_street": "Calle Principal",
+            ...     "delivery_house_number": "123",
+            ...     "delivery_location": "Madrid",
+            ...     "notes": "Ring doorbell",
+            ...     "items": [{"product": 5, "quantity": 2}]
+            ... }
+        """
+        # Extract guest information
+        guest_name = request.data.get('guest_name', '').strip()
+        guest_email = request.data.get('guest_email', '').strip()
+        guest_phone = request.data.get('guest_phone', '').strip()
+
+        # Validate required fields
+        if not all([guest_name, guest_email, guest_phone]):
+            return Response(
+                {"detail": "Se requiere nombre, email y teléfono para pedidos como invitado."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Check if user with this email already exists
+        existing_user = User.objects.filter(email=guest_email).first()
+
+        if existing_user and existing_user.role != 'guest':
+            # Non-guest user exists - return 409 Conflict with clear message
+            return Response(
+                {
+                    "detail": "Ya existe una cuenta con este email. Por favor inicia sesión.",
+                    "existing_user": True,
+                    "should_login": True
+                },
+                status=status.HTTP_409_CONFLICT
+            )
+
+        # Reuse existing guest or create new one
+        if existing_user:
+            guest_user = existing_user
+            # Update phone if changed
+            if guest_user.phone != guest_phone:
+                guest_user.phone = guest_phone
+                guest_user.save()
+        else:
+            # Create new guest user
+            username_base = guest_email.split('@')[0]
+            username = f"guest_{username_base}_{secrets.token_hex(4)}"
+            random_password = secrets.token_urlsafe(32)
+
+            guest_user = User.objects.create_user(
+                username=username,
+                email=guest_email,
+                name=guest_name,
+                password=random_password
+            )
+            guest_user.role = 'guest'
+            guest_user.phone = guest_phone
+            guest_user.save()
+
+        # Prepare order data
+        order_data = {
+            'delivery_street': request.data.get('delivery_street'),
+            'delivery_house_number': request.data.get('delivery_house_number'),
+            'delivery_location': request.data.get('delivery_location'),
+            'phone': guest_phone,
+            'notes': request.data.get('notes', ''),
+            'items': request.data.get('items', [])
+        }
+
+        # Create order using existing serializer (creates in 'draft' status)
+        serializer = OrderCreateSerializer(data=order_data)
+        serializer.is_valid(raise_exception=True)
+        order = serializer.save(user=guest_user)
+
+        # Update order to pending and trigger notifications
+        order.status = 'pending'
+        order.save()
+
+        # Send confirmation emails asynchronously
+        def send_guest_notifications():
+            try:
+                # Get company email
+                company = Company.objects.first()
+                company_email = company.email if company else None
+
+                if company_email:
+                    # Prepare email data
+                    email_data = {
+                        'order_id': order.id,
+                        'user_name': guest_name,
+                        'user_email': guest_email,
+                        'language': request.data.get('language', 'es'),
+                        'delivery_info': {
+                            'street': order.delivery_street,
+                            'house_number': order.delivery_house_number,
+                            'location': order.delivery_location,
+                            'phone': order.phone,
+                            'notes': order.notes or '',
+                        },
+                        'items': [],  # Will be populated from order items
+                        'total_price': float(order.total_price),
+                    }
+
+                    # Send confirmation emails
+                    send_order_confirmation_emails(
+                        order_data=email_data,
+                        user_email=guest_email,
+                        company_email=company_email
+                    )
+            except Exception as e:
+                print(f"Error sending guest order notifications: {e}")
+
+        # Start notifications in background
+        notification_thread = threading.Thread(target=send_guest_notifications)
+        notification_thread.daemon = True
+        notification_thread.start()
+
+        # Return order details
+        detail_serializer = OrderDetailSerializer(order)
+        return Response(
+            {
+                "order": detail_serializer.data,
+                "message": "Pedido creado exitosamente. Recibirás un email de confirmación.",
+                "guest_user": True
+            },
+            status=status.HTTP_201_CREATED
+        )

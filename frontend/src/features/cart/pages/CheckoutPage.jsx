@@ -41,6 +41,11 @@ const CheckoutPage = () => {
   const [pendingOrder, setPendingOrder] = useState(null);
   const [deliveryEnabledDays, setDeliveryEnabledDays] = useState({});
   const [isOrderingEnabled, setIsOrderingEnabled] = useState(true);
+  const [isGuestMode, setIsGuestMode] = useState(false);
+  const [guestInfo, setGuestInfo] = useState({
+    name: '',
+    email: '',
+  });
 
   // Fetch company data for WhatsApp number, delivery locations, and enabled days
   useEffect(() => {
@@ -83,14 +88,12 @@ const CheckoutPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Redirect if not authenticated or cart is empty
+  // Redirect if cart is empty (allow guest checkout)
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
-    } else if (items.length === 0) {
+    if (items.length === 0) {
       navigate('/cart');
     }
-  }, [isAuthenticated, items.length, navigate]);
+  }, [items.length, navigate]);
 
   const totalPrice = getTotalPrice();
 
@@ -120,6 +123,18 @@ const CheckoutPage = () => {
 
   const validate = () => {
     const newErrors = {};
+
+    // Guest mode validation
+    if (isGuestMode) {
+      if (!guestInfo.name.trim()) {
+        newErrors.guest_name = t('auth.requiredField');
+      }
+      if (!guestInfo.email.trim()) {
+        newErrors.guest_email = t('auth.requiredField');
+      } else if (!/\S+@\S+\.\S+/.test(guestInfo.email)) {
+        newErrors.guest_email = t('auth.invalidEmail') || 'Email inválido';
+      }
+    }
 
     if (!deliveryInfo.delivery_street.trim()) {
       newErrors.delivery_street = t('auth.requiredField');
@@ -152,25 +167,57 @@ const CheckoutPage = () => {
     setLoading(true);
 
     try {
-      // Step 1: Save order to database
-      const createdOrder = await createOrder({
-        items,
-        deliveryInfo,
-      });
+      let createdOrder;
 
-      // Step 2: Store order data and show confirmation modal
-      setPendingOrder({
-        createdOrder,
-        orderData: {
+      if (isGuestMode) {
+        // Guest checkout - call guest_checkout endpoint
+        const guestOrderData = {
+          guest_name: guestInfo.name,
+          guest_email: guestInfo.email,
+          guest_phone: deliveryInfo.phone,
+          delivery_street: deliveryInfo.delivery_street,
+          delivery_house_number: deliveryInfo.delivery_house_number,
+          delivery_location: deliveryInfo.delivery_location,
+          notes: deliveryInfo.notes,
+          language: language,
+          items: items.map(item => ({
+            product: item.product.id,
+            quantity: item.quantity,
+            customization: item.customization || {}
+          }))
+        };
+
+        const response = await api.post('/orders/guest_checkout/', guestOrderData);
+
+        // Backend handles everything: creates order in 'pending' status and sends notifications
+        toast.success(response.data.message || t('checkout.guestOrderSuccess'), {
+          duration: 6000,
+        });
+
+        clearCart();
+        navigate('/');
+        return;
+      } else {
+        // Authenticated user checkout
+        createdOrder = await createOrder({
           items,
           deliveryInfo,
-          user,
-          totalPrice,
-          orderId: createdOrder.id,
-        },
-      });
+        });
 
-      setShowConfirmModal(true);
+        // Store order data and show confirmation modal
+        setPendingOrder({
+          createdOrder,
+          orderData: {
+            items,
+            deliveryInfo,
+            user,
+            totalPrice,
+            orderId: createdOrder.id,
+          },
+        });
+
+        setShowConfirmModal(true);
+      }
     } catch (error) {
       console.error('Error creating order:', error);
 
@@ -179,6 +226,19 @@ const CheckoutPage = () => {
 
       if (error.response?.data) {
         const errorData = error.response.data;
+
+        // Check for 409 Conflict (existing user should login)
+        if (error.response.status === 409 && errorData.should_login) {
+          toast.error(errorData.detail, {
+            duration: 8000,
+          });
+          // Optionally redirect to login after a delay
+          setTimeout(() => {
+            navigate('/login');
+          }, 3000);
+          setLoading(false);
+          return;
+        }
 
         // Check for specific field errors
         if (errorData.items) {
@@ -334,7 +394,120 @@ const CheckoutPage = () => {
                 {t('checkout.deliveryInfo')}
               </h2>
 
+              {/* Guest / Login Choice */}
+              {!isAuthenticated && (
+                <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <p className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {t('checkout.accountPrompt') || '¿Tienes una cuenta?'}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    {!isGuestMode ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => navigate('/login')}
+                          className="btn-pepper-secondary"
+                        >
+                          {t('auth.login')}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setIsGuestMode(true)}
+                          className="btn-pepper-primary"
+                        >
+                          {t('checkout.continueAsGuest') || 'Continuar como invitado'}
+                        </button>
+                      </>
+                    ) : (
+                      <div className="flex items-center justify-between w-full">
+                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                          {t('checkout.guestMode') || 'Modo invitado'}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsGuestMode(false);
+                            setGuestInfo({ name: '', email: '' });
+                          }}
+                          className="text-sm text-pepper-orange hover:underline"
+                        >
+                          {t('checkout.backToLogin') || '¿Tienes cuenta? Inicia sesión'}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               <div className="space-y-4">
+                {/* Guest Information (only in guest mode) */}
+                {isGuestMode && (
+                  <>
+                    <div>
+                      <label
+                        htmlFor="guest_name"
+                        className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        {t('checkout.guestName') || 'Nombre completo'} *
+                      </label>
+                      <input
+                        id="guest_name"
+                        name="guest_name"
+                        type="text"
+                        value={guestInfo.name}
+                        onChange={(e) => {
+                          setGuestInfo(prev => ({ ...prev, name: e.target.value }));
+                          if (errors.guest_name) {
+                            setErrors(prev => ({ ...prev, guest_name: '' }));
+                          }
+                        }}
+                        className={`appearance-none relative block w-full px-3 py-2 border ${
+                          errors.guest_name ? 'border-red-500' : 'border-gray-300 dark:border-dark-border'
+                        } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card transition-colors`}
+                        placeholder={t('checkout.guestNamePlaceholder') || 'Ej: Juan Pérez'}
+                      />
+                      {errors.guest_name && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                          {errors.guest_name}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="guest_email"
+                        className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        {t('checkout.guestEmail') || 'Email'} *
+                      </label>
+                      <input
+                        id="guest_email"
+                        name="guest_email"
+                        type="email"
+                        value={guestInfo.email}
+                        onChange={(e) => {
+                          setGuestInfo(prev => ({ ...prev, email: e.target.value }));
+                          if (errors.guest_email) {
+                            setErrors(prev => ({ ...prev, guest_email: '' }));
+                          }
+                        }}
+                        className={`appearance-none relative block w-full px-3 py-2 border ${
+                          errors.guest_email ? 'border-red-500' : 'border-gray-300 dark:border-dark-border'
+                        } placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pepper-orange focus:border-transparent dark:bg-dark-card transition-colors`}
+                        placeholder={t('checkout.guestEmailPlaceholder') || 'email@ejemplo.com'}
+                      />
+                      {errors.guest_email && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                          {errors.guest_email}
+                        </p>
+                      )}
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        {t('checkout.guestEmailHint') || 'Recibirás la confirmación de tu pedido en este email'}
+                      </p>
+                    </div>
+                  </>
+                )}
+
                 {/* Delivery Street */}
                 <div>
                   <label
