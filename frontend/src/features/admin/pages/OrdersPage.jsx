@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faEye, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import usePaginatedFetch from '@shared/hooks/usePaginatedFetch';
@@ -7,6 +7,7 @@ import OrderModal from '@features/admin/components/OrderModal';
 import { getAuthHeaders } from '@shared/utils/auth';
 import Pagination from '@shared/components/Pagination';
 import AlternativaLoader from '@shared/components/Loading';
+import websocketService from '@shared/services/websocketService';
 
 const OrdersPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -48,6 +49,22 @@ const OrdersPage = () => {
   } = usePaginatedFetch('/orders/', 10, apiFilters);
 
   const orders = ordersData?.results || [];
+
+  // Listen for real-time order updates via WebSocket
+  useEffect(() => {
+    const handleOrderUpdate = () => {
+      // Refresh orders list when any order is created, updated, or deleted
+      refetch();
+    };
+
+    // Subscribe to order notifications
+    const unsubscribe = websocketService.on('order_notification', handleOrderUpdate);
+
+    // Cleanup on unmount
+    return () => {
+      unsubscribe();
+    };
+  }, [refetch]);
 
   const handleOpenModal = (order) => {
     setSelectedOrder(order);
@@ -228,19 +245,19 @@ const OrdersPage = () => {
                   key={order.id}
                   className="transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-text-primary">
+                  <td className="px-4 py-3 text-sm text-gray-700 dark:text-white">
                     #{order.id}
                   </td>
-                  <td className="px-4 py-3 text-sm font-medium text-gray-900 dark:text-text-primary">
+                  <td className="px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">
                     {order.user_name || order.user_email || `User #${order.user}`}
                   </td>
-                  <td className="px-4 py-3 text-sm text-gray-600 dark:text-text-secondary">
+                  <td className="px-4 py-3 text-sm text-gray-600 dark:text-white">
                     {order.delivery_location === 'ardales' ? 'Ardales' : 'Carratraca'}
                   </td>
-                  <td className="px-4 py-3 text-sm text-gray-600 dark:text-text-secondary">
+                  <td className="px-4 py-3 text-sm text-gray-600 dark:text-white">
                     {order.items_count}
                   </td>
-                  <td className="px-4 py-3 text-sm font-semibold text-gray-900 dark:text-text-primary">
+                  <td className="px-4 py-3 text-sm font-semibold text-gray-900 dark:text-white">
                     €{parseFloat(order.total_price).toFixed(2)}
                   </td>
                   <td className="px-4 py-3">

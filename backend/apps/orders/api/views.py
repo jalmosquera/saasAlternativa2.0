@@ -61,11 +61,11 @@ from apps.company.models import Company
     ),
     partial_update=extend_schema(
         tags=['orders'],
-        description="Update order status (staff only).",
+        description="Update order status. Regular users can confirm draft orders (draft→pending). Staff can update any order status.",
         responses={
             200: OrderDetailSerializer,
             400: OpenApiResponse(description='Invalid data'),
-            403: OpenApiResponse(description='Permission denied'),
+            403: OpenApiResponse(description='Permission denied - Users can only confirm their own draft orders'),
         },
     ),
 )
@@ -80,7 +80,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         - list: Authenticated users (filtered by user)
         - create: Authenticated users
         - retrieve: Order owner or staff
-        - update/partial_update: Staff only
+        - update/partial_update: Order owner (draft→pending only) or staff (any status)
         - destroy: Not allowed
 
     Attributes:
@@ -115,8 +115,8 @@ class OrderViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """Get queryset filtered by user permissions.
 
-        Regular users see only their own orders.
-        Staff users see all orders.
+        Regular users see only their own orders (including drafts).
+        Staff users see all orders EXCEPT drafts (draft orders are not yet confirmed by customer).
 
         Performance optimizations:
         - select_related('user'): Reduces queries for user data
@@ -127,10 +127,10 @@ class OrderViewSet(viewsets.ModelViewSet):
             QuerySet: Optimized and filtered orders queryset.
 
         Example:
-            >>> # Regular user sees only their orders
+            >>> # Regular user sees only their orders (including drafts)
             >>> user.orders.all()
-            >>> # Staff sees all orders
-            >>> Order.objects.all()
+            >>> # Staff sees all confirmed orders (excluding drafts)
+            >>> Order.objects.exclude(status='draft')
         """
         user = self.request.user
 
@@ -143,7 +143,8 @@ class OrderViewSet(viewsets.ModelViewSet):
         )
 
         if user.is_staff:
-            return queryset
+            # Staff sees all orders except drafts (drafts are not yet confirmed by customer)
+            return queryset.exclude(status='draft')
         return queryset.filter(user=user)
 
     def get_serializer_class(self) -> type[Serializer]:
@@ -200,9 +201,11 @@ class OrderViewSet(viewsets.ModelViewSet):
         )
 
     def partial_update(self, request: Request, *args: Any, **kwargs: Any) -> Response:
-        """Update order (status only, staff only).
+        """Update order status.
 
-        Allows staff to update order status. Regular users cannot update.
+        Permissions:
+        - Regular users: Can only update their own orders from 'draft' to 'pending' (order confirmation)
+        - Staff: Can update any order to any status
 
         Args:
             request: HTTP request with update data.
@@ -210,20 +213,34 @@ class OrderViewSet(viewsets.ModelViewSet):
             **kwargs: Arbitrary keyword arguments.
 
         Returns:
-            Response: 200 with updated order or 403 if not staff.
+            Response: 200 with updated order or 403 if permission denied.
 
         Example:
+            >>> # User confirming their draft order
+            >>> PATCH /api/orders/1/
+            >>> {"status": "pending"}
+            >>> # Staff updating order status
             >>> PATCH /api/orders/1/
             >>> {"status": "confirmed"}
-            >>> # Returns 200 with updated order
         """
-        if not request.user.is_staff:
-            return Response(
-                {"detail": "Only staff can update orders."},
-                status=status.HTTP_403_FORBIDDEN
-            )
-
         instance = self.get_object()
+
+        # Check permissions
+        if not request.user.is_staff:
+            # Regular users can only update their own orders
+            if instance.user != request.user:
+                return Response(
+                    {"detail": "You can only update your own orders."},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+
+            # Regular users can only change from 'draft' to 'pending'
+            new_status = request.data.get('status')
+            if instance.status != 'draft' or new_status != 'pending':
+                return Response(
+                    {"detail": "You can only confirm draft orders (draft → pending)."},
+                    status=status.HTTP_403_FORBIDDEN
+                )
 
         # Only allow status updates
         if 'status' in request.data:

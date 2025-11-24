@@ -23,8 +23,8 @@ class Order(models.Model):
 
     Attributes:
         user (ForeignKey): User who placed the order.
-        status (str): Current order status. Choices: 'pending', 'confirmed',
-            'completed', 'cancelled'. Defaults to 'pending'.
+        status (str): Current order status. Choices: 'draft', 'pending', 'confirmed',
+            'completed', 'cancelled'. Defaults to 'draft'.
         total_price (Decimal): Total price of the order (calculated automatically).
         delivery_street (str): Street name for delivery.
         delivery_house_number (str): House number for delivery.
@@ -35,7 +35,8 @@ class Order(models.Model):
         updated_at (datetime): Timestamp of last update.
 
     Status Choices:
-        - pending: Order placed, awaiting confirmation
+        - draft: Order created but not yet confirmed by customer (no notifications sent)
+        - pending: Order confirmed by customer, awaiting restaurant confirmation
         - confirmed: Order confirmed by restaurant
         - completed: Order delivered and completed
         - cancelled: Order cancelled
@@ -73,6 +74,7 @@ class Order(models.Model):
     """
 
     STATUS_CHOICES = (
+        ('draft', 'Draft'),
         ('pending', 'Pending'),
         ('confirmed', 'Confirmed'),
         ('completed', 'Completed'),
@@ -89,7 +91,7 @@ class Order(models.Model):
         'Status',
         max_length=20,
         choices=STATUS_CHOICES,
-        default='pending'
+        default='draft'
     )
     total_price = models.DecimalField(
         'Total Price',

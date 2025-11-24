@@ -4,6 +4,10 @@ import os
 import sys
 from dotenv import load_dotenv
 
+# Force Autobahn to use pure Python UTF-8 validator (fixes macOS ARM issues)
+# This MUST be set before Django/Channels/Autobahn imports
+os.environ["AUTOBAHN_USE_NVX"] = "0"
+
 def main():
     """Run administrative tasks."""
     # Cargar variables de entorno desde archivo .env
