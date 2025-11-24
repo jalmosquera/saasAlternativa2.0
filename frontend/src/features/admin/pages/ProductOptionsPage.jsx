@@ -16,9 +16,9 @@ import useUserPermissions from '@shared/hooks/useUserPermissions';
 import Pagination from '@shared/components/Pagination';
 import ProductOptionModal from '@features/admin/components/ProductOptionModal';
 import { getAuthHeaders } from '@shared/utils/auth';
-  const { canCreate, canUpdate, canDelete, hasAnyWritePermission } = useUserPermissions();
 
 const ProductOptionsPage = () => {
+  const { canCreate, canUpdate, canDelete, hasAnyWritePermission } = useUserPermissions();
   const { getTranslation } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
