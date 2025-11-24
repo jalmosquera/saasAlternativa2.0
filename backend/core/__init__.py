@@ -1,10 +1,3 @@
-import os
-
-env = os.getenv('DJANGO_ENV', 'development')
-
-if env == 'production':
-    from .production import *
-elif env == 'test':
-    from .test import *
-else:
-    from .development import *
+# Django core configuration package
+# Settings are loaded via DJANGO_SETTINGS_MODULE environment variable
+# Do not import settings here to avoid circular imports

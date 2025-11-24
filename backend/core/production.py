@@ -9,11 +9,12 @@ import dj_database_url
 import os
 import sys
 
-
-MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
+# CORS Configuration - Must be first middleware
+if "corsheaders.middleware.CorsMiddleware" not in MIDDLEWARE:
+    MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware"] + list(MIDDLEWARE)
 
 if "corsheaders" not in INSTALLED_APPS:
-    INSTALLED_APPS += ["corsheaders"]
+    INSTALLED_APPS = list(INSTALLED_APPS) + ["corsheaders"]
 
 
 # Override DEBUG for production
