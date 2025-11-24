@@ -194,6 +194,10 @@ class User(AbstractUser):
             "employe",
             "employe",
         ),
+        (
+            "guest",
+            "guest",
+        ),
     )
 
     # Custom manager

@@ -213,7 +213,7 @@ export const translations = {
       total: 'Total',
       remove: 'Eliminar',
       clearCart: 'Vaciar Carrito',
-      proceedToCheckout: 'Proceder al Checkout',
+      proceedToCheckout: 'Enviar mi pedido',
       addedToCart: '✓ Producto agregado al carrito',
       removedFromCart: 'Producto eliminado del carrito',
       cartCleared: 'Carrito vaciado',
@@ -253,6 +253,17 @@ export const translations = {
       phone: 'Teléfono',
       ordersNotAvailableToday: 'Lo sentimos, no aceptamos pedidos hoy',
       ordersAvailableOn: 'Pedidos disponibles',
+      // Guest checkout
+      accountPrompt: '¿Tienes una cuenta?',
+      continueAsGuest: 'Continuar como invitado',
+      guestMode: 'Modo invitado',
+      backToLogin: '¿Tienes cuenta? Inicia sesión',
+      guestName: 'Nombre completo',
+      guestNamePlaceholder: 'Ej: Juan Pérez',
+      guestEmail: 'Email',
+      guestEmailPlaceholder: 'email@ejemplo.com',
+      guestEmailHint: 'Recibirás la confirmación de tu pedido en este email',
+      guestOrderSuccess: 'Pedido creado exitosamente. Recibirás un email de confirmación.',
     },
     // Promotions Modal
     promotions: {
@@ -476,7 +487,7 @@ export const translations = {
       total: 'Total',
       remove: 'Remove',
       clearCart: 'Clear Cart',
-      proceedToCheckout: 'Proceed to Checkout',
+      proceedToCheckout: 'Submit my order',
       addedToCart: '✓ Product added to cart',
       removedFromCart: 'Product removed from cart',
       cartCleared: 'Cart cleared',
@@ -516,6 +527,17 @@ export const translations = {
       phone: 'Phone',
       ordersNotAvailableToday: 'Sorry, we are not accepting orders today',
       ordersAvailableOn: 'Orders available on',
+      // Guest checkout
+      accountPrompt: 'Do you have an account?',
+      continueAsGuest: 'Continue as guest',
+      guestMode: 'Guest mode',
+      backToLogin: 'Have an account? Sign in',
+      guestName: 'Full name',
+      guestNamePlaceholder: 'Ex: John Doe',
+      guestEmail: 'Email',
+      guestEmailPlaceholder: 'email@example.com',
+      guestEmailHint: 'You will receive your order confirmation at this email',
+      guestOrderSuccess: 'Order created successfully. You will receive an email confirmation.',
     },
     // Promotions Modal
     promotions: {
