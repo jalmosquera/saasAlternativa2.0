@@ -21,6 +21,9 @@ DJANGO_SETTINGS_MODULE=core.production
 # Database (Railway PostgreSQL auto-configura DATABASE_URL)
 DATABASE_URL=postgresql://...
 
+# Redis (Railway Redis auto-configura REDIS_URL - REQUERIDO para WebSockets)
+REDIS_URL=redis://...
+
 # Hosts permitidos (separados por comas)
 ALLOWED_HOSTS=.railway.app,tudominio.com
 
@@ -53,16 +56,29 @@ EMAIL_HOST_PASSWORD=tu-password-app
    - En el dashboard de Railway: "New" → "Database" → "PostgreSQL"
    - Railway auto-configura la variable `DATABASE_URL`
 
-3. **Configurar variables de entorno**
+3. **Agregar servicio Redis (REQUERIDO para WebSockets)**
+   - En el dashboard de Railway: "New" → "Database" → "Redis"
+   - Railway auto-configura la variable `REDIS_URL`
+   - **IMPORTANTE**: Redis es necesario para notificaciones en tiempo real
+
+4. **Configurar variables de entorno**
    - Settings → Variables
    - Agregar todas las variables listadas arriba
+   - **CRÍTICAS**:
+     - `SECRET_KEY` - Generar con: `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
+     - `REDIS_URL` - Auto-configurada si agregaste el addon Redis
+     - `DATABASE_URL` - Auto-configurada si agregaste PostgreSQL
+   - **SEGURIDAD**:
+     - `ALLOWED_HOSTS` - Dominio de Railway (ej: `tu-proyecto.up.railway.app`)
+     - `CORS_ALLOWED_ORIGINS` - URL del frontend en Vercel
+     - `CSRF_TRUSTED_ORIGINS` - Frontend y Railway URLs
 
-4. **Deploy automático**
+5. **Deploy automático**
    - Railway ejecutará:
      - Build del Dockerfile
      - Migraciones (`python manage.py migrate`)
      - Collectstatic (`python manage.py collectstatic`)
-     - Inicio de Gunicorn con gevent
+     - Inicio de **Daphne (ASGI)** para soporte de WebSockets
 
 ### Configuración de Throttling
 
@@ -88,6 +104,10 @@ El backend tiene protección anti-spam configurada:
 VITE_API_URL=https://tu-backend.railway.app
 VITE_API_BASE_URL=https://tu-backend.railway.app/api
 
+# WebSocket URL (Railway) - CRÍTICO para notificaciones en tiempo real
+# IMPORTANTE: Debe usar wss:// (WebSocket Secure) en producción
+VITE_WS_URL=wss://tu-backend.railway.app
+
 # App Configuration
 VITE_APP_NAME=Equus Pub
 
@@ -98,6 +118,13 @@ VITE_ENABLE_DEBUG=false
 # Environment
 VITE_NODE_ENV=production
 ```
+
+**IMPORTANTE - Variables críticas**:
+- `VITE_API_BASE_URL` - URL base del backend API (con `/api` al final)
+- `VITE_WS_URL` - URL del WebSocket (SIN `/api`, usa `wss://` para SSL)
+- Ambas deben apuntar al mismo dominio de Railway pero con protocolos diferentes:
+  - API: `https://` (HTTP Secure)
+  - WebSocket: `wss://` (WebSocket Secure)
 
 ### Pasos de Deployment
 
@@ -163,6 +190,7 @@ CSRF_TRUSTED_ORIGINS=https://tu-proyecto.vercel.app,https://*.railway.app
 ```bash
 VITE_API_URL=https://tu-proyecto.up.railway.app
 VITE_API_BASE_URL=https://tu-proyecto.up.railway.app/api
+VITE_WS_URL=wss://tu-proyecto.up.railway.app
 ```
 
 ### 4. Re-deploy
@@ -201,6 +229,22 @@ Después de actualizar las variables:
 1. Verificar que `vercel.json` existe y tiene rewrites
 2. Re-deploy el frontend
 
+### WebSocket no conecta / Notificaciones no funcionan
+
+**Problema:** Las notificaciones en tiempo real no llegan
+
+**Solución:**
+1. Verificar que el addon **Redis** está instalado en Railway
+2. Verificar variable `REDIS_URL` en Railway settings
+3. Verificar logs del backend: `Railway → Deployments → Logs`
+   - Buscar: "Using InMemoryChannelLayer in production" (ERROR)
+   - Debe decir: "Using RedisChannelLayer" (CORRECTO)
+4. En frontend, verificar conexión WebSocket en consola del navegador:
+   - `ws://localhost:8000/ws/orders/?token=...` (desarrollo)
+   - `wss://tu-backend.railway.app/ws/orders/?token=...` (producción)
+5. Verificar que Daphne está corriendo (no Gunicorn):
+   - Logs deben mostrar: "Starting Daphne (ASGI)..."
+
 ---
 
 ## 📊 Monitoreo
@@ -235,19 +279,26 @@ Después de actualizar las variables:
 
 ### Backend (Railway)
 - [ ] PostgreSQL configurado
+- [ ] **Redis configurado (CRÍTICO para WebSockets)**
 - [ ] SECRET_KEY generada
+- [ ] REDIS_URL auto-configurada
 - [ ] ALLOWED_HOSTS configurado
 - [ ] CORS_ALLOWED_ORIGINS con URL de Vercel
 - [ ] Migraciones ejecutadas
 - [ ] Collectstatic ejecutado
+- [ ] Daphne (ASGI) corriendo (verificar logs)
 - [ ] Endpoint funciona: `https://tu-backend.railway.app/api/`
+- [ ] WebSocket funciona: `wss://tu-backend.railway.app/ws/orders/`
 
 ### Frontend (Vercel)
 - [ ] VITE_API_URL apunta a Railway
+- [ ] VITE_API_BASE_URL apunta a Railway con `/api`
+- [ ] **VITE_WS_URL configurada con wss:// (CRÍTICO para notificaciones)**
 - [ ] Build exitoso
 - [ ] Rutas funcionan (home, login, checkout, etc.)
 - [ ] CORS funciona (no hay errores en consola)
 - [ ] Guest checkout funciona
+- [ ] WebSocket conecta correctamente (verificar en consola del navegador)
 
 ---
 

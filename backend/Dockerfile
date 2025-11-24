@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY . /app/
 
-# Run migrations, collectstatic, and start gunicorn
-# Performance optimization: 4 workers with gevent for async I/O handling
-# worker-connections: max 1000 simultaneous connections per worker
-CMD ["sh", "-c", "echo 'Starting deployment...' && python manage.py migrate && echo 'Migrations complete. Running collectstatic...' && python manage.py collectstatic --noinput && echo 'Collectstatic complete. Starting gunicorn...' && gunicorn core.wsgi --bind 0.0.0.0:8000 --log-file - --access-logfile - --error-logfile - --workers 4 --worker-class gevent --worker-connections 1000 --timeout 60"]
+# Run migrations, collectstatic, and start Daphne (ASGI server)
+# Daphne is required for Django Channels WebSocket support
+# Using --verbosity 2 for detailed logging in production
+CMD ["sh", "-c", "echo 'Starting deployment...' && python manage.py migrate && echo 'Migrations complete. Running collectstatic...' && python manage.py collectstatic --noinput && echo 'Collectstatic complete. Starting Daphne (ASGI)...' && daphne -b 0.0.0.0 -p 8000 --verbosity 2 --access-log - core.asgi:application"]
