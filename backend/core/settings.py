@@ -26,6 +26,7 @@ ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_env.split(',') if h.strip()]
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',  # Must be first for ASGI support
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',  # Must be before django.contrib.staticfiles
     'cloudinary',
+    'channels',  # WebSocket support
     'rest_framework',
     'apps.products',
     'apps.categories',
@@ -81,6 +83,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
+ASGI_APPLICATION = 'core.asgi.application'
 
 
 # Database
@@ -94,6 +97,33 @@ DATABASES = {
 }
 
 #MYSQL DDBB
+
+
+# =============================================================================
+# CHANNELS CONFIGURATION - WebSocket Support
+# =============================================================================
+# Redis is used as the channel layer for WebSocket message passing
+# For local development without Redis, use InMemoryChannelLayer (see comment below)
+REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
+
+# Production: Use Redis for channel layer (uncomment for production)
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             'hosts': [REDIS_URL],
+#             'capacity': 1500,  # Maximum messages to hold
+#             'expiry': 10,  # Message expiry in seconds
+#         },
+#     },
+# }
+
+# Development: Use InMemoryChannelLayer (no Redis required)
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 
 

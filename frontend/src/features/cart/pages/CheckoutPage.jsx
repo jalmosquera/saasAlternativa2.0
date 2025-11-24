@@ -209,6 +209,9 @@ const CheckoutPage = () => {
     try {
       const { orderData, createdOrder } = pendingOrder;
 
+      // Update order status from 'draft' to 'pending' to trigger notifications
+      await api.patch(`/orders/${createdOrder.id}/`, { status: 'pending' });
+
       // Prepare email data
       const emailData = {
         order_id: createdOrder.id,

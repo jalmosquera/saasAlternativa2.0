@@ -43,11 +43,29 @@ export const translations = {
         completed: 'Completado',
         cancelled: 'Cancelado',
       },
+      // Order status update notifications
+      statusUpdated: {
+        confirmed: 'Tu pedido ha sido confirmado',
+        completed: 'Tu pedido ha sido completado',
+        cancelled: 'Tu pedido ha sido cancelado',
+        default: 'El estado de tu pedido ha cambiado',
+      },
       // Customization
       without: 'SIN',
       extras: 'EXTRAS',
       note: 'NOTA',
       unitPrice: 'c/u',
+    },
+    // Notifications
+    notifications: {
+      title: 'Notificaciones',
+      empty: 'No tienes notificaciones',
+      clearAll: 'Limpiar todo',
+      viewAllOrders: 'Ver todos mis pedidos',
+      now: 'Ahora mismo',
+      minutesAgo: 'Hace',
+      hoursAgo: 'Hace',
+      daysAgo: 'Hace',
     },
     // HomePage
     home: {
@@ -288,11 +306,29 @@ export const translations = {
         completed: 'Completed',
         cancelled: 'Cancelled',
       },
+      // Order status update notifications
+      statusUpdated: {
+        confirmed: 'Your order has been confirmed',
+        completed: 'Your order has been completed',
+        cancelled: 'Your order has been cancelled',
+        default: 'Your order status has changed',
+      },
       // Customization
       without: 'WITHOUT',
       extras: 'EXTRAS',
       note: 'NOTE',
       unitPrice: 'each',
+    },
+    // Notifications
+    notifications: {
+      title: 'Notifications',
+      empty: 'You have no notifications',
+      clearAll: 'Clear all',
+      viewAllOrders: 'View all my orders',
+      now: 'Just now',
+      minutesAgo: 'ago',
+      hoursAgo: 'ago',
+      daysAgo: 'ago',
     },
     // HomePage
     home: {

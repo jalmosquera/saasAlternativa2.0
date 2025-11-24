@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import authService from '@shared/services/authService';
+import websocketService from '@shared/services/websocketService';
 
 const AuthContext = createContext();
 
@@ -26,6 +27,13 @@ export const AuthProvider = ({ children }) => {
 
         if (isAuth && currentUser) {
           setUser(currentUser);
+
+          // Connect to WebSocket when user is authenticated
+          const token = localStorage.getItem('access_token');
+          if (token && !websocketService.getConnectionStatus()) {
+            console.log('[AuthContext] Connecting WebSocket for user:', currentUser.username);
+            websocketService.connect(token);
+          }
         } else {
           setUser(null);
         }
@@ -67,7 +75,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (username, password) => {
     try {
       // authService.login devuelve { access_token, user }
-      const { user: loggedUser } = await authService.login(username, password);
+      const { user: loggedUser, access_token } = await authService.login(username, password);
 
       if (!loggedUser) {
         throw new Error('No se recibieron datos del usuario');
@@ -75,6 +83,12 @@ export const AuthProvider = ({ children }) => {
 
       // Actualiza estado global
       setUser(loggedUser);
+
+      // Connect to WebSocket after successful login
+      if (access_token) {
+        console.log('[AuthContext] Connecting WebSocket after login for user:', loggedUser.username);
+        websocketService.connect(access_token);
+      }
 
       // ✅ Retorna el usuario
       return loggedUser;
@@ -93,6 +107,7 @@ export const AuthProvider = ({ children }) => {
    */
   const logout = () => {
     authService.logout();
+    websocketService.disconnect(); // Disconnect WebSocket on logout
     setUser(null);
   };
 

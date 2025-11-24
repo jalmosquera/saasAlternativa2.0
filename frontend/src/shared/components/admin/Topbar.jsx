@@ -58,7 +58,7 @@ const Topbar = ({ isCollapsed }) => {
       <div className="h-full px-3 md:px-6 flex items-center justify-between">
         {/* Left section - Breadcrumb or page title */}
         <div>
-          <h2 className="text-base md:text-xl font-semibold text-gray-900 dark:text-text-primary">
+          <h2 className="text-base md:text-xl font-semibold text-gray-900 dark:text-white">
             Panel de Administración
           </h2>
         </div>
@@ -68,7 +68,7 @@ const Topbar = ({ isCollapsed }) => {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-gray-600 dark:text-text-secondary hover:text-gray-900 dark:hover:text-text-primary"
+            className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-gray-600 dark:text-text-white hover:text-gray-900 dark:hover:text-text-white"
             aria-label="Toggle theme"
           >
             <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} className="text-lg" />
@@ -78,7 +78,7 @@ const Topbar = ({ isCollapsed }) => {
           <div className="relative" ref={notificationsRef}>
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-gray-600 dark:text-text-secondary hover:text-gray-900 dark:hover:text-text-primary"
+              className="relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-dark-card transition-colors text-gray-600 dark:text-text-white hover:text-gray-900 dark:hover:text-text-white"
               aria-label="Notifications"
             >
               <FontAwesomeIcon icon={faBell} className="text-lg" />
@@ -93,13 +93,13 @@ const Topbar = ({ isCollapsed }) => {
             {showNotifications && (
               <div className="absolute right-0 mt-2 w-72 sm:w-80 bg-white dark:bg-dark-card rounded-lg shadow-lg border border-gray-200 dark:border-dark-border overflow-hidden animate-fadeIn z-50 max-w-[calc(100vw-2rem)]">
                 <div className="px-4 py-3 border-b border-gray-200 dark:border-dark-border flex items-center justify-between">
-                  <h3 className="font-semibold text-gray-900 dark:text-text-primary">Notificaciones</h3>
+                  <h3 className="font-semibold text-gray-900 dark:text-text-white">Notificaciones</h3>
                   {notifications.length > 0 && (
                     <button
                       onClick={() => {
                         clearAll();
                       }}
-                      className="text-xs text-gray-500 hover:text-gray-700 dark:text-text-secondary dark:hover:text-text-primary"
+                      className="text-xs text-gray-500 hover:text-gray-700 dark:text-text-white dark:hover:text-text-white"
                     >
                       Limpiar
                     </button>
@@ -107,11 +107,11 @@ const Topbar = ({ isCollapsed }) => {
                 </div>
                 <div className="max-h-96 overflow-y-auto">
                   {loading ? (
-                    <div className="px-4 py-8 text-center text-gray-500 dark:text-text-secondary">
+                    <div className="px-4 py-8 text-center text-gray-500 dark:text-text-white">
                       Cargando notificaciones...
                     </div>
                   ) : notifications.length === 0 ? (
-                    <div className="px-4 py-8 text-center text-gray-500 dark:text-text-secondary">
+                    <div className="px-4 py-8 text-center text-gray-500 dark:text-text-white">
                       No hay notificaciones nuevas
                     </div>
                   ) : (
@@ -127,10 +127,10 @@ const Topbar = ({ isCollapsed }) => {
                           notification.unread ? 'bg-gray-50 dark:bg-dark-bg/50' : ''
                         }`}
                       >
-                        <p className="text-sm text-gray-900 dark:text-text-primary mb-1">
+                        <p className="text-sm text-gray-900 dark:text-text-white mb-1">
                           {notification.message}
                         </p>
-                        <p className="text-xs text-gray-600 dark:text-text-secondary">
+                        <p className="text-xs text-gray-600 dark:text-text-white">
                           {notification.time}
                         </p>
                       </div>
@@ -164,16 +164,16 @@ const Topbar = ({ isCollapsed }) => {
                 <FontAwesomeIcon icon={faUser} className="text-white" />
               </div>
               <div className="text-left hidden md:block">
-                <p className="text-sm font-medium text-gray-900 dark:text-text-primary truncate max-w-[120px]">
+                <p className="text-sm font-medium text-gray-900 dark:text-text-white truncate max-w-[120px]">
                   {user?.username || 'Admin'}
                 </p>
-                <p className="text-xs text-gray-600 dark:text-text-secondary">
+                <p className="text-xs text-gray-600 dark:text-text-white">
                   {user?.role === 'boss' ? 'Propietario' : 'Empleado'}
                 </p>
               </div>
               <FontAwesomeIcon
                 icon={faChevronDown}
-                className="text-gray-600 dark:text-text-secondary text-sm hidden md:block"
+                className="text-gray-600 dark:text-text-white text-sm hidden md:block"
               />
             </button>
 
@@ -182,10 +182,10 @@ const Topbar = ({ isCollapsed }) => {
               <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-dark-card rounded-lg shadow-lg border border-gray-200 dark:border-dark-border overflow-hidden animate-fadeIn z-50">
                 {/* Mobile: Show user info in dropdown */}
                 <div className="md:hidden px-4 py-3 border-b border-gray-200 dark:border-dark-border">
-                  <p className="text-sm font-medium text-gray-900 dark:text-text-primary">
+                  <p className="text-sm font-medium text-gray-900 dark:text-text-white">
                     {user?.username || 'Admin'}
                   </p>
-                  <p className="text-xs text-gray-600 dark:text-text-secondary">
+                  <p className="text-xs text-gray-600 dark:text-text-white">
                     {user?.role === 'boss' ? 'Propietario' : 'Empleado'}
                   </p>
                 </div>
@@ -195,15 +195,15 @@ const Topbar = ({ isCollapsed }) => {
                   className="flex items-center px-4 py-3 hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors"
                   onClick={() => setShowUserMenu(false)}
                 >
-                  <FontAwesomeIcon icon={faCog} className="text-gray-600 dark:text-text-secondary mr-3" />
-                  <span className="text-sm text-gray-900 dark:text-text-primary">Configuración</span>
+                  <FontAwesomeIcon icon={faCog} className="text-gray-600 dark:text-text-white mr-3" />
+                  <span className="text-sm text-gray-900 dark:text-text-white">Configuración</span>
                 </Link>
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center px-4 py-3 hover:bg-gray-50 dark:hover:bg-dark-bg transition-colors border-t border-gray-200 dark:border-dark-border"
                 >
-                  <FontAwesomeIcon icon={faSignOutAlt} className="text-gray-600 dark:text-text-secondary mr-3" />
-                  <span className="text-sm text-gray-900 dark:text-text-primary">Cerrar sesión</span>
+                  <FontAwesomeIcon icon={faSignOutAlt} className="text-gray-600 dark:text-text-white mr-3" />
+                  <span className="text-sm text-gray-900 dark:text-text-white">Cerrar sesión</span>
                 </button>
               </div>
             )}

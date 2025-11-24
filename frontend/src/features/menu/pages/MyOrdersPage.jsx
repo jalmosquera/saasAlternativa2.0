@@ -15,6 +15,7 @@ import { useAuth } from '@shared/contexts/AuthContext';
 import api from '@shared/services/api';
 import AlternativaLoader from '@shared/components/Loading';
 import toast from 'react-hot-toast';
+import websocketService from '@shared/services/websocketService';
 
 const MyOrdersPage = () => {
   const [orders, setOrders] = useState([]);
@@ -44,6 +45,81 @@ const MyOrdersPage = () => {
       setLoading(false);
     }
   }, [isAuthenticated, fetchOrders]);
+
+  // Listen for real-time order status updates via WebSocket
+  useEffect(() => {
+    console.log('[MyOrdersPage] Setting up WebSocket listener, WS connected:', websocketService.getConnectionStatus());
+
+    const handleOrderUpdate = (message) => {
+      console.log('[MyOrdersPage] Received WebSocket message:', message);
+
+      if (!message.data) return;
+
+      const { action, data } = message;
+      console.log('[MyOrdersPage] Action:', action, 'Order ID:', data?.order_id, 'Status:', data?.status);
+
+      // Only handle updates to existing orders (not new orders)
+      if (action === 'updated') {
+        console.log('[MyOrdersPage] Handling order update...');
+        // Update the order in the list
+        setOrders(prevOrders => {
+          const orderIndex = prevOrders.findIndex(order => order.id === data.order_id);
+          console.log('[MyOrdersPage] Order index found:', orderIndex, 'Total orders:', prevOrders.length);
+
+          if (orderIndex !== -1) {
+            const updatedOrders = [...prevOrders];
+            const oldStatus = updatedOrders[orderIndex].status;
+            const newStatus = data.status;
+            console.log('[MyOrdersPage] Old status:', oldStatus, '→ New status:', newStatus);
+
+            // Update the order
+            updatedOrders[orderIndex] = {
+              ...updatedOrders[orderIndex],
+              status: newStatus,
+              updated_at: data.updated_at
+            };
+
+            // Show notification if status changed
+            if (oldStatus !== newStatus) {
+              console.log('[MyOrdersPage] Status changed! Showing toast...');
+              const statusMessages = {
+                'confirmed': t('myOrders.statusUpdated.confirmed'),
+                'completed': t('myOrders.statusUpdated.completed'),
+                'cancelled': t('myOrders.statusUpdated.cancelled')
+              };
+
+              const message = statusMessages[newStatus] || t('myOrders.statusUpdated.default');
+
+              toast.success(`${t('myOrders.orderNumber')} #${data.order_id}: ${message}`, {
+                duration: 5000,
+                icon: '🔔',
+              });
+            } else {
+              console.log('[MyOrdersPage] Status unchanged, skipping toast');
+            }
+
+            return updatedOrders;
+          } else {
+            console.log('[MyOrdersPage] Order not found in list');
+          }
+
+          return prevOrders;
+        });
+      } else {
+        console.log('[MyOrdersPage] Action is not "updated", skipping. Action:', action);
+      }
+    };
+
+    // Subscribe to order notifications
+    console.log('[MyOrdersPage] Subscribing to order_notification events');
+    const unsubscribe = websocketService.on('order_notification', handleOrderUpdate);
+
+    // Cleanup on unmount
+    return () => {
+      console.log('[MyOrdersPage] Cleaning up WebSocket subscription');
+      unsubscribe();
+    };
+  }, [t]);
 
   const handleCancelOrder = async (orderId) => {
     if (!window.confirm(t('myOrders.cancelConfirm'))) {

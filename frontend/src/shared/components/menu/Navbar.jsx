@@ -8,6 +8,7 @@ import { useLanguage } from '@shared/contexts/LanguageContext';
 import { useAuth } from '@shared/contexts/AuthContext';
 import { useCart } from '@shared/contexts/CartContext';
 import useOrderingEnabled from '@shared/hooks/useOrderingEnabled';
+import NotificationBell from './NotificationBell';
 
 const Navbar = ({ companyName = 'Digital Letter' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -103,6 +104,9 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
               <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} size="lg" />
             </button>
 
+            {/* Notification Bell (Desktop) - solo para clientes autenticados */}
+            {isAuthenticated && !isAdmin && <NotificationBell />}
+
             {/* Cart Button (Desktop) - solo mostrar si pedidos habilitados */}
             {isOrderingEnabled && (
               <Link
@@ -168,6 +172,8 @@ const Navbar = ({ companyName = 'Digital Letter' }) => {
             >
               <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} size="lg" />
             </button>
+            {/* Notification Bell (Mobile) - solo para clientes autenticados */}
+            {isAuthenticated && !isAdmin && <NotificationBell />}
             {/* Cart Button (Mobile) - solo mostrar si pedidos habilitados */}
             {isOrderingEnabled && (
               <Link

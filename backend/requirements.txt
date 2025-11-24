@@ -9,6 +9,14 @@ djangorestframework==3.16.0
 djangorestframework_simplejwt==5.5.0
 drf-spectacular==0.28.0
 django-filter==24.3
+
+# Django Channels for WebSocket support
+channels==4.0.0
+channels-redis==4.1.0
+daphne==4.0.0
+redis==5.0.0
+wsaccel==0.6.7  # Required for WebSocket UTF-8 validation
+
 inflection==0.5.1
 iniconfig==2.1.0
 jsonschema==4.24.0
@@ -29,8 +37,9 @@ sqlparse==0.5.3
 uritemplate==4.2.0
 
 # Railway deployment dependencies
-gunicorn==23.0.0
-gevent==24.2.1  # Async worker for improved concurrency
+# Note: Using Daphne (ASGI) for WebSocket support instead of Gunicorn (WSGI)
+gunicorn==23.0.0  # Kept as fallback
+gevent==24.2.1
 dj-database-url==2.2.0
 psycopg2-binary==2.9.10
 whitenoise==6.8.2
