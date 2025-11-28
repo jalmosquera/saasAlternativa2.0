@@ -1,13 +1,19 @@
 # core/development.py
-# Development settings for local environment
+"""
+Development settings for local environment.
+To use: Set environment variable DJANGO_SETTINGS_MODULE=core.development
+"""
 
 from .settings import *
+from datetime import timedelta
 
+# Enable debug mode for development
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# Allow access from localhost
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
-# Configuración para base de datos local, si quieres distinta
+# Use SQLite for local development
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -15,13 +21,10 @@ DATABASES = {
     }
 }
 
-# Otros settings específicos para desarrollo, ej:
+# Send emails to console instead of SMTP server
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
-from datetime import timedelta
-
-# Agregar después de REST_FRAMEWORK o al final del archivo
+# JWT Configuration for development
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
@@ -30,3 +33,8 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+# Disable SSL redirect for local development
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False

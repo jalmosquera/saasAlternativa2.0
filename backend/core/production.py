@@ -9,13 +9,6 @@ import dj_database_url
 import os
 import sys
 
-# CORS Configuration - Must be first middleware
-if "corsheaders.middleware.CorsMiddleware" not in MIDDLEWARE:
-    MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware"] + list(MIDDLEWARE)
-
-if "corsheaders" not in INSTALLED_APPS:
-    INSTALLED_APPS = list(INSTALLED_APPS) + ["corsheaders"]
-
 
 # Override DEBUG for production
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
@@ -45,10 +38,19 @@ if database_url:
 
 # Static files configuration for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Remove STATICFILES_DIRS in production (it conflicts with STATIC_ROOT)
 STATICFILES_DIRS = []
+
+# Override STORAGES to use WhiteNoise with compression and manifest
+STORAGES = {
+    'default': {
+        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage' if CLOUDINARY_CLOUD_NAME else 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
+    },
+}
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

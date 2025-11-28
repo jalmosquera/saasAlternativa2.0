@@ -39,5 +39,9 @@ urlpatterns = [
     path('api/', include('apps.promotions.api.router')),  # Promotions API
 
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# Serve media files in development only
+# In production, use Cloudinary or a CDN
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
