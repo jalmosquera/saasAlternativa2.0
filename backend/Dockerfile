@@ -2,17 +2,24 @@ FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=core.production
 
 WORKDIR /app
 
-COPY requirements.txt /app/
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY . /app/
+COPY . .
 
-# Run migrations, collectstatic, and start Daphne (ASGI server)
-# Daphne is required for Django Channels WebSocket support
-# Using --verbosity 2 for detailed logging in production
-CMD ["sh", "-c", "echo 'Starting deployment...' && python manage.py migrate && echo 'Migrations complete. Running collectstatic...' && python manage.py collectstatic --noinput && echo 'Collectstatic complete. Starting Daphne (ASGI)...' && daphne -b 0.0.0.0 -p 8000 --verbosity 2 --access-log - core.asgi:application"]
+# Expose port (Railway will override but helps)
+EXPOSE 8000
+
+# CMD usando el puerto asignado por railway
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && daphne -b 0.0.0.0 -p $PORT core.asgi:application"]
