@@ -1,8 +1,10 @@
 import os
-from dotenv import load_dotenv
 
-# Cargar el .env desde la raíz del proyecto o donde esté ubicado
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
+# Only load dotenv in development (when RAILWAY_ENVIRONMENT is not set)
+if not os.environ.get('RAILWAY_ENVIRONMENT'):
+    from dotenv import load_dotenv
+    # Cargar el .env desde la raíz del proyecto o donde esté ubicado
+    load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 

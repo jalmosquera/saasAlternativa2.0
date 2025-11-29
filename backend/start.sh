@@ -38,4 +38,14 @@ python manage.py collectstatic --noinput --clear
 echo "Starting Gunicorn..."
 # Use PORT environment variable from Railway (defaults to 8000 if not set)
 PORT=${PORT:-8000}
-exec gunicorn core.wsgi --bind 0.0.0.0:$PORT --log-file - --env DJANGO_SETTINGS_MODULE=core.production
+echo "Binding Gunicorn to 0.0.0.0:$PORT"
+exec gunicorn core.wsgi \
+  --bind 0.0.0.0:$PORT \
+  --workers 2 \
+  --threads 4 \
+  --worker-class sync \
+  --timeout 120 \
+  --access-logfile - \
+  --error-logfile - \
+  --log-level info \
+  --env DJANGO_SETTINGS_MODULE=core.production
