@@ -21,16 +21,13 @@ if not SECRET_KEY or SECRET_KEY == 'django-insecure-CHANGE-THIS-IN-PRODUCTION':
         "Generate a secure key with: python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'"
     )
 
-# Get allowed hosts from environment variable
-allowed_hosts = os.environ.get('ALLOWED_HOSTS', '')
-if allowed_hosts:
-    ALLOWED_HOSTS = [h.strip() for h in allowed_hosts.split(',') if h.strip()]
-else:
-    # Default Railway configuration - allow all Railway domains
-    ALLOWED_HOSTS = ['*']  # Temporarily allow all to debug 502 issue
+# TEMPORARY DEBUG: Force wildcard to diagnose 502 errors
+# Ignore environment variable temporarily
+ALLOWED_HOSTS = ['*']
 
 # Log ALLOWED_HOSTS for debugging
-print(f"[PRODUCTION CONFIG] ALLOWED_HOSTS: {ALLOWED_HOSTS}", file=sys.stderr)
+print(f"[PRODUCTION CONFIG] FORCED ALLOWED_HOSTS: {ALLOWED_HOSTS}", file=sys.stderr)
+print(f"[PRODUCTION CONFIG] Environment ALLOWED_HOSTS was: {os.environ.get('ALLOWED_HOSTS', 'NOT SET')}", file=sys.stderr)
 
 # Database configuration with Railway PostgreSQL
 database_url = os.environ.get('DATABASE_URL')
