@@ -22,12 +22,15 @@ if not SECRET_KEY or SECRET_KEY == 'django-insecure-CHANGE-THIS-IN-PRODUCTION':
     )
 
 # Get allowed hosts from environment variable
-allowed_hosts = os.environ.get('ALLOWED_HOSTS', '.railway.app')
-ALLOWED_HOSTS = [h.strip() for h in allowed_hosts.split(',') if h.strip()]
+allowed_hosts = os.environ.get('ALLOWED_HOSTS', '')
+if allowed_hosts:
+    ALLOWED_HOSTS = [h.strip() for h in allowed_hosts.split(',') if h.strip()]
+else:
+    # Default Railway configuration - allow all Railway domains
+    ALLOWED_HOSTS = ['*']  # Temporarily allow all to debug 502 issue
 
-# Add Railway internal domain if not already present
-if not any('.railway.app' in host for host in ALLOWED_HOSTS):
-    ALLOWED_HOSTS.append('.railway.app')
+# Log ALLOWED_HOSTS for debugging
+print(f"[PRODUCTION CONFIG] ALLOWED_HOSTS: {ALLOWED_HOSTS}", file=sys.stderr)
 
 # Database configuration with Railway PostgreSQL
 database_url = os.environ.get('DATABASE_URL')
@@ -111,4 +114,11 @@ ASGI_APPLICATION = None
 
 # Remove Channel Layers configuration (not needed for WSGI)
 CHANNEL_LAYERS = None
+
+# =============================================================================
+# DEBUG MIDDLEWARE - Add request logging to diagnose 502 errors
+# =============================================================================
+# Insert at the beginning of MIDDLEWARE for maximum visibility
+MIDDLEWARE.insert(0, 'core.debug_middleware.RequestLoggingMiddleware')
+print(f"[PRODUCTION CONFIG] Middleware: {MIDDLEWARE}", file=sys.stderr)
 
