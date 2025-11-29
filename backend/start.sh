@@ -59,16 +59,16 @@ python -c "import core.wsgi; print('✓ core.wsgi imported successfully')" || {
     exit 1
 }
 
-# Start Gunicorn with verbose logging
+# Start Gunicorn with single worker to avoid fork deadlock
+echo "Starting Gunicorn with single worker and preload..."
 exec gunicorn core.wsgi:application \
   --bind 0.0.0.0:$PORT \
-  --workers 2 \
+  --workers 1 \
   --worker-class sync \
   --timeout 120 \
+  --preload-app \
   --access-logfile - \
   --error-logfile - \
-  --log-level debug \
-  --capture-output \
-  --enable-stdio-inheritance \
+  --log-level info \
   --pythonpath /app \
   --env DJANGO_SETTINGS_MODULE=core.production
