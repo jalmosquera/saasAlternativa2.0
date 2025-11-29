@@ -97,28 +97,18 @@ else:
         "https://*.railway.app",
     ]
 
-# Redis Channel Layer configuration for Django Channels (WebSockets)
-# Required for real-time notifications in production
-REDIS_URL = os.environ.get('REDIS_URL')
-if REDIS_URL:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                "hosts": [REDIS_URL],
-                "capacity": 1500,  # Maximum number of messages to store
-                "expiry": 10,      # Message expiry in seconds
-            },
-        },
-    }
-else:
-    # Fallback to InMemory for development (not recommended for production)
-    # Set REDIS_URL environment variable in Railway
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels.layers.InMemoryChannelLayer"
-        }
-    }
-    if not DEBUG:
-        print("WARNING: Using InMemoryChannelLayer in production. Set REDIS_URL for proper WebSocket support.", file=sys.stderr)
+# =============================================================================
+# WSGI vs ASGI Configuration
+# =============================================================================
+# In production with Gunicorn (WSGI), we need to remove Daphne and Channels
+# which are ASGI-only and can conflict with WSGI operation
+
+# Remove Daphne from INSTALLED_APPS (it conflicts with Gunicorn WSGI)
+INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ['daphne', 'channels']]
+
+# Disable ASGI application (we're using WSGI with Gunicorn)
+ASGI_APPLICATION = None
+
+# Remove Channel Layers configuration (not needed for WSGI)
+CHANNEL_LAYERS = None
 
