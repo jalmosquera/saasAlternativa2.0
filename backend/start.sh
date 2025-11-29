@@ -36,4 +36,6 @@ echo "Collecting static files..."
 python manage.py collectstatic --noinput --clear
 
 echo "Starting Gunicorn..."
-exec gunicorn core.wsgi --log-file - --env DJANGO_SETTINGS_MODULE=core.production
+# Use PORT environment variable from Railway (defaults to 8000 if not set)
+PORT=${PORT:-8000}
+exec gunicorn core.wsgi --bind 0.0.0.0:$PORT --log-file - --env DJANGO_SETTINGS_MODULE=core.production

@@ -25,6 +25,10 @@ if not SECRET_KEY or SECRET_KEY == 'django-insecure-CHANGE-THIS-IN-PRODUCTION':
 allowed_hosts = os.environ.get('ALLOWED_HOSTS', '.railway.app')
 ALLOWED_HOSTS = [h.strip() for h in allowed_hosts.split(',') if h.strip()]
 
+# Add Railway internal domain if not already present
+if not any('.railway.app' in host for host in ALLOWED_HOSTS):
+    ALLOWED_HOSTS.append('.railway.app')
+
 # Database configuration with Railway PostgreSQL
 database_url = os.environ.get('DATABASE_URL')
 if database_url:
@@ -58,7 +62,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Security settings
 # Trust Railway's proxy SSL header
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+# Disable SSL redirect as Railway's proxy handles SSL
+SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
