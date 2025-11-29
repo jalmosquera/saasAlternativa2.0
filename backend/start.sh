@@ -43,8 +43,24 @@ echo "DJANGO_SETTINGS_MODULE=core.production"
 echo "ALLOWED_HOSTS from env: $ALLOWED_HOSTS"
 echo "DEBUG from env: $DEBUG"
 
+# Add current directory to PYTHONPATH
+export PYTHONPATH=/app:$PYTHONPATH
+echo "PYTHONPATH: $PYTHONPATH"
+echo "Current directory: $(pwd)"
+echo "Python path check:"
+python -c "import sys; print('\\n'.join(sys.path))"
+
+# Test if core.wsgi can be imported before starting Gunicorn
+echo "Testing if core.wsgi can be imported..."
+python -c "import core.wsgi; print('✓ core.wsgi imported successfully')" || {
+    echo "✗ FAILED to import core.wsgi"
+    echo "Trying to import core..."
+    python -c "import core; print('Core module found at:', core.__file__)" || echo "✗ Core module not found"
+    exit 1
+}
+
 # Start Gunicorn with verbose logging
-exec gunicorn core.wsgi \
+exec gunicorn core.wsgi:application \
   --bind 0.0.0.0:$PORT \
   --workers 2 \
   --worker-class sync \
@@ -54,4 +70,5 @@ exec gunicorn core.wsgi \
   --log-level debug \
   --capture-output \
   --enable-stdio-inheritance \
+  --pythonpath /app \
   --env DJANGO_SETTINGS_MODULE=core.production
