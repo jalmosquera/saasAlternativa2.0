@@ -103,8 +103,35 @@ LANGUAGE_CODE=es
 - Check that WhiteNoise is properly configured (already set in production.py)
 
 ### Database connection errors
-- Ensure PostgreSQL service is added to your project
-- Verify `DATABASE_URL` is automatically set
+
+**Error: "connection to server failed: Connection refused"**
+
+This error occurs when Django cannot connect to PostgreSQL. Common causes:
+
+1. **PostgreSQL service is not running**
+   - Go to your Railway project dashboard
+   - Check if the PostgreSQL service shows as "Active" (green)
+   - If it shows "Crashed" or "Stopped", click on it and check the logs
+   - Restart the PostgreSQL service if needed
+
+2. **Services are not in the same Railway project**
+   - Both your Django app and PostgreSQL must be in the SAME Railway project
+   - If they're in different projects, they cannot communicate via private networking
+   - Solution: Create a new PostgreSQL service within the same project as your app
+
+3. **DATABASE_URL not set or incorrect**
+   - Go to your app's "Variables" tab
+   - Verify `DATABASE_URL` exists and starts with `postgresql://`
+   - If missing, click "Add Variable Reference" and link it to your PostgreSQL service's `DATABASE_URL`
+
+4. **PostgreSQL service not linked to app**
+   - In your app's settings, check "Service Variables"
+   - You should see a reference to the PostgreSQL service
+   - If not, manually add the variable reference
+
+5. **Network timing issues**
+   - The updated `start.sh` script now waits up to 60 seconds for PostgreSQL to be ready
+   - If the error persists after this wait time, check the PostgreSQL service logs for errors
 
 ### CORS errors
 - Update `CORS_ALLOWED_ORIGINS` with your frontend domain
