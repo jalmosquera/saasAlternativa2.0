@@ -39,13 +39,19 @@ echo "Starting Gunicorn..."
 # Use PORT environment variable from Railway (defaults to 8000 if not set)
 PORT=${PORT:-8000}
 echo "Binding Gunicorn to 0.0.0.0:$PORT"
+echo "DJANGO_SETTINGS_MODULE=core.production"
+echo "ALLOWED_HOSTS from env: $ALLOWED_HOSTS"
+echo "DEBUG from env: $DEBUG"
+
+# Start Gunicorn with verbose logging
 exec gunicorn core.wsgi \
   --bind 0.0.0.0:$PORT \
   --workers 2 \
-  --threads 4 \
   --worker-class sync \
   --timeout 120 \
   --access-logfile - \
   --error-logfile - \
-  --log-level info \
+  --log-level debug \
+  --capture-output \
+  --enable-stdio-inheritance \
   --env DJANGO_SETTINGS_MODULE=core.production
