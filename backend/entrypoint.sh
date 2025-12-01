@@ -48,10 +48,20 @@ python manage.py collectstatic --noinput --clear
 
 echo "Starting Daphne (ASGI server with WebSocket support)..."
 PORT=${PORT:-8000}
+echo "PORT configured as: $PORT"
+echo "About to execute: daphne -b 0.0.0.0 -p $PORT --verbosity 2 --access-log - --proxy-headers core.asgi:application"
+
+# Test if core.asgi:application can be imported
+echo "Testing if core.asgi:application exists..."
+python -c "from core.asgi import application; print(f'✓ Application object: {application}')" || {
+    echo "✗ FAILED to import core.asgi:application"
+    exit 1
+}
 
 exec daphne \
   -b 0.0.0.0 \
   -p $PORT \
+  --verbosity 2 \
   --access-log - \
   --proxy-headers \
   core.asgi:application
