@@ -13,21 +13,29 @@ import os
 os.environ["AUTOBAHN_USE_NVX"] = "0"
 
 from django.core.asgi import get_asgi_application
-from channels.routing import ProtocolTypeRouter, URLRouter
-from channels.security.websocket import AllowedHostsOriginValidator
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+# Force production settings in Railway
+if os.environ.get('RAILWAY_ENVIRONMENT'):
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'core.production'
+else:
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
 # Initialize Django ASGI application early to ensure the AppRegistry
 # is populated before importing code that may import ORM models.
 django_asgi_app = get_asgi_application()
 
-# Import routing after Django setup
-from apps.orders.routing import websocket_urlpatterns
+# Configure WebSocket routing with fallback to HTTP-only if it fails
+try:
+    from channels.routing import ProtocolTypeRouter, URLRouter
+    from channels.security.websocket import AllowedHostsOriginValidator
+    from apps.orders.routing import websocket_urlpatterns
 
-application = ProtocolTypeRouter({
-    "http": django_asgi_app,
-    "websocket": AllowedHostsOriginValidator(
-        URLRouter(websocket_urlpatterns)
-    ),
-})
+    application = ProtocolTypeRouter({
+        "http": django_asgi_app,
+        "websocket": AllowedHostsOriginValidator(
+            URLRouter(websocket_urlpatterns)
+        ),
+    })
+except Exception:
+    # Fallback to HTTP-only if WebSocket setup fails
+    application = django_asgi_app

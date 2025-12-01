@@ -21,13 +21,12 @@ if not SECRET_KEY or SECRET_KEY == 'django-insecure-CHANGE-THIS-IN-PRODUCTION':
         "Generate a secure key with: python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'"
     )
 
-# TEMPORARY DEBUG: Force wildcard to diagnose 502 errors
-# Ignore environment variable temporarily
-ALLOWED_HOSTS = ['*']
-
-# Log ALLOWED_HOSTS for debugging
-print(f"[PRODUCTION CONFIG] FORCED ALLOWED_HOSTS: {ALLOWED_HOSTS}", file=sys.stderr)
-print(f"[PRODUCTION CONFIG] Environment ALLOWED_HOSTS was: {os.environ.get('ALLOWED_HOSTS', 'NOT SET')}", file=sys.stderr)
+# Configure ALLOWED_HOSTS from environment
+allowed_hosts_env = os.environ.get('ALLOWED_HOSTS', '.railway.app')
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(',') if host.strip()]
+if not ALLOWED_HOSTS:
+    # Fallback to Railway domains if not set
+    ALLOWED_HOSTS = ['*.railway.app', '.railway.app']
 
 # Database configuration with Railway PostgreSQL
 database_url = os.environ.get('DATABASE_URL')
@@ -98,24 +97,29 @@ else:
     ]
 
 # =============================================================================
-# WSGI vs ASGI Configuration
+# ASGI Configuration for WebSockets
 # =============================================================================
-# In production with Gunicorn (WSGI), we need to remove Daphne and Channels
-# which are ASGI-only and can conflict with WSGI operation
+# Enable Daphne and Channels for real-time WebSocket support
 
-# Remove Daphne from INSTALLED_APPS (it conflicts with Gunicorn WSGI)
-INSTALLED_APPS = [app for app in INSTALLED_APPS if app not in ['daphne', 'channels']]
+# Set ASGI application
+ASGI_APPLICATION = 'core.asgi.application'
 
-# Disable ASGI application (we're using WSGI with Gunicorn)
-ASGI_APPLICATION = None
-
-# Remove Channel Layers configuration (not needed for WSGI)
-CHANNEL_LAYERS = None
-
-# =============================================================================
-# DEBUG MIDDLEWARE - Add request logging to diagnose 502 errors
-# =============================================================================
-# Insert at the beginning of MIDDLEWARE for maximum visibility
-MIDDLEWARE.insert(0, 'core.debug_middleware.RequestLoggingMiddleware')
-print(f"[PRODUCTION CONFIG] Middleware: {MIDDLEWARE}", file=sys.stderr)
+# Configure Redis for Channel Layers
+REDIS_URL = os.environ.get('REDIS_URL')
+if REDIS_URL:
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                "hosts": [REDIS_URL],
+            },
+        },
+    }
+else:
+    # Fallback to in-memory (NOT recommended for production with multiple workers)
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels.layers.InMemoryChannelLayer'
+        }
+    }
 
