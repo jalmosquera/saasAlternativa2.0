@@ -28,10 +28,7 @@ if not ALLOWED_HOSTS:
     # Fallback to Railway domains if not set
     ALLOWED_HOSTS = ['*.railway.app', '.railway.app']
 
-# TEMPORARY DEBUG: Use wildcard to diagnose if ALLOWED_HOSTS is the issue
-print(f"[PRODUCTION] Original ALLOWED_HOSTS: {ALLOWED_HOSTS}", file=sys.stderr, flush=True)
-ALLOWED_HOSTS = ['*']  # TEMPORARY: Allow all hosts to test
-print(f"[PRODUCTION] TEMPORARY: Using wildcard ALLOWED_HOSTS = ['*']", file=sys.stderr, flush=True)
+print(f"[PRODUCTION] ALLOWED_HOSTS configured: {ALLOWED_HOSTS}", file=sys.stderr, flush=True)
 
 # Database configuration with Railway PostgreSQL
 database_url = os.environ.get('DATABASE_URL')
