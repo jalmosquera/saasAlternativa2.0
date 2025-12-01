@@ -34,9 +34,14 @@ if database_url:
     DATABASES = {
         'default': dj_database_url.config(
             default=database_url,
-            conn_max_age=600,
+            conn_max_age=0,  # Close connections after each request to avoid stale connections
             conn_health_checks=True,
         )
+    }
+    # Add connection retry options for PostgreSQL
+    DATABASES['default']['OPTIONS'] = {
+        'connect_timeout': 10,
+        'options': '-c statement_timeout=30000',  # 30 second timeout for queries
     }
 
 # Static files configuration for production

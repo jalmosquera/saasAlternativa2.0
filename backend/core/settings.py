@@ -300,8 +300,7 @@ PARLER_LANGUAGES = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://equuspub.vercel.app",
-    "https://digitalletter-production-d688.up.railway.app",
+    "https://alternativa20.vercel.app",
 ]
 
 # Frontend URL for email links
