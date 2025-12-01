@@ -29,23 +29,27 @@ print(f"[ASGI] Settings module: {os.environ.get('DJANGO_SETTINGS_MODULE')}", fil
 django_asgi_app = get_asgi_application()
 print(f"[ASGI] ✓ Django ASGI app initialized", file=sys.stderr, flush=True)
 
-# Try to import WebSocket routing, fallback to HTTP-only if it fails
-try:
-    from channels.routing import ProtocolTypeRouter, URLRouter
-    from channels.security.websocket import AllowedHostsOriginValidator
-    from apps.orders.routing import websocket_urlpatterns
+# TEMPORARY: Disable WebSocket to test if it's causing 502 errors
+print(f"[ASGI] TEMPORARY: Skipping WebSocket configuration for testing", file=sys.stderr, flush=True)
+application = django_asgi_app  # HTTP-only for now
 
-    application = ProtocolTypeRouter({
-        "http": django_asgi_app,
-        "websocket": AllowedHostsOriginValidator(
-            URLRouter(websocket_urlpatterns)
-        ),
-    })
-    print(f"[ASGI] ✓ WebSocket routing configured", file=sys.stderr, flush=True)
-except Exception as e:
-    print(f"[ASGI] ⚠ WebSocket setup failed: {e}", file=sys.stderr, flush=True)
-    print(f"[ASGI] Falling back to HTTP-only mode", file=sys.stderr, flush=True)
-    # Fallback to HTTP-only
-    application = django_asgi_app
+# Try to import WebSocket routing, fallback to HTTP-only if it fails
+# try:
+#     from channels.routing import ProtocolTypeRouter, URLRouter
+#     from channels.security.websocket import AllowedHostsOriginValidator
+#     from apps.orders.routing import websocket_urlpatterns
+
+#     application = ProtocolTypeRouter({
+#         "http": django_asgi_app,
+#         "websocket": AllowedHostsOriginValidator(
+#             URLRouter(websocket_urlpatterns)
+#         ),
+#     })
+#     print(f"[ASGI] ✓ WebSocket routing configured", file=sys.stderr, flush=True)
+# except Exception as e:
+#     print(f"[ASGI] ⚠ WebSocket setup failed: {e}", file=sys.stderr, flush=True)
+#     print(f"[ASGI] Falling back to HTTP-only mode", file=sys.stderr, flush=True)
+#     # Fallback to HTTP-only
+#     application = django_asgi_app
 
 print(f"[ASGI] ✓ ASGI application ready!", file=sys.stderr, flush=True)
