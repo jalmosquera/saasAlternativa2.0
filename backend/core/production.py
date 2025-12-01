@@ -28,8 +28,6 @@ if not ALLOWED_HOSTS:
     # Fallback to Railway domains if not set
     ALLOWED_HOSTS = ['*.railway.app', '.railway.app']
 
-print(f"[PRODUCTION] ALLOWED_HOSTS configured: {ALLOWED_HOSTS}", file=sys.stderr, flush=True)
-
 # Database configuration with Railway PostgreSQL
 database_url = os.environ.get('DATABASE_URL')
 if database_url:

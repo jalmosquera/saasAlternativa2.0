@@ -8,7 +8,6 @@ https://docs.djangoproject.com/en/5.2/howto/deployment/asgi/
 """
 
 import os
-import sys
 
 # Force Autobahn to use pure Python UTF-8 validator (fixes macOS ARM issues)
 os.environ["AUTOBAHN_USE_NVX"] = "0"
@@ -21,13 +20,9 @@ if os.environ.get('RAILWAY_ENVIRONMENT'):
 else:
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
-print(f"[ASGI] Starting ASGI application setup...", file=sys.stderr, flush=True)
-print(f"[ASGI] Settings module: {os.environ.get('DJANGO_SETTINGS_MODULE')}", file=sys.stderr, flush=True)
-
 # Initialize Django ASGI application early to ensure the AppRegistry
 # is populated before importing code that may import ORM models.
 django_asgi_app = get_asgi_application()
-print(f"[ASGI] ✓ Django ASGI app initialized", file=sys.stderr, flush=True)
 
 # Configure WebSocket routing with fallback to HTTP-only if it fails
 try:
@@ -41,11 +36,6 @@ try:
             URLRouter(websocket_urlpatterns)
         ),
     })
-    print(f"[ASGI] ✓ WebSocket routing configured", file=sys.stderr, flush=True)
-except Exception as e:
-    print(f"[ASGI] ⚠ WebSocket setup failed: {e}", file=sys.stderr, flush=True)
-    print(f"[ASGI] Falling back to HTTP-only mode", file=sys.stderr, flush=True)
-    # Fallback to HTTP-only
+except Exception:
+    # Fallback to HTTP-only if WebSocket setup fails
     application = django_asgi_app
-
-print(f"[ASGI] ✓ ASGI application ready!", file=sys.stderr, flush=True)
